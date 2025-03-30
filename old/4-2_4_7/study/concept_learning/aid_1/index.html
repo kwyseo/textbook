@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <title>탐구 활동</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        remote-html-embed {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<remote-html-embed></remote-html-embed>
+<template id="class--content">
+    <div class="view-wrap" id="view-wrap" data-index="0">
+        <div class="wrap" id="contentsWrap">
+            <section>
+                <div id="left_area">
+                    <remote-html-embed html-url="../study/left_diagram/diagram_1/index.html"
+                                       class="embed"></remote-html-embed>
+                </div>
+                <div id="right_area">
+                    <div id="chapter_content">
+                        <div class="tab_header">
+                            <div class="tab_btn start header_clicked">모양 조각</div>
+                            <div class="tab_btn end">칠교 조각</div>
+                        </div>
+                        <div class="question_container">
+                            <div class="question">
+                                <div class="paragraph" style="margin: 38px 0 0 0;">
+                                    <div class="line_text">
+                                        <div class="number_circle">1</div>
+                                        주어진 모양을 채우려면
+                                    </div>
+                                    <div class="line_text">
+                                        <div class="numbering_dumy"></div>
+                                        <div class="click_box indent_back" style="width: 142px;">
+                                            <div class="click_box_img"></div>
+                                            <div class="click_box_img_gray hide"></div>
+                                            <div class="click_box_answer hide">삼각형</div>
+                                        </div>
+                                        모양과
+                                        <div class="click_box indent indent_back" style="width: 142px;">
+                                            <div class="click_box_img"></div>
+                                            <div class="click_box_img_gray hide"></div>
+                                            <div class="click_box_answer hide">육각형</div>
+                                        </div>
+                                        모양이
+                                    </div>
+                                    <div class="line_text">
+                                        <div class="numbering_dumy"></div>
+                                        필요합니다.
+                                    </div>
+                                </div>
+                                <div class="paragraph" style="margin: 23px 0 0 0;">
+                                    <div class="line_text">
+                                        <div class="number_circle">2</div>
+                                        빈 부분을 모두 채운 후,
+                                    </div>
+                                    <div class="line_text">
+                                        <div class="numbering_dumy"></div>
+                                        모양 조각을 각각 몇 개
+                                    </div>
+                                    <div class="line_text">
+                                        <div class="numbering_dumy"></div>
+                                        이용했는지
+                                        <div class="red_box"></div>
+                                        안에 써 보세요.
+                                    </div>
+                                </div>
+                                <div class="paragraph" style="margin-bottom:0; margin-left: 13px">
+                                    <div class="line_text" style="justify-content: center; align-items: center; font-size: 36px">
+                                        <div class="hexagon"></div>
+                                        <div class="answer_box">
+                                            <input type="text" class="answer_input" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   onkeydown="problemDenominatorKeyDown(event)"
+                                                   data-answer="9"/>
+                                            <div class="pencil big"></div>
+                                        </div>
+                                        개
+                                    </div>
+                                </div>
+                                <div class="paragraph" style="margin-top: 27px;margin-left: 13px">
+                                    <div class="line_text" style="justify-content: center; align-items: center; font-size: 36px">
+                                        <div class="triangle"></div>
+                                        <div class="answer_box">
+                                            <input type="text" class="answer_input" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   onkeydown="problemNominatorKeyDown(event)"
+                                                   data-answer="18"/>
+                                            <div class="pencil big"></div>
+                                        </div>
+                                        개
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question_container hide">
+                            <div class="question hide">
+                                <div class="paragraph" style="margin: 38px 0 0 0;">
+                                    <div class="line_text">
+                                        <div class="number_circle">1</div>
+                                        주어진 모양을 채워 보세요.
+                                    </div>
+                                </div>
+                                <div class="paragraph" style="margin: 94px 0 0 0;">
+                                    <div class="line_text">
+                                        <div class="number_circle">2</div>
+                                        칠교 조각을 모두
+                                        <div class="answer_box">
+                                            <input type="text" class="answer_input small chill_input" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   onkeydown="problemDenominatorKeyDown(event)"
+                                                   data-answer="9"/>
+                                            <div class="pencil middle"></div>
+                                        </div>
+                                        개
+                                    </div>
+                                    <div class="line_text">
+                                        <div class="numbering_dumy"></div>
+                                        이용했습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reset_btn"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="module" src="app.js"></script>
+</template>
+</body>
+
+</html>

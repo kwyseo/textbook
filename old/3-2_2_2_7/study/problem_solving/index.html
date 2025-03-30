@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <title>탐구 활동</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        remote-html-embed {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+
+<body>
+<remote-html-embed></remote-html-embed>
+<template id="class--content">
+    <div class="view-wrap" id="view-wrap" data-index="4">
+        <div class="wrap" id="contentsWrap">
+            <section>
+                <div id="left_area">
+                        <remote-html-embed html-url="../study/left_diagram/diagram_1/index.html"
+                                           class="embed"></remote-html-embed>
+                </div>
+                <div id="right_area">
+                    <div id="problem_content">
+                        <div class="tab_header">
+                            <div class="tab_btn start header_clicked">1</div>
+                            <div class="tab_btn border_right">2</div>
+                            <div class="tab_btn border_right">3</div>
+                            <div class="tab_btn end">4</div>
+                        </div>
+                        <div class="question_container">
+                            <div class="question hide">
+                                <div class="paragraph" style="margin-top: 80px; margin-bottom: 95px">
+                                    <div class="line_text">
+                                        일 카드&nbsp;<div class="batang2 numerator_value">63</div>
+                                        장을&nbsp;<div class="batang2 denominator_value">3</div>
+                                        장씩 묶어 보세요.
+                                    </div>
+                                </div>
+                                <div class="paragraph">
+                                    <div class="line_text big">
+                                        <div>나누어지는 수</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray numerator_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemNominatorKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="line_text big">
+                                        <div>나누는 수</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray denominator_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemDenominatorKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="line_text big">
+                                        <div >몫</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray quotient_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemQuotientKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question_container hide">
+                            <div class="question hide">
+                                <div class="paragraph" style="margin-top: 80px; margin-bottom: 0">
+                                    <div class="line_text">
+                                        일 카드&nbsp;<div class="batang2 numerator_value">63</div>
+                                        장을&nbsp;<div class="batang2 denominator_value">3</div>
+                                        장씩 묶어 보세요.
+                                    </div>
+                                </div>
+                                <div class="paragraph">
+                                    <div class="line_text big">
+                                        <div>나누어지는 수</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray numerator_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemNominatorKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="line_text big">
+                                        <div>나누는 수</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray denominator_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemDenominatorKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="line_text big">
+                                        <div >몫</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray quotient_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemQuotientKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                    <div class="line_text big">
+                                        <div >나머지</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray remainder_input"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemRemainderKeyDown(event)" data-answer="100" />
+                                            <div class="pencil"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question_container hide">
+                            <div class="question hide">
+                                <div class="paragraph" style="margin-top: 300px;">
+                                    <div class="line_text big second batang">
+                                        <div class="numerator_value" style="margin-right: 8px">63</div>
+                                        &divide;
+                                        <div class="denominator_value" style="margin-left: 8px; margin-right: 12px;">3</div>
+                                        =
+                                        <div class="answer_box">
+                                            <input class="red_box gray quotient_input" style="width: 179px !important; height: 94px"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemQuotientKeyDown(event)" data-answer="100" />
+                                            <div class="pencil big" style="width: 179px; height: 94px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question_container hide">
+                            <div class="question hide">
+                                <div class="paragraph" style="margin-top: 300px;">
+                                    <div class="line_text big second batang">
+                                        <div class="numerator_value" style="margin-right: 8px">63</div>
+                                        &divide;
+                                        <div class="denominator_value" style="margin-left: 8px; margin-right: 12px;">3</div>
+                                        =
+                                        <div class="answer_box">
+                                            <input class="red_box gray quotient_input" style="width: 179px !important; height: 94px"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   spellcheck="false" onkeydown="problemQuotientKeyDown(event)" data-answer="100" />
+                                            <div class="pencil big" style="width: 179px; height: 94px"></div>
+                                        </div>
+                                        <div class="mid_dot" style="margin-left: 5px; margin-right: 5px">&middot;&middot;&middot;</div>
+                                        <div class="answer_box">
+                                            <input class="red_box gray remainder_input remainder" style="width: 85px !important; height: 94px;"
+                                                   type="text" contenteditable="true" autocomplete="off" inputmode="none"
+                                                   onkeydown="problemRemainderKeyDown(event)"
+                                                   data-answer="0.01"/>
+                                            <div class="pencil dark" style="width: 85px; height: 94px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reset_btn"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="module" src="app.js"></script>
+
+</template>
+
+</body>
+
+</html>

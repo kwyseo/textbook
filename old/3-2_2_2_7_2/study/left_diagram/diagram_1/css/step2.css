@@ -1,0 +1,244 @@
+.diagram_1 #st2_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #st2_1_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #number_container {
+    background-image: url("../img/activity/number_container.png");
+    width: 845px;
+    height: 191px;
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.diagram_1 #number_container > div > *{
+    width: 71px;
+    height: 71px;
+    margin: 0px 7px;
+}
+
+.diagram_1 #left_number_container {
+    background-image: url("../img/activity/left_number_container.png");
+    width: 1201px;
+    height: 136px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    gap: 10px;
+}
+
+.diagram_1 #left_text {
+    background-image: url("../img/activity/left_text.png");
+    width: 200px;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.diagram_1 #left_white_container {
+    background-image: url("../img/activity/left_white_container.png");
+    width: 816px;
+    height: 101px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #left_img_container {
+    width: 760px;
+    height: 68px;
+    margin-left: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.diagram_1 #left_img_container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.diagram_1 #left_img_container::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset 0 0 5px rgba(171, 127, 220, 0.3);
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+}
+
+.diagram_1 #left_img_container::-webkit-scrollbar-thumb {
+    background: rgba(171, 127, 220, 1);
+    height: 30px;
+    border-radius: 50px;
+}
+
+.diagram_1 #left_img_container > img {
+    margin: 0px 6px;
+}
+
+
+.diagram_1 #left_cnt_container {
+    background-image: url("../img/activity/left_cnt_container.png");
+    width: 149.22px;
+    height: 101px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.diagram_1 #st2_3_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagram_1 .divide_container {
+    background-image: url("../img/activity/divide_container.png");
+    width: 198px;
+    height: 567px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    gap: 5px;
+}
+
+.diagram_1 .divide_white_container {
+    background-image: url("../img/activity/divide_white_container.png");
+    width: 179px;
+    height: 439px;
+    padding: 0px;
+    display: flex;
+}
+
+.diagram_1 .scrollZone {
+    width: 167px;
+    height: 422px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin-left: 5px;
+    margin-top: 8px;
+}
+
+.diagram_1 .scrollZone::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.diagram_1 .scrollZone::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset 0 0 5px rgba(171, 127, 220, 0.3);
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+}
+
+.diagram_1 .scrollZone::-webkit-scrollbar-thumb {
+    background: rgba(171, 127, 220, 1);
+    height: 30px;
+    border-radius: 50px;
+}
+
+.diagram_1 .divide_number_container {
+    background-image: url("../img/activity/divide_number_container.png");
+    width: 179px;
+    height: 92.03px;
+    font-size: 64px;
+    font-weight: 500;
+    color: rgba(70, 0, 150, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.diagram_1 #s2_hammer {
+    cursor: pointer;
+    position: absolute;
+    top: 47px;
+    left: 170px;   
+}
+
+.diagram_1 #s2_wrench {
+    cursor: pointer;
+    position: absolute;
+    top: 47px;
+    left: 330px;
+}
+
+
+.diagram_1 #s2_reset {
+    cursor: pointer;
+    position: absolute;
+    top: 47px;
+    left: 1800px;
+}
+
+.diagram_1 #s2_back {
+    cursor: pointer;
+    position: absolute;
+    top: 47px;
+    left: 1800px;
+}
+
+.diagram_1 #hammer_icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    display: none;
+    z-index: 2;
+}
+
+.diagram_1 #wrench_icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    display: none;
+    z-index: 2;
+}
+
+
+.diagram_1 .scrollDeActivity {
+    display: none;
+}
+
+.diagram_1 .scrollBar {
+    width: 7px;
+    height: 90%;
+    background: #f1f1f1;
+    cursor: pointer;
+    margin-right: 12px;
+    position: relative;
+}
+
+.diagram_1 .scrollThumb {
+    width: 100%;
+    height: 100px;
+    background: rgba(171, 127, 220, 1);
+    border-radius: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

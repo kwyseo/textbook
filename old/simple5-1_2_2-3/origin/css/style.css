@@ -1,0 +1,361 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+
+.wrap{
+    background-color: #F9F4FB;
+    color: #222222;
+}
+
+.flex{
+    display: flex;
+}
+
+.hide{
+    display: none !important;
+}
+
+.menu{
+    justify-content: space-between;
+    padding: 47px 0 20px 0;
+    align-items: center;
+}
+
+.menu .left-menu{
+    flex: 1;
+}
+
+.menu .btn-fullscreen{
+    content: url(../img/btn-fullscreen-on.png);
+    width: 76px;
+    height: 76px;
+    border-radius: 38px;
+    margin-left: 27px;
+    cursor: pointer;
+}
+
+.menu .btn-fullscreen.off{
+    content: url(../img/btn-fullscreen-off.png);
+    cursor: pointer;
+}
+
+.menu .multiples-div{
+    flex: 1;
+    height: 106px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 11px;
+}
+.menu .multiples-div.deactivate{
+    pointer-events: none;
+}
+
+.menu .multiples-div .input{
+    width: 157px;
+    height: 106px;
+    border: 7px solid #97B4FF;
+    border-radius: 35px;
+    outline: none;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-family: Batang, serif;
+    font-size: 65px;
+    text-align: center;
+}
+.menu .multiples-div .input.gray{
+    border-color: #BFC7DA;
+    pointer-events: none;
+}
+.menu .multiples-div label{
+    font-family: malgunbd, sans-serif;
+    font-size: 55px;
+    margin-left: 10px;
+}
+
+.menu .right-menu{
+    flex: 1;
+    margin-top: -5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.menu .right-menu .hint{
+    margin-right: 25px;
+    margin-top: 5px;
+    width: 118px;
+    height: 63px;
+    background: url(../img/hint_gray.png) no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: malgunbd, sans-serif;
+    font-size: 28px;
+    line-height: 52px;
+    letter-spacing: -0.05px;
+    border-radius: 32px;
+}
+.menu .right-menu .hint.blue{
+    width: 118px;
+    height: 63px;
+    background: url(../img/hint_blue.png) no-repeat;
+    background-size: contain;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.menu .right-menu .btn-refresh{
+    content: url(../img/btn-reset-all.png);
+    margin-right: 50px;
+    border-radius: 38px;
+    cursor: pointer;
+}
+
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+.content .content-box{
+    width: 1709px;
+    height: 764px;
+}
+.content .content-box .range-box{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #BFC7DA;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-family: Batang, serif;
+    font-size: 55px;
+    color: #BFC7DA;
+    background-color: white;
+    overflow: hidden;
+}
+.content .content-box .range-box.active{
+    border-color: #FBC398;
+    background-color: #FBC398;
+    color: #222222;
+}
+
+.content .content-box .range-box .range{
+    width: 569px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    /*pointer-events: none;*/
+}
+.content .content-box .range-box .range.cursor{
+    cursor: pointer;
+}
+.content .content-box .range-box .range.active{
+    background-color: #FBC398;
+}
+.content .content-box .range.border-left{
+    border-left-width: 7px;
+    border-style: solid;
+    border-color: #BFC7DA;
+    box-sizing: border-box;
+}
+.content .content-box .range-box.active .range.border-left{
+    border-color: #FBC398;
+}
+
+.content .content-box .range.border-right{
+    border-right-width: 7px;
+    border-style: solid;
+    border-color: #BFC7DA;
+    box-sizing: border-box;
+}
+.content .content-box .range-box.active .range.border-right{
+    border-color: #FBC398;
+}
+
+.content .content-box .button-box{
+    margin-top: -7px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 681px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #BFC7DA;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background: #E6E9F0;
+    color:#BFC7DA;
+}
+.content .content-box .button-box.active{
+    border-color: #FBC398;
+    background: #FEE3CF;
+    color: #222222;
+}
+
+.content .content-box .button-box .buttons{
+    width: 100%;
+    padding: 17px 20px 0 20px;
+}
+
+.content .content-box .button-box .button-line{
+    width: 100%;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .content-box .button-box .button{
+    width: 160px;
+    height: 151px;
+    border-radius: 35px;
+    font-family: Batang, serif;
+    font-size: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    pointer-events: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.content .content-box .button-box .button .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.content .content-box .button-box.active .button{
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.content .content-box .button-box.active .button.active{
+    pointer-events: none;
+}
+
+.content .button-box .popup{
+    position: absolute;
+    left: 10px;
+    bottom: -30px;
+    display: flex;
+    z-index: 10000;
+}
+
+.content .button-box .popup .character{
+    background: url(../img/character.png) no-repeat;
+    background-size: cover;
+    width: 221px;
+    height: 234px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.content .button-box .popup .popup-content{
+    z-index: 1;
+    width: 1390px;
+    height: 106px;
+    color: #460096;
+    border: 3px solid #460096;
+    border-radius: 53px;
+    margin-left: -75px;
+    margin-top: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: malgunbd, sans-serif;
+    font-size: 44px;
+    background-color: white;
+}
+
+.content .button-box .popup .popup-content .batang{
+    font-family: Batang, serif;
+}
+
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 10px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}

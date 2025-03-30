@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+	<title>탐구 활동</title>
+	<style>
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+
+		your-component {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+</head>
+
+
+<body>
+	<your-component></your-component>
+	<!-- Content -->
+	<template id="class--content">
+
+		<div id="viewWrap">
+			<!-- start -->
+			<div class="wrap" id="contentsWrap">
+				<section>
+					<!--------------------헤더 -------------------->
+					<div class="flex" id="header">
+						<div class="btn-box" style="visibility: hidden">
+							<button id="full">
+								<img src="./img/full.png?ver=3" />
+							</button>
+						</div>
+
+						<div class="btn-box">
+							<button id="reset">
+								<img src=" ./img/back.png?ver=3" />
+							</button>
+						</div>
+					</div>
+
+
+
+					<!--------------------메인화면 -------------------->
+					<div id="contents">
+
+
+						<div id="default">
+							<div class="background">
+								<img src="./img/default/1.png?ver=3" />
+							</div>
+
+						</div>
+
+
+
+						<div id="textBox">
+							<img class="text1" src=" ./img/action/text1.png?ver=3" />
+
+
+							<div id="guideBox" class="guideBox one_click">
+								<div id="guide" class="guide"></div>
+							</div>
+
+							<div class="text2Mom textMom">
+								<img class="text2_1 text" src=" ./img/action/text2_1.png?ver=3" />
+								<img class="if3 if " src=" ./img/action/if3.png?ver=3" />
+							</div>
+
+							<div id="guide2Box" class="guideBox two_click hide">
+								<div id="guide2" class="guide"></div>
+							</div>
+
+							<div class="text3Mom textMom">
+								<img class="text2_2 text " src=" ./img/action/text2_2.png?ver=3" />
+								<img class="if1 if " src=" ./img/action/if1.png?ver=3" />
+							</div>
+
+
+							<div id="guide3Box" class="guideBox three_click hide">
+								<div id="guide3" class="guide"></div>
+							</div>
+
+
+
+							<div id="guide4Box" class="guideBox four_click hide">
+								<div id="guide4" class="guide"></div>
+							</div>
+
+							<img class="text3_1 textMom " src=" ./img/action/text3_1.png?ver=3" />
+							<img class="text3_2 textMom " src=" ./img/action/text3_2.png?ver=3" />
+
+
+
+						</div>
+
+
+						<div id="action">
+							<img class="small" src=" ./img/action/small.png?ver=3" />
+							<div class="clip clip1">
+								<img class="shadow" src=" ./img/action/shadow.png?ver=3" />
+							</div>
+
+							<img class="big" src=" ./img/action/big.png?ver=3" />
+
+							<div class="clip clip2">
+								<img class="pink" src=" ./img/action/pink_blank.png?ver=3" />
+							</div>
+							<img class="ruler" src=" ./img/action/ruler.png?ver=3" />
+							
+							
+							<img class="one textMom " src=" ./img/action/one.png?ver=3" />
+							<div class="clip clip3">
+								<img class="left" src=" ./img/action/left.png?ver=3" />
+							</div>
+							
+							<img class="if2 textMom " src=" ./img/action/if2.png?ver=3" />
+							<div class="clip clip4">
+								<img class="right" src=" ./img/action/right.png?ver=3" />
+							</div>
+							
+						</div>
+
+
+					</div>
+
+
+
+					<!--------------------푸터 -------------------->
+
+
+					<!--
+					<footer>
+
+						<div id="success">
+							<img class="successbtn" src="./img/default/btn.png?ver=3" />
+						</div>
+						<div id="pop1" class="pop">
+							<div class="chara">
+								<img src=" ./img/pop/chara.png?ver=3" />
+							</div>
+							<div class="popImg">
+								<img src=" ./img/pop/pop1.png?ver=3" />
+							</div>
+						</div>
+						<div id="pop2" class="pop">
+							<div class="chara">
+								<img src=" ./img/pop/chara.png?ver=3" />
+							</div>
+							<div class="popImg">
+								<img src=" ./img/pop/pop2.png?ver=3" />
+							</div>
+						</div>
+					</footer>
+-->
+
+
+				</section>
+			</div>
+
+			<!--------------------끝 -------------------->
+
+		</div>
+		<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css?ver=4">
+
+		<script type="module" src="js/jquery-3.7.1.min.js"></script>
+		<script type="module" src="js/app.js?ver=4"></script>
+
+	</template>
+
+	<script type="module" src="./shadow-dom-your.js"></script>
+	<!-- Page js -->
+
+</body>
+
+</html>

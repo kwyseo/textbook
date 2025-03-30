@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <title>탐구 활동</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        remote-html-embed {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<remote-html-embed></remote-html-embed>
+<template id="class--content">
+    <div class="view-wrap" id="view-wrap" data-index="0">
+        <div class="wrap" id="contentsWrap">
+            <section>
+                <div id="left_area">
+                    <remote-html-embed html-url="../study/left_diagram/diagram_1/index.html"
+                                       class="embed"></remote-html-embed>
+                </div>
+                <div id="right_area">
+                    <div id="chapter_content">
+                        <div class="paragraph" style="margin: 48px 0 0 0;">
+                            <div class="line_text">
+                                <div class="number_circle">1</div>
+                                나눗셈식의
+                                <div class="click_box indent" style="width: 256px;">
+                                    <div class="click_box_img"></div>
+                                    <div class="click_box_img_gray hide"></div>
+                                    <div class="click_box_answer hide">나누어지는 수</div>
+                                </div>
+                                만큼
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                수 카드로 나타내어 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph" style="margin: 33px 0 0 0;">
+                            <div class="line_text">
+                                <div class="number_circle">2</div>
+                                십 카드를 일 카드로 바꾸고
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                <div class="click_box"
+                                     style="width: 188px;">
+                                    <div class="click_box_img"></div>
+                                    <div class="click_box_img_gray hide"></div>
+                                    <div class="click_box_answer hide">나누는 수</div>
+                                </div>
+                                만큼씩 묶어 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph" style="margin: 33px 0 103px 0;">
+                            <div class="line_text">
+                                <div class="number_circle">3</div>
+                                수 카드 묶음을 보고 계산 결과가
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                얼마인지
+                                <div class="red_box"></div>
+                                안에 써 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph" style="margin-left: 13px">
+                            <div class="line_text batang" style="justify-content: center;
+                                font-size: 49px; line-height: 49px;">
+                                <div class="numerator_value" style="margin-right: 8px">26</div>
+                                &divide;
+                                <div class="denominator_value" style="margin-left: 8px; margin-right: 12px;">2</div>
+                                =
+                                <div class="answer_box">
+                                    <input type="text" class="answer_input" style="width: 169px; height:89px"
+                                           contenteditable="true" autocomplete="off" inputmode="none"
+                                           onkeydown="problemQuotientKeyDown(event)"
+                                            data-answer="0.01"/>
+                                    <div class="pencil big"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check_btn"></div>
+                        <div class="reset_btn"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="module" src="app.js"></script>
+</template>
+</body>
+
+</html>

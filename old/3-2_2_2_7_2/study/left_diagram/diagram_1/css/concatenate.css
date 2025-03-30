@@ -1,0 +1,44 @@
+.diagram_1 #con_container {
+    display: flex;
+}
+
+.diagram_1 #con_lay1 {
+    width: 536px;
+    height: 100%;
+    margin-left: 130px;
+}
+
+.diagram_1 #con_lay1_1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.diagram_1 .concatenate_input_wrap {
+    width: 536px;
+    height: 221px;
+}
+
+.diagram_1 .concatenate_input_wrap input {
+    width: 180px;
+    height: 100px;
+}
+
+.diagram_1 .concatenate_div_wrap {
+    width: 536px;
+    height: 596px;
+}
+
+.diagram_1 .concatenate_div_wrap_child {
+    width: 508px;
+    height: 564.57px;
+}
+
+.diagram_1 #con_lay2 {
+    width: 960px;
+    height: 100%;
+}
+
+.diagram_1 #con_lay3 {
+    width: 200px;
+    height: 100%;
+}

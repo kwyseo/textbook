@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+    <title>막대 그래프</title>
+    <style>
+        html, body{
+            padding:0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        shadow-component {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <!-- 모달 창 정의 -->
+            <div class="modal_graph">
+                <div class="close"></div>
+            </div>
+            <div class="modal_method method_01">
+                <div class="container">
+                    <div class="left off"></div>
+                    <div class="right"></div>
+                    <div class="close"></div>
+                </div>
+            </div>
+            <div class="modal_qwerty">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div>
+                    <div class="btn-fullscreen"></div>
+                </div>
+                <div class="right-menu">
+                    <img class="btn-refresh" alt="리셋 버튼" ondragstart="return false;" onContextMenu="return false;" />
+                    <div class="btn-method"></div>
+                    <div class="btn-graph"></div>
+                </div>
+            </div>
+            <div class="container title">
+                <div class="title">
+                    <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    <div class="guide_hand"></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="bg">
+                    <div class="container">
+                        <div class="container nation_select">
+                            <div class="year20"></div>
+                            <div class="year21"></div>
+                        </div>
+                    </div>
+                    <div class="bar_div">
+                        <div></div>
+                        <div class="drag drag1">
+                            <div class="drag_bar drag_20">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="drag_bar drag_21">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="drag drag2">
+                            <div class="drag_bar drag_20">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="drag_bar drag_21">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="drag drag3">
+                            <div class="drag_bar drag_20">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="drag_bar drag_21">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="bar_cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaffolding">
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" crossorigin="anonymous" />
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

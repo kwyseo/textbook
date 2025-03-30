@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- 몇 장씩 묶기, 몇 곳으로 나누기 -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=0" />
+    <!-- <link rel="stylesheet" type="text/css" href="font/nanumsquareround.min.css"> -->
+
+    <title>탐구 활동</title>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        ma5p22301-component {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        @font-face {
+            font-family: 'Bbatang';
+            src: url('./font/batang.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Malgun';
+            src: url('./font/malgun.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Malgunbd';
+            src: url('./font/malgunbd.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Malgunsl';
+            src: url('./font/malgunsl.ttf') format('truetype');
+        }
+    </style>
+
+</head>
+
+<body>
+    <ma5p22301-component></ma5p22301-component>
+    <!-- Content -->
+    <template id="class--content">
+        <div id="viewWrap" class="diagram_1" style="display:flex; justify-content:center; width:100%; height:100%;align-items: center; background-color: white;">
+            <!-- start -->
+    
+
+            <div class="wrap" id="contentsWrap" style="visibility: hidden;margin-top: 12px">
+                <section id="intro_activity" class="activity active">
+                    <div id="intro_top">
+                        <div id="intro_input_wrap1">
+                            <div type="text" id="input-1" class="total"></div>
+                            <div id="intro_unit_selector">
+                                <div id="intro_unit_text">÷</div>
+                            </div>
+                            <div type="text" id="input-2" class="total"></div>
+
+                            <button type="button" id="btnDone" style="width: 144px;">
+                                <img src="./img/btn-done-part.png" alt="">
+                            </button>
+
+                            <button type="button" id="btnReset" style="width: 144px; height: 66px;">
+                                <img src="./img/btn_reset_part.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="intro_body" style="visibility: hidden">
+                        <img src="./img/activity/Intro_button_1_off.png" alt="" id="step1_btn">
+                        <img src="./img/activity/Intro_button_2_off.png" alt="" id="step2_btn">
+                    </div>
+                    
+                </section>
+
+                <section id="step1_activity" class="activity deactive">
+                    <div id="st1_container">
+                        <div id="st1_parent1">
+                            <div id="st1_1_1">
+                                <input type="text" class="blank_input blank_type1 total" id="st1_value1" disabled>
+                                <div class="default_text" style="margin: 0px 20px;">÷</div>
+                                <input type="text" class="blank_input blank_type1 total" id="st1_value2" disabled>
+                            </div>
+                            <div id="st1_1_2">
+                                <div id="st1_1_2_textZone" style="display: none;">
+                                    <div id="st1_1_2_1" class="st1_1_1_2_textParent">
+                                        <img src="./img/activity/one.png" alt="">
+                                        <div class="st1_1_2_board_text">카드</div>
+                                        <input type="text" class="blank_input_deactive blank_type2" id="st1_1_2_value1" disabled>
+                                        <div class="st1_1_2_board_text">장을</div>
+                                    </div>
+
+                                    <div id="st1_1_2_2" class="st1_1_1_2_textParent">
+                                        <input type="text" class="blank_input_deactive blank_type2" id="st1_1_2_value2" disabled>
+                                        <div class="st1_1_2_board_text">장씩 묶기</div>
+                                    </div>
+
+                                    <div id="st1_1_2_3" class="st1_1_1_2_textParent">
+                                        <img src="./img/activity/arrow_purple.png" alt="">
+                                    </div>
+
+                                    <div id="st1_1_2_4" class="st1_1_1_2_textParent">
+                                        <div class="st1_1_2_board_text">묶음 개수</div>
+                                        <input type="text" class="blank_input blank_type2" id="st1_1_2_value3" style="background-color: rgba(238, 225, 255, 1);" disabled>
+                                        <div class="st1_1_2_board_text">묶음</div>
+                                    </div>
+
+                                    <div id="st1_1_2_5" class="st1_1_1_2_textParent">
+                                        <div class="st1_1_2_board_text">남은 개수 </div>
+                                        <input type="text" class="blank_input blank_type2" id="st1_1_2_value4" style="background-color: rgba(238, 225, 255, 1);" disabled>
+                                        <div class="st1_1_2_board_text">장　</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <img src="./img/activity/hammer.png" alt="" id="st1_hammer">
+                        </div>
+                        <div id="st1_parent2" >
+                            <div id="st1_2_1">
+                                <div id="st1_2_box1" style="display: flex;">
+
+                                </div>
+                                <canvas id="drawBoard" width="1920" height="1020"></canvas>
+                                <div id="st1_2_box2" style="display: none;"> 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="st1_parent3">
+                            <div id="st3_1_1" style="margin-left: 65px">
+                                <img src="./img/btn-reset-all.png" alt="" id="s1_reset" style="cursor: pointer;">
+                                <img src="./img/btn-back.png" alt="" id="s1_back" style="cursor: pointer; visibility: hidden">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="step2_activity" class="activity deactive">
+                    <div id="st2_container">
+                        <div id="st2_1_1">
+                            <div id="number_container">
+                                <div id="st2_tenZone">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 560px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 650px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 740px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 830px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 920px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 1010px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 1100px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 1190px;" class="standBlock">
+                                    <img src="img/activity/ten.png" alt="" style="position: absolute; top: 87px; left: 1280px;" class="standBlock">
+                                </div>
+                                <div id="st2_oneZone">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 560px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 650px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 740px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 830px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 920px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 1010px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 1100px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 1190px;" class="standBlock">
+                                    <img src="img/activity/one.png" alt="" style="position: absolute; top: 163px; left: 1280px;" class="standBlock">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="st2_2_1">
+                            <div id="left_number_container">
+                                <div id="left_text"></div>
+                                <div id="left_white_container">
+                                    <div id="left_img_container"></div>
+                                </div>
+                                <div id="left_cnt_container"></div>
+                            </div>
+                        </div>
+                        <div id="st2_3_1">
+
+                            <!-- <div class="divide_container">
+                                <div class="divide_white_container">
+                                    <div id="scrollZone">
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                        <div style="cursor: pointer; display: inline-block; width: 68px; height: 68px; margin-left: 6px; background-image: url(&quot;http://127.0.0.1:5500/origin/img/activity/ten.png&quot;);" type="ten"></div>
+                                    </div>
+                                </div>
+                                <div class="divide_number_container">13</div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <img src="./img/activity/hammer_btn.png" alt="" id="s2_hammer">
+                    <img src="./img/activity/wrench_btn.png" alt="" id="s2_wrench">
+
+                    <img src="./img/activity/hammer_icon.png" alt="" id="hammer_icon">
+                    <img src="./img/activity/wrench_icon.png" alt="" id="wrench_icon">
+
+                    <img src="./img/btn-reset-all.png" alt="" id="s2_reset">
+                    <img src="./img/btn-back.png" alt="" id="s2_back">
+                </section>
+
+                <div id="common" style="position: relative">
+                    <!-- 전체화면 -->
+                    <button type="button" id="fullScreenButton" class="fullscreen" style="display: none">
+                        <img src="./img/btn-fullscreen-on.png" alt="">
+                    </button>
+                    <!-- //전체화면 -->
+
+                    <!-- 키보드 -->
+                    <div class="keyboard" style="display: none">
+                        <button type="button" class="key-btn btn1" data-num="1">1</button>
+                        <button type="button" class="key-btn btn2" data-num="2">2</button>
+                        <button type="button" class="key-btn btn3" data-num="3">3</button>
+                        <button type="button" class="key-btn btn4" data-num="4">4</button>
+                        <button type="button" class="key-btn btn5" data-num="5">5</button>
+                        <button type="button" class="key-btn btn6" data-num="6">6</button>
+                        <button type="button" class="key-btn btn7" data-num="7">7</button>
+                        <button type="button" class="key-btn btn8" data-num="8">8</button>
+                        <button type="button" class="key-btn btn9" data-num="9">9</button>
+                        <button type="button" class="key-btn btn0" data-num="0">0</button>
+                    </div>
+                    <!-- //키보드 -->
+                    
+                    <!-- 안내 메시지 -->
+                    <div class="info_message" style="display: none">
+                        <div class="pop_img"><img src="./img/img-chara.png"></div>
+                        <span class="pop_text" style="font-family: Malgun;">10~99만 입력 가능해요.</span>
+                    </div>
+                    <!-- //안내 메시지 -->
+
+                    <div id="guide" style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;">
+                        <img src="./img/touch-guide.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <link rel="stylesheet" type="text/css" href="./css/common.css?after">
+        <link rel="stylesheet" type="text/css" href="./css/intro.css?after">
+        <link rel="stylesheet" type="text/css" href="./css/concatenate.css?after">
+        <link rel="stylesheet" type="text/css" href="./css/step1.css?after">
+        <link rel="stylesheet" type="text/css" href="./css/step2.css?after">
+        
+        <!-- 복수개의 스타일 가능 -->
+        <script type="module" src="./js/universal3-2_2_2-7.js"></script>
+        <!-- 복수개의 스크립트 파일 가능 -->
+
+
+    </template>
+    <script type="module" src="./js/Component/MA5P22301Component.js"></script>
+    <!-- Page js -->
+
+</body>
+
+</html>

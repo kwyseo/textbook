@@ -1,0 +1,524 @@
+@font-face {
+    font-family: 'Bbatang';
+    src: url('../remote/font/batang.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Malgun';
+    src: url('../remote/font/malgun.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Malgunbd';
+    src: url('../remote/font/malgunbd.ttf') format('truetype');
+}
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* 사파리에서 disable 했을때 흐려지는 것을 막는다 */
+input:disabled {
+    opacity: 1; /* 투명도 설정 */
+}
+input{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/** 공용 클래스---------------- */
+.pointer {
+    cursor: pointer;
+}
+
+.hide{
+    display: none !important;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.malgun {
+    font-family: "Malgun" !important;
+}
+
+.malgun_bd {
+    font-family: "Malgunbd" !important;
+}
+
+.batang {
+    font-family: "Bbatang" !important;
+}
+
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+
+#view-wrap .wrap, #summary-wrap .wrap{
+    width: 1920px;
+    height: 930px;
+    overflow: hidden;
+}
+#diagram-wrap .wrap{
+    width: 1220px;
+    height: 930px;
+    overflow: hidden;
+}
+
+#view-wrap .wrap section, #summary-wrap .wrap section{
+    width: 1920px;
+    height: 930px;
+    display: flex;
+}
+
+#diagram-wrap .wrap section{
+    width: 1220px;
+    height: 930px;
+}
+
+#view-wrap .wrap #left_area {
+    width: 1170px;
+    margin-top: -35px;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+#view-wrap .wrap #left_area {
+    /*
+    width: 1170px;
+    margin-left: 30px;
+    margin-right: 20px;
+     */
+    width: 1220px;
+    margin-left: 0;
+    margin-right: 0;
+}
+#view-wrap .wrap #right_area {
+    width: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/** view-wrap */
+#view-wrap #chapter_content{
+    width: 660px;
+    height: 860px;
+    border: 3px solid rgba(204, 225, 205, 1);
+    margin-top: 30px;
+    border-radius: 30px;
+    background: #FAFFF9;
+    transform: scale(0.992);
+    position: relative;
+}
+
+#view-wrap .number_circle {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40px;
+    height: 40px;
+    background-color: #005B09;
+    border-radius: 100%;
+    color: white;
+    font-size: 30px;
+    margin-left: 50px;
+    margin-right: 17px;
+    font-family: "Malgunbd" !important;
+    line-height: 1.2;
+}
+/** 번호가 매겨진 줄의 경우 아랫줄을 띄어 준다 */
+#view-wrap .numbering_dumy {
+    width: 40px;
+    height: 40px;
+    margin-left: 50px;
+    margin-right: 17px;
+}
+
+#view-wrap .paragraph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 48px 0 63px 0;
+    font-family:Malgun !important;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 54px;
+}
+
+#view-wrap .paragraph.batang {
+    font-family:Bbatang !important;
+}
+
+#view-wrap .paragraph .line_text .batang {
+    font-family:Bbatang !important;
+    margin-top: 3px;
+}
+
+#view-wrap .line_text {
+    width: 100%;
+    height: 60px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#view-wrap .click_box {
+    width: 80px;
+    height: 60px;
+    margin-right: 5px;
+    border-radius: 20px;
+    border: 5px solid #5090EA;
+    box-sizing: border-box;
+    color: #B73751;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#view-wrap .click_box.gray {
+    border-color: #BFC7DA;
+    background: white;
+    pointer-events: none;
+}
+
+#view-wrap .click_box.indent{
+    margin-left: 12px;
+}
+
+#view-wrap .click_box.indent_back{
+    margin-right: 12px;
+}
+
+#view-wrap .click_box_img{
+    margin-top: 3px;
+    width: 48px;
+    height: 50px;
+    background: url(img/blue_btn_q.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#view-wrap .click_box_img_gray{
+    margin-top: 3px;
+    width: 48px;
+    height: 50px;
+    background: url(img/gray_btn_q.png) no-repeat;
+    background-size: contain;
+}
+#view-wrap .click_box_answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: Malgunbd !important;
+}
+#view-wrap .red_box {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+    border: 5px solid #F2372B;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+#view-wrap .write_box {
+    width: 189px;
+    height: 100px;
+    border-radius: 28px;
+    /* border: 8px solid #994AF4; */
+    border: 8px solid rgba(191, 199, 218, 1);
+    box-sizing: border-box;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 62px;
+    z-index: 2;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    outline: none;
+    font-family: "Bbatang";
+}
+
+#view-wrap .select_box{
+    position: relative;
+    width: 118px;
+    height: 60px;
+    background-size: contain;
+}
+#view-wrap .select_box.gray{
+    background: url(img/select_box_gray.png) no-repeat;
+    background-size: contain;
+}
+#view-wrap .select_box.blue{
+    background: url(img/select_box_blue.png) no-repeat;
+    background-size: contain;
+}
+#view-wrap .select_list{
+    position: absolute;
+    width: 92px;
+    height: 202px;
+    top: 60px;
+    left: -5px;
+    overflow: hidden;
+    background: url(img/select_list.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Malgunbd !important;
+    z-index: 999;
+}
+#view-wrap .select_list_box{
+    width: 74px;
+    height: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#view-wrap .select_list_box.top{
+    margin-top: 5px;
+    height: 60px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+#view-wrap .select_list_box.bottom{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+#view-wrap .select_list_box.gray{
+    background-color: #E6E9F0;
+}
+#view-wrap .select_list_box.select_gray{
+    background-color: #E6E9F0;
+}
+#view-wrap .select_box_answer {
+    margin-right: 40px;
+    box-sizing: border-box;
+    color: #B73751;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Malgunbd !important;
+}
+#view-wrap .reset_btn {
+    position: absolute;
+    bottom: 15px;
+    right: 16px;
+    width: 194px;
+    height: 66px;
+    background: url(img/btn_reset.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#view-wrap .concept_hand {
+    width: 45px;
+    height: 60px;
+    margin-right: 5px;
+    background: url(img/concept_hand.png) no-repeat;
+    background-size: contain;
+}
+
+#view-wrap .fraction_box {
+    width: 90px;
+    height: 147px;
+    margin-left: 11px;
+    margin-right: 15px;
+    border-radius: 20px;
+    border: 5px solid rgba(80, 144, 234, 1);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+}
+#view-wrap .fraction_box.gray {
+    border-color: #BFC7DA;
+    background: white;
+    pointer-events: none;
+}
+
+#view-wrap .fraction_box.wild {
+    width: 126px;
+}
+#view-wrap .fraction_box_img{
+    margin-top: 3px;
+    width: 68px;
+    height: 71px;
+    background: url(img/blue_big_btn_q.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#view-wrap .fraction_box_img_gray{
+    margin-top: 3px;
+    width: 68px;
+    height: 71px;
+    background: url(img/gray_big_btn_q.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#view-wrap .paragraph.fraction {
+    /*
+    margin-left: 55px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+     */
+    margin: 30px auto 60px auto;
+    font-family: "Bbatang" !important;
+    font-size: 39px;
+    line-height: 53px;
+}
+#view-wrap .paragraph.fraction .line_text {
+    width: auto;
+}
+#view-wrap .answer_box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#view-wrap .answer_box input{
+    width: 95px;
+    height: 64px;
+    margin-left: 11px;
+    margin-right: 15px;
+    border-radius: 20px;
+    border: 5px solid rgba(191, 199, 218, 1);
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Bbatang" !important;
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 39px;
+    text-align: center;
+    color: rgba(183, 55, 81, 1);
+    background-color: white;
+}
+#view-wrap .answer_box input.active{
+    border: 5px solid rgba(242, 55, 43, 1);
+}
+
+#view-wrap .answer_box input:focus, #view-wrap .answer_box input.check_input{
+    box-shadow: 0 0 6px 0 rgba(255, 255, 0, 1);
+}
+
+#view-wrap .answer_box input.wild{
+    width: 119px;
+}
+
+#chapter_content .fraction_box_answer .fraction,
+#summary-wrap .fraction{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #B73751;
+}
+#chapter_content .fraction .numerator, #summary-wrap .fraction .numerator{
+    display: block;
+    border-bottom: 2px solid #B73751;
+}
+#chapter_content .fraction .numerator{
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 5px;
+}
+#summary-wrap .fraction .numerator{
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#chapter_content .fraction .denominator {
+    display: block;
+    padding-top: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#summary-wrap .fraction .denominator {
+    display: block;
+    padding-top: 11px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+@keyframes textblink {
+    0% { color: white; }
+    50% { color: #B73751; }
+    100% { color: white; }
+}
+input.red_box.blinking-text {
+    animation: textblink 1s infinite;
+}
+input.answer_input.blinking-text {
+    animation: textblink 1s infinite;
+}
+
+@keyframes textblinkfirst {
+    0% { color: #B73751; }
+    100% { color: white; }
+}
+input.red_box.blinking-text-first {
+    animation: textblinkfirst 0.5s forwards;
+}
+input.answer_input.blinking-text-first {
+    animation: textblinkfirst 0.5s forwards;
+}
+
+#view-wrap .pencil{
+    position: absolute;
+    top: 0;
+    left: 11px;
+    width: 95px;
+    height: 64px;
+    background-image: url(img/pencil.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#view-wrap .pencil.active{
+    cursor: pointer;
+}
+

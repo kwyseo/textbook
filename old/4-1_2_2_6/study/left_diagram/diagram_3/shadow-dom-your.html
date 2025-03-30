@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+	<title>탐구 활동</title>
+	<style>
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		your-component {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+</head>
+
+
+<body>
+	<your-component></your-component>
+	<!-- Content -->
+	<template id="class--content">
+
+		<div id="viewWrap">
+			<!-- start -->
+			<div class="wrap" id="contentsWrap">
+				<section tabindex="1" aria-label="아래의 눈금 도구를 재고 싶은 각 위로 가져갑니다. 각이 눈금 도구의 몇 칸인지 나타냅니다. 새로고침 버튼을 눌러 다시 확인할 수 있습니다.">
+					<!--------------------헤더 -------------------->
+					<div class="flex" id="header">
+						<div class="btn-box">
+							<button id="full">
+								<img src="./img/full.png?ver=3" tabindex="2" aria-label="전체화면 버튼" style="visibility: hidden" />
+							</button>
+							<div class="title title1 show"><img src="./img/title1.png?ver=3" /></div>
+						</div>
+
+						<div class="btn-box">
+							<button id="reset">
+								<img src=" ./img/back.png?ver=3" tabindex="3" aria-label="새로고침 버튼"/>
+							</button>
+						</div>
+					</div>
+
+
+
+					<!--------------------메인화면 -------------------->
+					<div id="contents">
+
+						<div class="top">
+							<img src="./img/background.png?ver=3" />
+						</div>
+
+						<div class="angleBox">
+							<img class="angle angle1" src="./img/angle1.png?ver=3" />
+							<img class="angle angle2" src="./img/angle2.png?ver=3" />
+							<img class="angle angle3" src="./img/angle3.png?ver=3" />
+
+
+							<div class="piece_wrap protractor">
+								<div class="piece0 piece" data-num="0">
+									<img src="./img/protractor.png?ver=3" />
+
+									<div id="guideBox" class="guideBox">
+										<div id="guide" class="guide"></div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+
+
+
+						<div class="nums num1">
+							<img class="num num1-1" src="./img/num1/num.png?ver=3" />
+							<img class="num num1-2" src="./img/num1/num-1.png?ver=3" />
+							<img class="num num1-3" src="./img/num1/num-2.png?ver=3" />
+							<img class="num num1-4" src="./img/num1/num-3.png?ver=4" />
+							<img class="num num1-5" src="./img/num1/num-4.png?ver=5" />
+							<img class="num num1-6" src="./img/num1/num-5.png?ver=6" />
+							<img class="num num1-7" src="./img/num1/num-6.png?ver=7" />
+							<img class="num num1-8" src="./img/num1/num-7.png?ver=8" />
+						</div>
+						<div class="nums num2">
+							<img class="num num2-1" src="./img/num2/num.png?ver=3" />
+							<img class="num num2-2" src="./img/num2/num-1.png?ver=3" />
+							<img class="num num2-3" src="./img/num2/num-2.png?ver=3" />
+							<img class="num num2-4" src="./img/num2/num-3.png?ver=4" />
+							<img class="num num2-5" src="./img/num2/num-4.png?ver=5" />
+						</div>
+						<div class="nums num3">
+							<img class="num num3-1" src="./img/num3/num.png?ver=3" />
+							<img class="num num3-2" src="./img/num3/num-1.png?ver=3" />
+							<img class="num num3-3" src="./img/num3/num-2.png?ver=3" />
+							<img class="num num3-4" src="./img/num3/num-3.png?ver=4" />
+						</div>
+
+
+
+						<div class="pink numBOx">
+							<img src="./img/pink.png?ver=3" />
+						</div>
+
+						<div class="blue numBOx">
+							<img src="./img/blue.png?ver=3" />
+						</div>
+
+						<div class="green numBOx">
+							<img src="./img/green.png?ver=3" />
+						</div>
+
+
+
+					</div>
+
+
+
+					<!--------------------푸터 -------------------->
+
+					<footer>
+						<div class="" id="footer">
+
+							<!--
+								<div class="btn-box">
+									<button id="eraser">
+										<img src="./img/erase_on.png?ver=3" />
+									</button>
+								</div>
+-->
+
+
+							<div id="chara">
+								<img src=" ./img/chare.png?ver=3" />
+							</div>
+							<div id="pop1">
+								<img src=" ./img/frame.png?ver=3" />
+							</div>
+						</div>
+					</footer>
+
+				</section>
+			</div>
+
+			<!--------------------끝 -------------------->
+
+		</div>
+		<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css?ver=9">
+
+		<script type="module" src="js/jquery-3.7.1.min.js"></script>
+		<script type="module" src="js/app.js?ver=9"></script>
+
+	</template>
+
+	<script type="module" src="./shadow-dom-your.js"></script>
+	<!-- Page js -->
+
+</body>
+
+</html>

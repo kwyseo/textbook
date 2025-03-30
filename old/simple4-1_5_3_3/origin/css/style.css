@@ -1,0 +1,538 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.container{
+    display: flex;
+}
+
+.container.reverse{
+    flex-direction: row-reverse;
+}
+.container.menu{
+    justify-content: space-between;
+    padding: 20px 35px 20px 35px;
+    align-items: center;
+}
+
+.menu .btn-fullscreen{
+    width: 76px;
+    height: 76px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .right-menu{
+    display: flex;
+    width: 850px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.menu .btn-order{
+    width: 216px;
+    height: 118px;
+    background: url(../img/btn_order_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .btn-order.off{
+    background: url(../img/btn_order_off.png) no-repeat;
+}
+
+.menu .btn-method{
+    width: 248px;
+    height: 118px;
+    background: url(../img/btn_method_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-method.off{
+    background: url(../img/btn_method_off.png) no-repeat;
+}
+
+.menu .btn-graph{
+    width: 175px;
+    height: 81px;
+    margin-top: auto;
+    margin-bottom: 0;
+    background: url(../img/btn_graph_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-graph.off{
+    background: url(../img/btn_graph_off.png) no-repeat;
+}
+
+.container.title{
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.container.title .sticker{
+    position: fixed;
+    left: 470px;
+    width: 80px;
+    height: 76px;
+    background: url(../img/modal/sticker_01.png) no-repeat;
+    background-size: contain;
+}
+.container.title .title{
+    width: 770px;
+    height: 99px;
+    background: url(../img/title.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.title .input{
+    margin-left: 40px;
+    margin-top: 5px;
+    width: 687px;
+    height: 85px;
+    font-family: malgunbd, sans-serif;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.container.content{
+    align-items: center;
+    justify-content: center;
+    padding-top: 35px;
+}
+.container.content .bg {
+    position: relative;
+    width: 1411px;
+    height: 681px;
+    background: url(../img/bg.svg) no-repeat;
+    background-size: contain;
+}
+
+.modal_graph{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 1178px;
+    height: 347px;
+    background: url(../img/modal/modal_graph.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_graph .close{
+    width: 58px;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 1100px;
+    cursor: pointer;
+}
+
+.modal_unit{
+    position: absolute;
+    display: none;
+    top: 460px;
+    left: 150px;
+    width: 511px;
+    height: 486px;
+    background: url(../img/modal/modal_unit.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_method{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 778px;
+    height: 587px;
+    z-index: 9999;
+}
+.modal_method.method_01{
+    background: url(../img/modal/modal_method_01.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_02{
+    background: url(../img/modal/modal_method_02.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_03{
+    background: url(../img/modal/modal_method_03.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_04{
+    background: url(../img/modal/modal_method_04.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_05{
+    background: url(../img/modal/modal_method_05.png) no-repeat;
+    background-size: contain;
+}
+
+.modal_method .left{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 318px;
+    cursor: pointer;
+}
+
+.modal_method .right{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 415px;
+    cursor: pointer;
+}
+.modal_method .left.off, .modal_method .right.off{
+    cursor: default ;
+}
+
+.modal_method .close{
+    position: absolute;
+    width: 58px;
+    height: 60px;
+    margin-top: 502px;
+    margin-left: 700px;
+    cursor: pointer;
+}
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    top: 690px;
+    left: 230px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.sticker{
+    display: none;
+}
+
+.bar_div{
+    position: absolute;
+    top:419px;
+    left:540px;
+    width: 1118px;
+    height: 445px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bar_div .drag{
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background-color: rgba(222, 184, 135, 0);
+    opacity: 0.7;
+    left: -1500px;
+    width: 2616px;
+    height: 90px;
+    cursor: pointer;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.bar_div .drag1{
+    top: -5px;
+}
+.bar_div .drag2{
+    top: 85px;
+}
+.bar_div .drag3{
+    top: 175px;
+}
+.bar_div .drag4{
+    top: 266px;
+}
+.bar_div .drag5{
+    top: 356px;
+}
+
+
+.bar_div .bar{
+    background-color: rgba(255, 149, 149, 0.9);
+    width: 100%;
+    height: 43px;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #FF6565;
+    display: none;
+    z-index: 9999;
+}
+
+
+
+/* ___________________________________________________________________________________*/
+
+
+
+
+
+.content .name{
+    position: absolute;
+    left: 52px;
+    width: 185px;
+    height: 75px;
+    cursor: pointer;
+}
+
+.content .name1{
+   top: 100px;
+}
+.content .name2{
+    top: 190px;
+}
+.content .name3{
+    top: 280px;
+}
+.content .name4{
+    top: 370px;
+}
+.content .name5{
+    top: 460px;
+}
+
+.name .input{
+    margin-left: 10px;
+    margin-top: 8px;
+    position: fixed;
+    width: 157px;
+    height: 58px;
+    font-family: malgun, sans-serif;
+    font-size: 39px;
+    border-width: 0;
+    text-indent: 4px;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+.content .volume{
+    position: absolute;
+    top: 555px;
+    width: 125px;
+    height: 68px;
+    cursor: pointer;
+}
+.volume .input{
+    margin-left: 11px;
+    margin-top: 9px;
+    position: fixed;
+    width: 103px;
+    height: 50px;
+    font-family: Batang, serif;
+    font-size: 48px;
+    font-weight: 400;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.content .volume1{
+    left: 690px;
+}
+.content .volume2{
+    left: 1155px;
+}
+
+.sticker_02{
+    position: absolute;
+    top:585px;
+    left: -125px;
+    width: 269px;
+    height: 101px;
+    background: url(../img/modal/sticker_02.png) no-repeat;
+    background-size: contain;
+}
+.sticker_04_01{
+    position: absolute;
+    top:580px;
+    left: 479px;
+    width: 80px;
+    height: 76px;
+    background: url(../img/modal/sticker_04_01.png) no-repeat;
+    background-size: contain;
+}
+.sticker_04_02{
+    position: absolute;
+    top:543px;
+    left: 469px;
+    width: 99px;
+    height: 26px;
+    background: url(../img/modal/sticker_04_02.png) no-repeat;
+    background-size: contain;
+}
+.sticker_04_03{
+    position: absolute;
+    top:590px;
+    left: 530px;
+    width: 145px;
+    height: 23px;
+    background: url(../img/arrow-right.png) no-repeat;
+    background-size: contain;
+}
+
+.sticker_03{
+    position: absolute;
+    top:600px;
+    left: 1425px;
+    width: 80px;
+    height: 76px;
+    background: url(../img/modal/sticker_03.png) no-repeat;
+    background-size: contain;
+}
+
+.sticker_05_01{
+    position: absolute;
+    top:15px;
+    left: 990px;
+    width: 80px;
+    height: 76px;
+    background: url(../img/modal/sticker_05_01.png) no-repeat;
+    background-size: contain;
+}
+
+.title .guide_hand{
+    position: absolute;
+    top: 219px;
+    left: 935px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.svg) no-repeat;
+    background-size: contain;
+    opacity: 0;
+    z-index: 10000;
+}
+
+

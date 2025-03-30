@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+    <title>벽면 채우기</title>
+    <style>
+        html, body{
+            padding:0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        shadow-component {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <div style="padding:30px; display: flex; justify-content: space-between; align-items: center">
+                <div>
+                    <div class="btn-fullscreen"></div>
+                </div>
+                <div class="title"></div>
+                <div class="btn-reset"></div>
+            </div>
+            <div style="padding:50px; display: flex; justify-content: space-between; align-items: center">
+                <div class="left-box" style="display: flex; justify-content: center; align-items: center">
+                    <svg width="1066" height="430" viewBox="0 0 1066 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 3-2 -->
+                        <path class="drop reverse" d="M492.68 423.35H332.123L251.845 284.226H572.968L492.68 423.35Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <!-- 3-3 -->
+                        <path class="drop" d="M572.968 284.226H733.525L813.803 423.35H492.68L572.968 284.226Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <!-- 2-3 -->
+                        <path class="drop reverse" d="M733.525 284.226H572.968L492.68 145.113H813.803L733.525 284.226Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <!-- 2-4 -->
+                        <path class="drop" d="M813.803 145H974.37L1054.65 284.113H733.525L813.803 145Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <!-- 3-4 -->
+                        <path class="drop reverse" d="M974.37 423.35H813.803L733.525 284.226H1054.65L974.37 423.35Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <!-- 1-4 -->
+                        <path class="drop reverse" d="M974.37 145.113H813.803L733.525 6H1054.65L974.37 145.113Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M91.2782 284.226H251.845L332.123 423.35H11L91.2782 284.226Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M91.2782 6H251.835L332.123 145.113H11L91.2782 6Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M251.835 284.226H91.2782L11 145.113H332.123L251.835 284.226Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M332.123 145.113H492.68L572.968 284.226H251.845L332.123 145.113Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M492.68 145.113H332.123L251.834 6H572.958L492.68 145.113Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M572.968 6H733.525L813.803 145.113H492.68L572.968 6Z" fill="#E83820" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <mask id="path-13-outside-1_3_7006" maskUnits="userSpaceOnUse" x="0" y="0" width="1066" height="430" fill="black">
+                            <rect fill="white" width="1066" height="430"/>
+                            <path d="M492.68 423.35H813.803H974.359L1054.64 284.237L974.359 145.124L1054.64 6.01043H733.525H572.968M572.958 6H251.835H91.2782L11 145.113L91.2782 284.226L11 423.339H332.123H492.69"/>
+                        </mask>
+                        <path d="M974.359 423.35V429.35H977.824L979.556 426.349L974.359 423.35ZM1054.64 284.237L1059.83 287.236L1061.56 284.237L1059.83 281.238L1054.64 284.237ZM974.359 145.124L969.163 142.125L967.432 145.124L969.163 148.122L974.359 145.124ZM1054.64 6.01043L1059.83 9.00935L1065.03 0.0104337H1054.64V6.01043ZM91.2782 6V0H87.8133L86.0814 3.00109L91.2782 6ZM11 145.113L5.80322 142.114L4.07263 145.113L5.80322 148.112L11 145.113ZM91.2782 284.226L96.475 287.225L98.2056 284.226L96.475 281.227L91.2782 284.226ZM11 423.339L5.80322 420.34L0.610206 429.339H11V423.339ZM492.68 429.35H813.803V417.35H492.68V429.35ZM813.803 429.35H974.359V417.35H813.803V429.35ZM979.556 426.349L1059.83 287.236L1049.44 281.238L969.163 420.351L979.556 426.349ZM1059.83 281.238L979.556 142.125L969.163 148.122L1049.44 287.236L1059.83 281.238ZM979.556 148.122L1059.83 9.00935L1049.44 3.01152L969.163 142.125L979.556 148.122ZM1054.64 0.0104337H733.525V12.0104H1054.64V0.0104337ZM733.525 0.0104337H572.968V12.0104H733.525V0.0104337ZM572.958 0H251.835V12H572.958V0ZM251.835 0H91.2782V12H251.835V0ZM86.0814 3.00109L5.80322 142.114L16.1968 148.112L96.475 8.99891L86.0814 3.00109ZM5.80322 148.112L86.0814 287.225L96.475 281.227L16.1968 142.114L5.80322 148.112ZM86.0814 281.227L5.80322 420.34L16.1968 426.338L96.475 287.225L86.0814 281.227ZM11 429.339H332.123V417.339H11V429.339ZM332.123 429.339H492.69V417.339H332.123V429.339Z" fill="#C9CDD9" mask="url(#path-13-outside-1_3_7006)"/>
+                    </svg>
+                </div>
+                <div class="right-box">
+                    <div class="drag-zone">
+                        <svg width="322" height="140" viewBox="0 0 322 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path style="cursor: pointer" d="M80.2886 0H240.845L321.123 139.113H0L80.2886 0Z" fill="#E83820"/>
+                        </svg>
+                        <div class="btn-rotate"></div>
+                    </div>
+                    <div class="hand-guide"></div>
+                </div>
+            </div>
+            <div style="position: relative;">
+                <div style="position: absolute; display: flex; justify-content: end; align-items: flex-end;
+                        top: -130px; height: 120px; width: 100%">
+                    <div class="popup" style="display: flex; justify-content: space-between; align-items: center">
+                        <div class="arrow-left off"></div>
+                        <div class="popup-content">
+                            <div class="content-2" data-value="2"></div>
+                        </div>
+                        <div class="arrow-right"></div>
+                    </div>
+                    <div class="character"></div>
+                    <div class="btn-x"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" crossorigin="anonymous" />
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

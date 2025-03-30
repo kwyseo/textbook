@@ -1,0 +1,593 @@
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Thin.woff) format('woff');
+	font-weight: 100;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-ExtraLight.woff) format('woff');
+	font-weight: 200;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Light.woff) format('woff');
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Regular.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Medium.woff) format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundR.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-SemiBold.woff) format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Bold.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundEB.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+#viewWrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	background: #fff;
+
+
+
+
+
+}
+
+#viewWrap img {
+	pointer-events: none;
+}
+
+#contents,
+img {
+	-webkit-user-drag: none;
+	/* Chrome, Safari, Opera */
+	-khtml-user-drag: none;
+	/* Konqueror */
+	-moz-user-drag: none;
+	/* Firefox */
+	-o-user-drag: none;
+	/* Older Opera */
+	user-drag: none;
+	/* Modern browsers */
+	user-select: none;
+	/* Prevents text selection */
+}
+
+section {
+	width: 1920px;
+	height: 1020px;
+	min-height: 1020px;
+	position: relative;
+	overflow: hidden;
+	border: 3px solid var(--Color, #EFE5F3)
+	/*	background: #00800052;*/
+
+}
+
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+button {
+	all: unset;
+}
+
+
+
+/*************************************************/
+/*헤더 푸터*/
+/*************************************************/
+#header {
+	padding-top: 48px;
+	padding-left: 25px;
+	padding-right: 45px;
+}
+
+.reset_btn {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	z-index: 1000;
+}
+
+#viewWrap img {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+#full img {
+	width: 76px;
+	height: 76px;
+}
+
+#reset img {
+	width: 76px;
+	height: 76px;
+}
+
+
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+
+#contents {
+	position: relative;
+	width: 1920px;
+	height: 860px;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+footer {
+	position: relative;
+	top: -230px;
+	z-index: 0;
+}
+
+.pop {
+	opacity: 0;
+}
+
+.pop.show {
+	opacity: 1;
+	transition: 0.5s;
+}
+
+.pop .chara img {
+	width: 150px;
+	position: absolute;
+	top: 52px;
+	left: 87px;
+	z-index: 1;
+}
+
+.popImg img {
+	position: absolute;
+	top: 152px;
+	left: 169px;
+	width: 1576px;
+	z-index: 0;
+}
+
+/****************************************************/
+/*가이드관련*/
+/****************************************************/
+.guideBox {
+	position: absolute;
+	z-index: 10;
+
+	width: 337px;
+	height: 155px;
+	top: 115px;
+	left: 48px;
+	cursor: pointer;
+}
+
+.guideBox.hide {
+	opacity: 0;
+	display: none;
+}
+
+.guide {
+	    pointer-events: none;
+	background: url('../img/cursor.png?ver=3') no-repeat;
+	background-size: cover;
+	z-index: 2;
+	width: 103px;
+	height: 115px;
+	transition: 0.5s linear;
+	opacity: 0;
+	display: none;
+	position: absolute;
+}
+
+.guide.show {
+	opacity: 1;
+}
+
+
+
+#guide {
+	top: 34px;
+	left: 61px;
+}
+
+
+#guide2Box {
+	left: 262px;
+	height: 100px;
+	width: 67px;
+	cursor: pointer;
+}
+
+#guide2 {
+	top: 63px;
+	left: 36px;
+}
+#guide3Box {
+left: 435px;
+    height: 61px;
+    width: 74px;
+    cursor: pointer;
+    top: 144px;
+}
+
+#guide3 {
+	    top: 36px;
+    left: 42px;
+}
+
+#guide4Box {
+    top: 248px;
+    width: 175px;
+    height: 130px;
+    cursor: pointer;
+}
+
+#guide4 {
+top: 35px;
+    left: 62px;
+}
+#reset,
+#full{
+	cursor: pointer;
+}
+/*************************************************/
+/*컨텐츠관련*/
+/*************************************************/
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+
+
+/*
+
+
+	background: url(../img/all/6.png) no-repeat;
+	background-size: 1920px 1020px;
+
+
+*/
+
+
+
+
+
+}
+
+.main {
+	/*	background: url(../img/content.png?ver=1) no-repeat;*/
+	width: 1620px;
+	height: 500px;
+	background-size: contain;
+	position: relative;
+	z-index: 1;
+}
+
+
+
+.title {
+	display: none;
+	position: relative;
+	top: 80px;
+}
+
+.title.show {
+	display: block
+}
+
+.title1 img {
+	width: 656px;
+	margin-left: 49px;
+}
+
+.title2 img {
+	width: 1143px;
+	margin-left: 49px;
+}
+
+.title3 img {
+	width: 938px;
+	margin-left: 49px;
+}
+
+.title4 img {
+	width: 614px;
+	margin-left: 49px;
+}
+
+/*************************************************/
+/*시작*/
+/*************************************************/
+
+.if.hide,
+.pink.hide{
+	opacity: 0;
+	transition: 0.5s;
+}
+
+#default {
+	z-index: 1;
+}
+
+.background img {
+
+	position: absolute;
+	top: -81px;
+	left: 129px;
+	width: 1635px;
+
+}
+
+#textBox {
+	position: absolute;
+	top: -80px;
+	right: 156px;
+	width: 715px;
+	height: 424px;
+	z-index: 2;
+}
+
+.text1 {
+    position: absolute;
+    top: 24px;
+    left: 49px;
+    width: 307px;
+}
+
+.text2_1 {
+    position: absolute;
+    top: 100px;
+    width: 307px;
+    left: 78px;
+}
+.text2_2 {
+    position: absolute;
+    top: 134px;
+    width: 166px;
+    left: 392px;
+}
+.textMom{
+	opacity: 0;
+}
+.textMom.show{
+	opacity: 1;
+	transition: 0.5s;
+}
+.text2Mom .if3 {
+    width: 71px;
+    z-index: 1;
+    position: absolute;
+    left: 265px;
+    top: 110px;
+}
+.text3_1{
+position: absolute;
+    top: 264px;
+    width: 102px;
+    left: 110px;
+}
+.text3_2{
+    position: absolute;
+    width: 436px;
+    left: 230px;
+    top: 252px;
+}
+
+#action {
+	position: absolute;
+	top: 472px;
+	left: 703px;
+	width: 866px;
+	height: 374px;
+	z-index: 0;
+	opacity: 0;
+}
+#action.show{
+	opacity: 1;
+}
+
+#action > img {
+	position: absolute;
+	opacity: 0;
+	will-change: opacity;
+}
+#action > img.show {
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.small {
+	bottom: 0;
+	left: 0;
+	width: 201px;
+	z-index: 1;
+}
+
+
+.big {
+	position: absolute;
+	width: 523px;
+	right: 0;
+	z-index: 1;
+}
+
+.ruler {
+	position: absolute;
+	width: 341px;
+	left: 429px;
+	top: 6px;
+	z-index: 3;
+}
+
+.shadow {
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.pink {
+	width: 100%;
+	height: 100%;
+}
+
+.clip {
+	z-index: 0;
+}
+
+.clip.motion {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition: 1.2s linear;
+	opacity: 1;
+}
+
+.clip1 {
+	position: absolute;
+	clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+	width: 211px;
+	top: 11px;
+	left: 144px;
+	height: 362px;
+	opacity: 0;
+}
+
+.clip2 {
+width: 42px;
+    height: 22px;
+	left: 583px;
+	top: 300px;
+	position: absolute;
+/*	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);*/
+	opacity: 0;
+	z-index: 5;
+}
+.clip2.motion{
+	opacity: 1;
+	transition: 0.5s;
+}
+.clip3{
+position: absolute;
+    top: 269px;
+    left: 556px;
+    width: 31px;
+    height: 31px;
+	overflow:hidden;
+	z-index:3;
+	
+}
+.clip4{
+	    position: absolute;
+    top: 269px;
+    left: 620px;
+    width: 31px;
+    height: 31px;
+	overflow:hidden;
+	z-index:3;
+}
+.clip3 img{
+	transform: translate(40px, 40px);
+}
+.clip4 img{
+	transform: translate(-40px, 40px);
+}
+
+.clip3 img.motion,
+.clip4 img.motion{
+	transform: translate(0px, 0px);
+	transition: 0.5s;
+}
+
+.clip3 img,
+.clip4 img{
+	width: 33px;
+	height: 33px;
+}
+.if1{
+width: 74px;
+    top: 135px;
+    position: absolute;
+	left: 438px;
+}
+
+.one{
+	    top: 246px;
+    left: 536px;
+    width: 14px;
+	    z-index: 1;
+}
+.if2{
+    top: 213px;
+    left: 647px;
+    width: 120px;
+	    z-index: 1;
+}

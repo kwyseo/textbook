@@ -1,0 +1,367 @@
+#problem_content {
+    display: flex;
+    flex-direction: column;
+    width: 660px;
+    height: 860px;
+    margin-top: 30px;
+    border: 3px solid #CCD7E1;
+    border-radius: 30px;
+    background: #F9FDFF;
+    transform: scale(0.992);
+    position: relative;
+}
+
+.question_container{
+    width: 560px;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 36px;
+    height: 57px;
+    font-family: Bbatang !important;
+}
+#view-wrap .question_container .paragraph .batang2 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 54px;
+    color: #222222;
+    font-family: Bbatang !important;
+}
+
+.tab_header {
+    position: relative;
+    top: -3px;
+    left: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-sizing: border-box;
+    width: 660px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    background-color: #E2EBF4;
+    border-top: 3px solid #CCD7E1;
+    border-bottom: 3px solid #CCD7E1;
+}
+
+.tab_btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 28px;
+    height: 65px;
+    color:rgba(0, 55, 118, 0.5);
+    font-family: Malgunbd !important;
+}
+.tab_btn.border_right {
+    border-right: 3px solid #CCD7E1;
+}
+.tab_btn.border_left {
+    border-left: 3px solid #CCD7E1;
+}
+.tab_btn.start{
+    margin-left: -3px;
+}
+.tab_btn.end{
+    margin-right: -3px;
+}
+
+.header_clicked{
+    z-index: 2;
+    width: 200px;
+    background-color: rgb(249, 253, 255);
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-width: 3px;
+    border-style: solid solid dashed;
+    border-color: rgb(204, 215, 225);
+    color: rgb(0, 55, 118);
+}
+
+.select_box_group {
+    display: flex;
+    margin-top: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+#view-wrap #problem_content .select_box{
+    position: relative;
+    width: 158px;
+    height: 80px;
+    background-size: contain;
+    font-family: Malgun !important;
+    font-size: 45px;
+    line-height: 45px;
+}
+
+#view-wrap #problem_content .select_box.gray{
+    background: url(img/select_box_gray.png) no-repeat;
+}
+#view-wrap #problem_content .select_box.blue{
+    background: url(img/select_box_blue.png) no-repeat;
+    cursor: pointer;
+}
+
+#problem_content .select_big_list{
+    position: absolute;
+    width: 121px;
+    height: 217px;
+    top: 85px;
+    left: 0;
+    overflow: hidden;
+    background: url(img/select_big_list.png) no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Malgunbd !important;
+    font-size: 45px;
+    line-height: 45px;
+    z-index: 999;
+}
+
+#view-wrap #problem_content .select_list_box{
+    width: 103px;
+    height: 67px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#view-wrap #problem_content .select_list_box.top{
+    margin-top: 5px;
+    height: 65px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+}
+#view-wrap #problem_content .select_list_box.bottom{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+#view-wrap #problem_content .select_box_answer {
+    margin-right: 50px;
+    box-sizing: border-box;
+    color: #B73751;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Malgunbd !important;
+}
+#view-wrap #problem_content .select_box_answer.transparent {
+    opacity: 0;
+}
+.ox_box_group{
+    flex: 1;
+    display: flex;
+    margin-top: 150px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px 0 20px;
+}
+
+.ox_box_group .child{
+    width: 228px;
+    height: 136px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#problem_content .button{
+    width: 200px;
+    height: 108px;
+    background-size: contain;
+    cursor: pointer;
+}
+#problem_content .button.o{
+    background: url(img/button_o.png) no-repeat;
+}
+#problem_content .button.x{
+    background: url(img/button_x.png) no-repeat;
+}
+
+#problem_content .button.answer{
+    width: 228px;
+    height: 136px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#problem_content .button.answer.o{
+    background: url(img/button_border_o.png) no-repeat;
+}
+
+#problem_content .button.answer.x{
+    background: url(img/button_border_x.png) no-repeat;
+}
+
+.button_ox{
+    width: 220px;
+    height: 147px;
+    background: url(img/button_ox.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.button_red_o{
+    width: 200px;
+    height: 108px;
+    background: url(img/button_red_o.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.button_red_x{
+    width: 200px;
+    height: 108px;
+    background: url(img/button_red_x.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#view-wrap #problem_content .line_text.big{
+    width: 453px;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 67px;
+    margin-top: 25px;
+    height: 81px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 150px;
+}
+#view-wrap #problem_content .line_text.big.second{
+    justify-content: center;
+    font-size: 51px
+}
+#view-wrap #problem_content .answer_box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#view-wrap #problem_content .answer_box input.red_box {
+    width: 150px !important;
+    height: 81px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #B73751;
+    caret-color: #B73751;
+    border: 6px solid #F2372B;
+    border-radius: 23px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-family: Bbatang;
+    font-weight: 400;
+    font-size: 49px;
+    line-height: 47px;
+    outline: none;
+    text-align: center;
+}
+
+#view-wrap #problem_content .answer_box .red_box.gray{
+    border: 6px solid #BFC7DA;
+    pointer-events: none;
+}
+#view-wrap #problem_content .answer_box .red_box.gray.remainder{
+    background-color: #E6E9F0;
+}
+#view-wrap #problem_content .answer_box .red_box.remainder{
+    background-color: #FFD6D6;
+}
+#view-wrap #problem_content .answer_box .red_box.caret_white{
+    caret-color: white;
+}
+#view-wrap #problem_content .answer_box .red_box.correct {
+    color: #B73751;
+}
+
+
+#view-wrap #problem_content .answer_box .red_box:focus{
+    box-shadow: 0px 0px 25px 0px #FFFF00;
+}
+
+#view-wrap #problem_content .answer_box .red_box.check_input{
+    box-shadow: 0px 0px 25px 0px #FFFF00;
+}
+
+#view-wrap #problem_content .answer_box .legend{
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 34px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.blinking_button {
+    animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+}
+
+
+@keyframes blinkSelect {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.blinking_select {
+    animation: blinkSelect 1s infinite; /* 1초 간격으로 무한 반복 */
+}
+
+#view-wrap #problem_content .pencil{
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 150px;
+    height: 81px;
+    background-image: url(img/pencil_big.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+#view-wrap #problem_content .pencil.dark{
+    background-image: url(img/pencil_dark.png);
+}
+
+#view-wrap #problem_content .pencil.active{
+    pointer-events: auto;
+}
+
+
+
+#problem_content .fraction {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#problem_content .fraction .numerator {
+    display: block;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+#problem_content .fraction .denominator {
+    display: block;
+    padding-top: 11px;
+}

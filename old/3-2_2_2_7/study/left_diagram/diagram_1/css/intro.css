@@ -1,0 +1,92 @@
+.diagram_1 .total {
+    color: #460096;
+}
+
+.diagram_1 #intro_top {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.diagram_1 #intro_input_wrap1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 740px;
+    height: 222px;
+    background-image: url(../img/activity/background.png);
+    margin-left: 130px;
+}
+
+.diagram_1 #intro_input_wrap1 > .total{
+    width: 180px;
+    height: 100px;
+    border-radius: 28px;
+    border: 8px solid #994AF4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 62px;
+    font-weight: 500;
+    z-index: 2;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.diagram_1 #intro_unit_selector {
+    margin: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.diagram_1 #intro_unit_text {
+    font-size: 62px;
+    font-weight: 500;
+    margin-left: 1px;
+}
+
+.diagram_1 #intro_popup {
+    background-image: url('../img/activity/btn-sign-bg.png');
+    width: 204px;
+    height: 126px;
+    position: absolute;
+    top: 210px;
+    transform-origin: center top;
+    transform: scale(0);
+    
+}
+
+.diagram_1 .popup_text {
+    font-size: 62px;
+    font-weight: 500;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #btnDone{
+    margin-left: 30px;
+}
+
+.diagram_1 #btnReset {
+    margin-left: 30px;
+    display: none;
+}
+
+.diagram_1 #intro_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    margin-top: 60px;
+}

@@ -1,0 +1,623 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* input에서 숫자의 경우 오른쪽에 위아래 표시 안나오게 한다 */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+
+.container{
+    display: flex;
+}
+
+.container.reverse{
+    flex-direction: row-reverse;
+}
+.container.menu{
+    justify-content: space-between;
+    padding: 20px 35px 20px 35px;
+    align-items: center;
+}
+
+.menu .btn-fullscreen{
+    width: 76px;
+    height: 76px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .right-menu{
+    display: flex;
+    width: 850px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.menu .btn-order{
+    width: 216px;
+    height: 118px;
+    background: url(../img/btn_order_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .btn-order.off{
+    background: url(../img/btn_order_off.png) no-repeat;
+}
+
+.menu .btn-method{
+    width: 248px;
+    height: 118px;
+    background: url(../img/btn_method_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-method.off{
+    background: url(../img/btn_method_off.png) no-repeat;
+}
+
+.menu .btn-graph{
+    width: 175px;
+    height: 81px;
+    margin-top: auto;
+    margin-bottom: 0;
+    background: url(../img/btn_graph_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-graph.off{
+    background: url(../img/btn_graph_off.png) no-repeat;
+}
+
+.container.title{
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+}
+.container.title .sticker{
+    position: fixed;
+    left: 470px;
+    width: 80px;
+    height: 76px;
+    background: url(../img/modal/sticker_01.png) no-repeat;
+    background-size: contain;
+}
+.container.title .title{
+    width: 770px;
+    height: 99px;
+    background: url(../img/title.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.title .input{
+    margin-left: 40px;
+    margin-top: 5px;
+    width: 687px;
+    height: 85px;
+    font-family: malgunbd, sans-serif;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.container.content{
+    align-items: center;
+    justify-content: center;
+    padding-top: 65px;
+}
+.container.content .bg {
+    width: 1652px;
+    height: 541px;
+    background: url(../img/bg.svg) no-repeat;
+    background-size: contain;
+}
+
+.container.content .unit{
+    position: relative;
+    margin-top: 25px;
+    margin-left: 35px;
+    width: 109px;
+    height: 30px;
+    background: url(../img/bracket.svg) no-repeat;
+    background-size: contain;
+}
+.container.content .unit .sticker{
+    position: fixed;
+    width: 80px;
+    height: 76px;
+    left: 47px;
+    top: 385px;
+    background: url(../img/modal/sticker_03.png) no-repeat;
+    background-size: contain;
+}
+
+.container.content .unit .q_box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+    height: 46px;
+    top: -7px;
+    left: 8px;
+    background: url(../img/q_box.svg) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .unit .q_box.off{
+    background-image: none;
+}
+
+.unit .q_box .select{
+    font-family: Batang, serif;
+    font-size: 36px;
+}
+.unit .q_box .select.korean{
+    font-family: malgun, sans-serif;
+    font-size: 36px;
+}
+
+
+.container.content .volume{
+    position: relative;
+    margin-top: 25px;
+    margin-left: 145px;
+    width: 126px;
+    height: 70px;
+    background: url(../img/input_small_red.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .volume .sticker_01{
+    position: fixed;
+    width: 80px;
+    height: 76px;
+    left:297px;
+    top: 605px;
+    background: url(../img/modal/sticker_04_01.png) no-repeat;
+    background-size: contain;
+    cursor: default;
+}
+.container.content .volume .sticker_02{
+    position: fixed;
+    top:612px;
+    left: 395px;
+    width: 16px;
+    height: 58px;
+    background: url(../img/modal/sticker_04_02.png) no-repeat;
+    background-size: contain;
+    cursor: default;
+}
+
+.container.content .volume .sticker_03{
+    position: fixed;
+    top:532px;
+    left: 330px;
+    width: 23px;
+    height: 107px;
+    background: url(../img/arrow-up.png) no-repeat;
+    background-size: contain;
+    cursor: default;
+}
+
+.container.content .volume .zero{
+    position: fixed;
+    top:735px;
+    left: 390px;
+    content: url(../img/0.png);
+    cursor: default;
+}
+
+.volume .input{
+    position: fixed;
+    margin-left: 9px;
+    margin-top: 9px;
+    width: 107px;
+    height: 52px;
+    font-family: Batang, serif;
+    font-weight: 400;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.container.content .container.list{
+    margin-top: 250px;
+}
+.container.content .container.list .sticker{
+    position: fixed;
+    width: 269px;
+    height: 101px;
+    left: 17px;
+    bottom: 75px;
+    background: url(../img/modal/sticker_02.png) no-repeat;
+    background-size: contain;
+}
+.container.content .container.list .sticker_01{
+    position: fixed;
+    width: 80px;
+    height: 76px;
+    left: 495px;
+    top: 400px;
+    background: url(../img/modal/sticker_05_01.png) no-repeat;
+    background-size: contain;
+}
+.container.content .container.list .type{
+    margin-top: 4px;
+    margin-left: 12px;
+    width: 126px;
+    height: 70px;
+    background: url(../img/input_small.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.container.content .container.list .number{
+    margin-top: 66px;
+    margin-left: 13px;
+    width: 126px;
+    height: 70px;
+    background: url(../img/input_small.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.container.list .type .input, .container.list .number .input{
+    margin-left: 8px;
+    margin-top: 7px;
+    position: fixed;
+    width: 112px;
+    height: 52px;
+    font-family: malgun, sans-serif;
+    font-size: 32px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+}
+
+.container.list .name .input{
+    margin-left: 12px;
+    margin-top: 12px;
+    position: fixed;
+    width: 157px;
+    height: 78px;
+    font-family: malgun, sans-serif;
+    font-size: 45px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+}
+.container.content .container.list .name1{
+    margin-top: 17px;
+    margin-left: 31px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .container.list .name2{
+    margin-top: 17px;
+    margin-left: 41px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .container.list .name3{
+    margin-top: 17px;
+    margin-left: 41px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .container.list .name4{
+    margin-top: 17px;
+    margin-left: 41px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .container.list .name5{
+    margin-top: 17px;
+    margin-left: 41px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.container.content .container.list .name6{
+    margin-top: 17px;
+    margin-left: 41px;
+    width: 186px;
+    height: 106px;
+    background: url(../img/name_input.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.modal_graph{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 1178px;
+    height: 347px;
+    background: url(../img/modal/modal_graph.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_graph .close{
+    width: 58px;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 1100px;
+    cursor: pointer;
+}
+
+.modal_unit{
+    position: absolute;
+    display: none;
+    top: 460px;
+    left: 150px;
+    width: 511px;
+    height: 486px;
+    background: url(../img/modal/modal_unit.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_method{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 778px;
+    height: 587px;
+    z-index: 9999;
+}
+.modal_method.method_01{
+    background: url(../img/modal/modal_method_01.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_02{
+    background: url(../img/modal/modal_method_02.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_03{
+    background: url(../img/modal/modal_method_03.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_04{
+    background: url(../img/modal/modal_method_04.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_05{
+    background: url(../img/modal/modal_method_05.png) no-repeat;
+    background-size: contain;
+}
+.modal_method .left{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 318px;
+    cursor: pointer;
+}
+.modal_method .right{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 415px;
+    cursor: pointer;
+}
+.modal_method .left.off, .modal_method .right.off{
+    cursor: default ;
+}
+.modal_method .close{
+    position: absolute;
+    width: 58px;
+    height: 60px;
+    margin-top: 502px;
+    margin-left: 700px;
+    cursor: pointer;
+}
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.sticker, .sticker_01, .sticker_02, .sticker_03{
+    display: none;
+}
+
+.bar_div{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top:389px;
+    left:423px;
+    width: 1355px;
+    height: 394px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bar_div .drag{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(222, 184, 135, 0);
+    opacity: 0.7;
+    width: 226px;
+    height: 800px;
+    cursor: pointer;
+    z-index: 999;
+    cursor: pointer;
+}
+
+
+.bar_div .bar{
+    background-color: rgba(255, 149, 149, 0.9);
+    width: 85px;
+    height: 100%;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(255, 101, 101, 0.8);
+    display: none;
+    z-index: 999;
+    top:0;
+    left: 22px;
+}
+
+.title .guide_hand{
+    position: absolute;
+    top: 243px;
+    left: 935px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.svg) no-repeat;
+    background-size: contain;
+    opacity: 0;
+}
+
+
+
+

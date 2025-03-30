@@ -1,0 +1,281 @@
+#problem_content {
+    display: flex;
+    flex-direction: column;
+    width: 660px;
+    height: 860px;
+    margin-top: 30px;
+    border: 3px solid #CCD7E1;
+    border-radius: 30px;
+    background: #F9FDFF;
+    transform: scale(0.992);
+    position: relative;
+}
+
+#problem_content .question_container{
+    width: 560px;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 36px;
+    height: 57px;
+    font-family: Bbatang !important;
+}
+#view-wrap .question_container .paragraph .batang2 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 54px;
+    color: #222222;
+}
+
+#problem_content .tab_header {
+    position: relative;
+    top: -3px;
+    left: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-sizing: border-box;
+    width: 660px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    background-color: #E2EBF4;
+    border-top: 3px solid #CCD7E1;
+    border-bottom: 3px solid #CCD7E1;
+}
+
+#problem_content .tab_btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 28px;
+    height: 65px;
+    color:rgba(0, 55, 118, 0.5);
+    font-family: Malgunbd !important;
+}
+#problem_content .tab_btn.border_right {
+    border-right: 3px solid #CCD7E1;
+}
+#problem_content .tab_btn.border_left {
+    border-left: 3px solid #CCD7E1;
+}
+#problem_content .tab_btn.start{
+    margin-left: -3px;
+}
+#problem_content .tab_btn.end{
+    margin-right: -3px;
+}
+
+#problem_content .header_clicked{
+    z-index: 2;
+    width: 200px;
+    background-color: rgb(249, 253, 255);
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-width: 3px;
+    border-style: solid solid dashed;
+    border-color: rgb(204, 215, 225);
+    color: rgb(0, 55, 118);
+}
+
+#problem_content .capture_div{
+    margin: 50px auto 0;
+    width: 438px;
+    height: 233px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    box-sizing: border-box;
+    border: 2px solid rgba(82, 112, 139, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#problem_content .capture_div .button{
+    position: absolute;
+    bottom: -2px;
+    left: -1px;
+    width: 91px;
+    height: 41px;
+    background: url(img/btn_capture.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#problem_content .capture_div .explain{
+    font-family: "Malgunbd" !important;
+    font-size: 24px;
+    color: #929CB5;
+    opacity: 0.5;
+}
+
+#problem_content .green_arrow{
+    width: 60px;
+    height: 60px;
+    margin-left: -13px;
+    margin-right: 10px;
+    background: url(img/green_arrow.png) no-repeat;
+    background-size: contain;
+}
+
+#view-wrap #problem_content .select_box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 231px;
+    height: 60px;
+    margin-right: 5px;
+    background: url(img/select_box_blue.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    color: #B73751;
+    font-size: 34px;
+}
+#view-wrap #problem_content .select_box .answer{
+    font-family: 'Malgunbd' !important;
+    display: flex;
+    justify-content: center;
+}
+
+#view-wrap #problem_content .select_box.gray{
+    background: url(img/select_box_gray.png) no-repeat;
+    pointer-events: none;
+}
+
+#view-wrap #problem_content .select_group{
+    position: absolute;
+    width: 239px;
+    height: 202px;
+    top: 62px;
+    left: -5px;
+    background: url(img/select_group.png) no-repeat;
+    background-size: contain;
+    font-family: 'Malgunbd' !important;
+    font-size: 34px;
+    color: #222222;
+    overflow-x: visible;
+}
+
+#view-wrap #problem_content .select_group .scroll_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 221px;
+    height: 184px;
+    margin-top: 5px;
+    margin-left: 9px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: transparent;
+    border-radius: 11px;
+    -webkit-overflow-scrolling: touch;
+}
+
+#view-wrap #problem_content .select_group .scroll_div .scrollbar{
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    width: 6px;
+    height: 170px;
+    background-color: #C5CFE8;
+    border-radius: 10px;
+    border: 1px solid #4073BB;
+}
+#view-wrap #problem_content .select_group .scroll_div .scrollbar-track{
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    width: 6px;
+    height: 86px;
+    background-color: #4073BB;
+    border-radius: 10px;
+    border: 1px solid #4073BB;
+    cursor: grab;
+}
+#view-wrap #problem_content .scroll_div::-webkit-scrollbar {
+    width: 6px;
+    display: none;
+}
+
+/* Track */
+#view-wrap #problem_content .scroll_div::-webkit-scrollbar-track {
+    background-color: #C5CFE8;
+    border-radius: 10px;
+    border: 1px solid #4073BB;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+/* Handle */
+#view-wrap #problem_content .scroll_div::-webkit-scrollbar-thumb {
+    background: #4073BB;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#view-wrap #problem_content .scroll_div::-webkit-scrollbar-thumb:hover {
+    background: #4073BB;
+}
+
+
+#view-wrap #problem_content .select_group .answer_select{
+    width: 215px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-bottom: 2px solid #C5CFE8;
+}
+#view-wrap #problem_content .select_group .answer_index{
+    margin-right: 12px;
+}
+
+#view-wrap #problem_content .select_group .scroll_div .answer_select:last-child{
+    border-bottom: 0 solid #C5CFE8;
+}
+
+#view-wrap #problem_content .select_group .answer_select.gray{
+    background-color: #E6E9F0;
+}
+
+#view-wrap #problem_content input.red_box {
+    width: 111px !important;
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 5px;
+    color: #B73751;
+    caret-color: #B73751;
+    border: 4px solid #F2372B;
+    border-radius: 17px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-family: Bbatang;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 47px;
+    outline: none;
+    text-align: center;
+}
+
+#view-wrap #problem_content .red_box.gray{
+    border-color: #BFC7DA;
+    pointer-events: none;
+}
+
+#view-wrap #problem_content .pencil{
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    width: 111px;
+    height: 60px;
+    background-image: url(img/pencil_problem.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+

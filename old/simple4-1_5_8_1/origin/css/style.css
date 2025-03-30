@@ -1,0 +1,455 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+
+.container{
+    display: flex;
+}
+
+.container.reverse{
+    flex-direction: row-reverse;
+}
+.container.menu{
+    justify-content: space-between;
+    padding: 20px 35px 20px 35px;
+    align-items: center;
+}
+
+.menu .btn-fullscreen{
+    width: 76px;
+    height: 76px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .right-menu{
+    display: flex;
+    width: 550px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.menu .btn-method{
+    width: 248px;
+    height: 118px;
+    background: url(../img/btn_method_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-method.off{
+    background: url(../img/btn_method_off.png) no-repeat;
+}
+
+.menu .btn-graph{
+    width: 175px;
+    height: 81px;
+    margin-top: auto;
+    margin-bottom: 0;
+    background: url(../img/btn_graph_on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.menu .btn-graph.off{
+    background: url(../img/btn_graph_off.png) no-repeat;
+}
+
+.container.title{
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+}
+.container.title .title{
+    width: 1267px;
+    height: 103px;
+    background: url(../img/title.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.title .input{
+    margin-left: 40px;
+    margin-top: 9px;
+    width: 1188px;
+    height: 85px;
+    font-family: malgunbd, sans-serif;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.container.content{
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+}
+.container.content .bg {
+    width: 1233px;
+    height: 625px;
+    background: url(../img/bg.svg) no-repeat;
+    background-size: contain;
+}
+
+
+.modal_graph{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 1242px;
+    height: 347px;
+    background: url(../img/modal/modal_graph.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_graph .close{
+    width: 58px;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 1162px;
+    cursor: pointer;
+}
+
+.modal_method{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    width: 778px;
+    height: 587px;
+    z-index: 9999;
+}
+.modal_method.method_01{
+    background: url(../img/modal/modal_method_01.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_02{
+    background: url(../img/modal/modal_method_02.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_03{
+    background: url(../img/modal/modal_method_03.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_04{
+    background: url(../img/modal/modal_method_04.png) no-repeat;
+    background-size: contain;
+}
+.modal_method.method_05{
+    background: url(../img/modal/modal_method_05.png) no-repeat;
+    background-size: contain;
+}
+.modal_method .left{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 318px;
+    cursor: pointer;
+}
+.modal_method .right{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    margin-top: 498px;
+    margin-left: 415px;
+    cursor: pointer;
+}
+.modal_method .left.off, .modal_method .right.off{
+    cursor: default ;
+}
+.modal_method .close{
+    position: absolute;
+    width: 58px;
+    height: 60px;
+    margin-top: 502px;
+    margin-left: 700px;
+    cursor: pointer;
+}
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.sticker, .sticker_01, .sticker_02{
+    display: none;
+}
+
+.bar_div{
+    position: absolute;
+    top:307px;
+    left:595px;
+    width: 976px;
+    height: 498px;
+    overflow: hidden;
+    border-top-right-radius: 20px;
+}
+
+.bar_div .drag{
+    position: absolute;
+    display: flex;
+    width: 195px;
+    height: 1300px;
+    z-index: 999;
+    justify-content: center;
+}
+
+.bar_div .drag1{
+    top: 0;
+    left:195px;
+    cursor: pointer;
+}
+.bar_div .drag2{
+    top: 0;
+    left:391px;
+    cursor: pointer;
+}
+.bar_div .drag3{
+    top: 0;
+    left:587px;
+    cursor: pointer;
+}
+.bar_div .drag4{
+    top: 0;
+    left:783px;
+    cursor: pointer;
+}
+
+.drag_22{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.drag_23{
+    display: flex;
+    width: 98px;
+    height: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bar_div .drag_22 .bar{
+    opacity: 0.7;
+    background-color: rgba(175, 220, 222, 1);
+    width: 50px;
+    height: 100%;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(93, 194, 208, 0.8);;
+    z-index: 999;
+    display: none;
+}
+.bar_div .drag_23 .bar{
+    opacity: 0.7;
+    background-color: rgba(254, 221, 120, 1);
+    margin-left: -3px;
+    width: 50px;
+    height: 100%;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(245, 162, 27, 0.8);
+    z-index: 999;
+    display: none;
+}
+.bar_div .bar_cover{
+    position: absolute;
+    display: none;
+    width: 195px;
+    height: 1300px;
+    z-index: 999;
+    background-color:rgba(217, 217, 217, 0.5);
+}
+
+.container .nation_select{
+    position: absolute;
+    bottom:30px;
+    right: 335px;
+    width: 410px;
+    justify-content: space-between;
+    align-items: center;
+}
+.nation_select .year22{
+    width: 193px;
+    height: 52px;
+    background: url(../img/year22.svg) no-repeat;
+    background-size: contain;
+}
+.nation_select .year23{
+    width: 193px;
+    height: 52px;
+    background: url(../img/year23.svg) no-repeat;
+    background-size: contain;
+}
+
+.nation_select .checker{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -5px;
+    width: 59px;
+    height: 63px;
+    background: url(../img/check.svg) no-repeat;
+    background-size: contain;
+}
+
+.nation_select .checker.off{
+    background-image: none;
+}
+.nation_select .checker_button{
+    margin-top: 25px;
+    margin-left: 5px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.scaffolding{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 1920px;
+    height: 280px;
+    background: url(../img/Scaffolding.svg) no-repeat;
+    background-size: contain;
+}
+
+.title .guide_hand{
+    position: absolute;
+    top: 210px;
+    left: 935px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.svg) no-repeat;
+    background-size: contain;
+    opacity: 0;
+}
+
+
+
+

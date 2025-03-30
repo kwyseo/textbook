@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        html, body{
+            padding:0;
+            margin: 0px;
+            height: 100%;
+            overflow: hidden;
+            user-select: none;
+            font-synthesis: none;
+        }
+
+        remote-html-embed {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #study_container * {
+            box-sizing: border-box;
+            font-family: 'Malgun';
+        }
+
+        /** 데이터 로딩 전까지 숨기기  */
+        #container {
+            visibility: hidden;
+        }
+
+    </style>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="container">
+        <div class="wrap">
+            <div id="intro_activity" class="activity">
+                <div id="intro_container">
+                    <div id="title_container">
+                        <div id="title_text" class="malgun_bd">모양 조각</div>
+                        <div id="title_mark"></div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 190px;">
+                        <div id="step1Btn" class="pointer"></div>
+                        <div id="step2Btn" class="pointer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="study_activity" class="activity">
+                <!-- 상단 제목-->
+                <div id="top_container" style="background: #209E2C">
+                    <div id="topArea_type" class="malgun_bd" style="color: #004807;">개념 학습</div>
+                    <div id="topArea_title" class="malgun_bd">모양 조각</div>
+                    <div id="capture" class="pointer"></div>
+                    <div id="homeBtn" class="pointer"></div>
+                </div>
+                <!-- 개념학습, 문제풀이가 들어간다 -->
+                <div id="study_container">
+                    <div id="concept_learning">
+                        <remote-html-embed html-url="../study/concept_learning/aid_1/index.html" class="embed hide"></remote-html-embed>
+                        <remote-html-embed html-url="../study/concept_learning/summary/index.html" class="embed"></remote-html-embed>
+                        <!-- 하단 네비게이션 -->
+                        <div id="concept_nav">
+                            <div id="bot_nav_container">
+                                <div id="bottom_nav">
+                                    <div class="chapterBtn malgun_bd">교구</div>
+                                    <div class="chapterBtn malgun_bd">정리</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="problem_solving">
+                        <remote-html-embed html-url="../study/problem_solving/index.html" class="embed"></remote-html-embed>
+                    </div>
+                </div>
+            </div>
+
+            <div id="common" style="position: absolute; top: 0; left: 0;">
+                <div class="keyboard hide">
+                    <div class="key_container">
+                        <button type="button" class="key-btn btn1" data-num="1">1</button>
+                        <button type="button" class="key-btn btn2" data-num="2">2</button>
+                        <button type="button" class="key-btn btn3" data-num="3">3</button>
+                    </div>
+
+                    <div class="key_container">
+                        <button type="button" class="key-btn btn4" data-num="4">4</button>
+                        <button type="button" class="key-btn btn5" data-num="5">5</button>
+                        <button type="button" class="key-btn btn6" data-num="6">6</button>
+                    </div>
+
+                    <div class="key_container">
+                        <button type="button" class="key-btn btn7" data-num="7">7</button>
+                        <button type="button" class="key-btn btn8" data-num="8">8</button>
+                        <button type="button" class="key-btn btn9" data-num="9">9</button>
+                    </div>
+
+                    <div class="key_container" style="margin-bottom: 20px;">
+                        <button type="button" class="key-btn btnDot black" data-num=".">.</button>
+                        <button type="button" class="key-btn btn0" data-num="0">0</button>
+                        <button type="button" class="key-btn btnDel black" data-num="del"><img src="./img/del.png" alt=""></button>
+                    </div>
+                    <div class="keyboard_tail"></div>
+                </div>
+                <div id="popup" class="hide">
+                    <div class="dim hide">
+                        <div class="answer answer_0_0">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_4">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_5">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_1">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_3">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_6">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim long hide">
+                        <div class="answer answer_0_2">
+                            <div class="popup_close"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim hide">
+                        <div class="answer answer_0_7">
+                            <div class="answer_image"></div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_01"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_02"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_03"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_04"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_05"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div class="dim container2 hide">
+                        <div class="answer">
+                            <div class="answer_image">
+                                <div class="image_06"></div>
+                            </div>
+                            <div class="button_yellow_o"></div>
+                            <div class="button_yellow_x"></div>
+                        </div>
+                    </div>
+                    <div style="position: absolute; top:0; left: 1920px; width: 10000px; height: 10000px; background-color: rgba(0, 0, 0, 0.6);"></div>
+                    <div style="position: absolute; top:0; right: 1920px; width: 10000px; height: 10000px; background-color: rgba(0, 0, 0, 0.6);"></div>
+                </div>
+                <div id="loading" style="display: none;">
+                    <img src="./img/dim_popup.png" alt="" style="width: 1920px; height: 1020px; position: absolute; top: 0; left: 0; z-index: 3;">
+                    <div style="color:white; z-index: 4; width: 1920px; height: 1020px; position: absolute; top: 500px; left: 760px; font-size: 38px;" class="malgun_bd">이미지를 다운로드 중입니다...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/Component/shadow-dom.js"></script>
+    <script type="module" src="./js/Library/html2canvas.js"></script>
+  </body>
+</html>

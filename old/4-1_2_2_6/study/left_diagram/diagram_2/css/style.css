@@ -1,0 +1,586 @@
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Thin.woff) format('woff');
+	font-weight: 100;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-ExtraLight.woff) format('woff');
+	font-weight: 200;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Light.woff) format('woff');
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Regular.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Medium.woff) format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundR.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-SemiBold.woff) format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Bold.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundEB.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+#viewWrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	background: #fff;
+
+
+
+}
+
+#viewWrap img{
+	pointer-events: none;
+}
+
+
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+
+
+/*
+	background: url(../img/all/4.png) no-repeat;
+	background-size: 1920px 1020px;
+
+*/
+
+
+}
+
+section {
+	width: 1920px;
+	height: 1020px;
+	min-height: 1020px;
+	position: relative;
+	border: 3px solid var(--Color, #EFE5F3)
+	/*	background: #00800052;*/
+
+}
+
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+button {
+	all: unset;
+}
+
+/*************************************************/
+/*메인*/
+/*************************************************/
+
+.main {
+	background: url(../img/content.png?ver=3) no-repeat;
+	width: 1706px;
+	height: 804px;
+	background-size: contain;
+	position: relative;
+	z-index: 1;
+	top: 0;
+
+}
+
+
+#contents {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	top: -27px;
+}
+
+/*************************************************/
+/*헤더 푸터*/
+/*************************************************/
+#header {
+	padding: 48px 45px 10px 27px;
+}
+
+footer {
+	position: relative;
+	top: 619px;
+	display: none;
+	opacity: 0;
+	z-index: 1;
+}
+.reset_btn {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	z-index: 1000;
+}
+
+#viewWrap img ,#contentsWrap{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+#full img {
+	width: 76px;
+	height: 76px;
+}
+
+#reset img {
+	width: 76px;
+	height: 76px;
+}
+
+
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/****************************************************/
+/*가이드관련*/
+/****************************************************/
+
+
+#guide,
+#guide2,
+#guide3,
+#guide4,
+#guide5,
+#guide6 {
+	background: url('../img/cursor.png?ver=1') no-repeat;
+	position: absolute;
+	width: 80px;
+	height: 95px;
+	background-size: cover;
+	z-index: 100;
+	opacity: 0;
+	transition: 0.5s linear;
+	display: none;
+}
+
+
+#guide.show,
+#guide2.show,
+#guide3.show,
+#guide4.show,
+#guide5.show,
+#guide6.show {
+	opacity: 1;
+}
+
+#guide.hide,
+#guide2.hide,
+#guide3.hide,
+#guide4.hide,
+#guide5.hide,
+#guide6.hide {
+	display: none !important;
+}
+
+#guide {
+	top: 142px;
+	left: 152px;
+}
+#guide.motion{
+	transition: 1.5s linear;
+    top: -310px;
+    left: -40px;
+}
+#guideBox.hide{
+	display: none !important;
+	opacity: 0;
+	transition: 0.5s;
+}
+
+/****************************************************/
+/*클릭부분*/
+/****************************************************/
+/*
+#one_click {
+    top: 70px;
+    left: 175px;
+    width: 370px;
+    height: 240px;
+}
+
+.click {
+	display: none;
+	position: absolute;
+}
+
+.click.show {
+	display: block;
+	z-index: 3;
+}
+*/
+
+
+
+/****************************************************/
+/*공통*/
+/****************************************************/
+
+.line.show,
+#con2 .one.show,
+#con2 .num1.show,
+.text.show,
+.big.show {
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.triangle.show,
+.triangle-off.show{
+	opacity: 1;
+}
+
+/****************************************************/
+/*con*/
+/****************************************************/
+
+#chara,
+#pop1 {
+
+	position: absolute;
+}
+
+#chara img {
+	width: 150px;
+	height: 220px;
+}
+
+#pop1 img {
+	width: 1570px;
+	height: 120px;
+}
+
+#chara {
+	left: 87px;
+	top: 2px;
+	z-index: 1;
+}
+
+#pop1 {
+	left: 175px;
+	top: 102px;
+}
+
+.title {
+	width: 827px;
+	margin-left: 47px;
+}
+
+#top {
+	width: 1620px;
+	position: absolute;
+	top: 36px;
+	left: 150px;
+}
+
+.piece_wrap {
+	    position: absolute;
+    width: 951px;
+    height: 303px;
+    top: 531px;
+    left: 485px;
+	    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+
+.triangle,
+.triangle-off {
+	opacity: 0;
+	position: absolute;
+}
+
+
+.clip {
+	position: absolute;
+/*	clip-path: polygon(0 0, 0 100%, 100% 100%, 0% 100%);*/
+	opacity:0;
+}
+.clip.motion{
+	transition: 0.5s linear;
+/*	clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);*/
+	opacity:1;
+}
+
+
+.dashBox{
+	z-index: 2;
+	opacity: 0;
+}
+.dashBox.show{
+	opacity: 1;
+}
+.dashBox.hide{
+	opacity: 0;
+	transition: 0.5s;
+}
+#one{
+    position: absolute;
+    top: 510px;
+    left: 470px;
+}
+#two{
+	    position: absolute;
+    top: 510px;
+    left: 820px;
+}
+.piece:focus {
+            outline: none; /* 포커스 아웃라인 제거 */
+        }
+#three{
+    position: absolute;
+    top: 510px;
+    left: 1170px;
+	
+}
+.piece{
+	cursor: pointer;
+}
+.piece.drop{
+	transition: 0.5s;
+}
+.click_box {
+    width: 340px;
+    height: 340px;
+	position: absolute;
+	z-index: 10;
+	display: none;
+/*	background: green;*/
+}
+.click_box.show{
+	display: block;
+}
+#reset,
+#full{
+	cursor: pointer;
+}
+
+/**********************************************/
+/*삼각형1*/
+/**********************************************/
+
+.piece0 {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 255px;
+	height: 258px;
+}
+
+
+.triangle1 {
+	width: 259px;
+}
+
+.triangle1-off {
+	width: 259px;
+}
+
+#dashBox1 .clip1 {
+top: 118px;
+    left: 319px;
+	width: 264px;
+	height: 263px;
+}
+
+#dashBox1 .clip2 {
+top: 118px;
+    left: 797px;
+	width: 264px;
+	height: 263px;
+}
+
+
+#dashBox1 .clip3 {
+top: 79px;
+    left: 1316px;
+  width: 189px;
+	height: 321px;
+}
+
+#dashBox1 .dash1 {
+	width: 264px;
+}
+
+#dashBox1 .dash2 {
+	width: 264px;
+}
+
+#dashBox1 .dash3 {
+	    width: 189px;
+}
+
+/**********************************************/
+/*삼각형2*/
+/**********************************************/
+
+.piece1 {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 305px;
+	height: 180px;
+}
+
+
+.triangle2 {
+	width: 305px;
+}
+
+.triangle2-off {
+	width: 305px;
+}
+#dashBox2 .clip1 {
+    top: 203px;
+    left: 320px;
+	width: 306px;
+	height: 180px;
+}
+
+#dashBox2 .clip2 {
+    top: 202px;
+    left: 798px;
+	width: 306px;
+	height: 180px;
+}
+
+
+#dashBox2 .clip3 {
+    top: 142px;
+    left: 1317px;
+  width: 259px;
+	height: 258px;
+}
+
+#dashBox2 .dash1 {
+	width: 306px;
+}
+
+#dashBox2 .dash2 {
+	width: 306px;
+}
+
+#dashBox2 .dash3 {
+	    width: 259px;
+}
+
+/**********************************************/
+/*삼각형3*/
+/**********************************************/
+
+.piece2 {
+    position: relative;
+	top: 0;
+	left: 0;
+    width: 177px;
+    height: 305px;
+}
+
+
+.triangle3 {
+    width: 177px;
+}
+
+.triangle3-off {
+    width: 177px;
+}
+#dashBox3 .clip1 {
+    top: 89px;
+    left: 320px;
+    width: 165px;
+    height: 292px;
+}
+
+#dashBox3 .clip2 {
+top: 87px;
+    left: 797px;
+    width: 168px;
+    height: 294px;
+}
+
+
+#dashBox3 .clip3 {
+    top: 73px;
+    left: 1317px;
+    width: 89px;
+    height: 324px;
+}
+
+#dashBox3 .dash1 {
+    width: 165px;
+}
+
+#dashBox3 .dash2 {
+    width: 168px;
+}
+
+#dashBox3 .dash3 {
+    width: 89px;
+}
+

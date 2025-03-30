@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <title>탐구 활동</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        remote-html-embed {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<remote-html-embed></remote-html-embed>
+<template id="class--content">
+    <div class="view-wrap" id="view-wrap" data-index="1">
+        <div class="wrap" id="contentsWrap">
+            <section>
+                <div id="left_area">
+                    <remote-html-embed html-url="../study/left_diagram/diagram_2/shadow-dom-your.html"
+                                       class="embed"></remote-html-embed>
+                </div>
+                <div id="right_area">
+                    <div id="chapter_content">
+                        <div class="paragraph" style="margin: 48px 0 66px 0;">
+                            <div class="line_text">
+                                <div class="number_circle">1</div>
+                                <div class="concept_hand"></div>
+                                를 눌러&nbsp;<div class="batang">100 m</div>와&nbsp;<div class="batang">10 m</div>가
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                몇&nbsp;<div class="batang">km</div>인지
+                                <div class="red_box"></div>
+                                안에 써 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph fraction" style="margin-top: -20px">
+                            <div class="line_text">
+                                100 m =
+                                <div class="fraction_box">
+                                    <div class="fraction_box_img hide"></div>
+                                    <div class="fraction_box_img_gray hide"></div>
+                                    <div class="fraction_box_answer">
+                                        <div class="fraction">
+                                            <div class="numerator">
+                                                1
+                                            </div>
+                                            <div class="denominator">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                km =
+                                <div class="answer_box">
+                                    <input class=" answer_input" type="text" inputmode="none"
+                                           onkeydown="problemNumberKeyDown(event)"
+                                           data-answer="0.1"/>
+                                    <div class="pencil"></div>
+                                </div>
+                                km
+                            </div>
+                        </div>
+                        <div class="paragraph fraction" style="margin-top: 95px">
+                            <div class="line_text">
+                                10 m =
+                                <div class="fraction_box wild">
+                                    <div class="fraction_box_img hide"></div>
+                                    <div class="fraction_box_img_gray hide"></div>
+                                    <div class="fraction_box_answer">
+                                        <div class="fraction">
+                                            <div class="numerator">
+                                                1
+                                            </div>
+                                            <div class="denominator">
+                                                100
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                km =
+                                <div class="answer_box">
+                                    <input type="text" class="wild answer_input" inputmode="none"
+                                           onkeydown="problemNumberKeyDown(event)"
+                                           data-answer="0.01"/>
+                                    <div class="pencil" style="width: 119px"></div>
+                                </div>
+                                km
+                            </div>
+                        </div>
+                        <div class="paragraph" style="margin-top: -20px">
+                            <div class="line_text">
+                                <div class="number_circle">2</div>
+                                <div class="batang">1 m</div>는 몇&nbsp;<div class="batang">km</div>인지
+                                <div class="red_box"></div>
+                                안에
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                써 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph fraction" style="margin-top: -17px">
+                            <div class="line_text">
+                                1 m =
+                                <div class="fraction_box wild" style="width: 146px">
+                                    <div class="fraction_box_img hide"></div>
+                                    <div class="fraction_box_img_gray hide"></div>
+                                    <div class="fraction_box_answer">
+                                        <div class="fraction">
+                                            <div class="numerator">
+                                                1
+                                            </div>
+                                            <div class="denominator">
+                                                1000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                km =
+                                <div class="answer_box">
+                                    <input type="text" class="wild answer_input" style="width: 130px"
+                                           onkeydown="problemNumberKeyDown(event)" inputmode="none"
+                                           data-answer="0.001"/>
+                                    <div class="pencil" style="width: 130px"></div>
+                                </div>
+                                km
+                            </div>
+                        </div>
+                        <div class="reset_btn"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="module" src="app.js"></script>
+</template>
+</body>
+
+</html>

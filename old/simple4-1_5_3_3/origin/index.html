@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+    <title>막대 그래프</title>
+    <style>
+        html, body{
+            padding:0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        shadow-component {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <!-- 모달 창 정의 -->
+            <div class="modal_graph">
+                <div class="close"></div>
+            </div>
+            <div class="modal_unit">
+            </div>
+            <div class="modal_method method_01">
+                <div class="container">
+                    <div class="left off"></div>
+                    <div class="right"></div>
+                    <div class="close"></div>
+                </div>
+            </div>
+            <div class="modal_qwerty">
+            </div>
+            <div class="modal_number_pad">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div>
+                    <div class="btn-fullscreen"></div>
+                </div>
+                <div class="right-menu">
+                    <img class="btn-refresh" alt="리셋 버튼" ondragstart="return false;" onContextMenu="return false;" />
+                    <div class="btn-order off"></div>
+                    <div class="btn-method"></div>
+                    <div class="btn-graph"></div>
+                </div>
+            </div>
+            <div class="container title">
+                <div class="sticker"></div>
+                <div class="title">
+                    <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    <div class="guide_hand"></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="bg">
+                    <div class="name name1">
+                        <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    </div>
+                    <div class="name name2">
+                        <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    </div>
+                    <div class="name name3">
+                        <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    </div>
+                    <div class="name name4">
+                        <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    </div>
+                    <div class="name name5">
+                        <input type="text" class="input" spellcheck="false" inputmode="text" />
+                    </div>
+                    <div class="volume volume1">
+                        <input type="text" class="input" spellcheck="false" inputmode="none" />
+                    </div>
+                    <div class="volume volume2">
+                        <input type="text" class="input" spellcheck="false" inputmode="none" />
+                    </div>
+                    <div class="sticker sticker_02"></div>
+                    <div class="sticker sticker_04_03"></div>
+                    <div class="sticker sticker_04_01"></div>
+                    <div class="sticker sticker_04_02"></div>
+                    <div class="sticker sticker_03"></div>
+                    <div class="sticker sticker_05_01"></div>
+                </div>
+            </div>
+            <div class="bar_div">
+                <div class="drag drag1">
+                    <div class="bar bar1"></div>
+                </div>
+                <div class="drag drag2">
+                    <div class="bar bar1"></div>
+                </div>
+                <div class="drag drag3">
+                    <div class="bar bar1"></div>
+                </div>
+                <div class="drag drag4">
+                    <div class="bar bar1"></div>
+                </div>
+                <div class="drag drag5">
+                    <div class="bar bar1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" crossorigin="anonymous" />
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

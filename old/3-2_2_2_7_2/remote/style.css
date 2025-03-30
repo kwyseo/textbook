@@ -1,0 +1,345 @@
+@font-face {
+    font-family: 'Bbatang';
+    src: url('./font/batang.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Malgun';
+    src: url('./font/malgun.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Malgunbd';
+    src: url('./font/malgunbd.ttf') format('truetype');
+}
+
+/** 프로젝트 컨테이너 ---------------- */
+#container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background-color: #dbdbdb;
+}
+
+.wrap {
+    background-color: white;
+}
+
+.hide{
+    display: none !important;
+}
+
+.activity {
+    display: flex;
+    width: 1920px;
+    height: 1020px;
+}
+
+
+/** 키보드 ------------------- */
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    cursor: pointer;
+}
+
+.keyboard{
+    width: 492px;
+    height: 634px;
+    position: absolute;
+    left: 750px;
+    top: 310px;
+    display: flex;
+    background-image: url(img/keyboard.png);
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10000;
+    gap: 30px;
+}
+.keyboard_tail{
+    position: absolute;
+    width: 32px;
+    height: 60px;
+    top: 200px;
+    left: 459px;
+    background: url(img/keyboard_tail.png) no-repeat;
+    background-size: contain;
+    z-index: 10000;
+}
+.key_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 93%;
+}
+
+.keyboard button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 118px;
+    height: 118px;
+    font-size: 90px;
+    color: #383838;
+    position: relative; z-index: 1;
+    font-family: 'Bbatang';
+}
+
+.keyboard button.black{
+    color: white;
+}
+
+.keyboard button:before{
+    content: '';
+    display: block;
+    width: 118px;
+    height: 118px;
+    border-radius: 27px;
+    background-color: #fff;
+    position: absolute;
+    left: 0; top: 0; z-index: -1;
+}
+
+.keyboard button.black:before {
+    background-color: #6A6A6A;
+}
+
+.keyboard button.black::after {
+    background-color: #545454;
+}
+
+
+.keyboard button:after{
+    content: '';
+    display: block;
+    width: 118px;
+    height: 118px;
+    border-radius: 27px;
+    background-color: #D2D2D2;
+    box-shadow: 0 3.6px 7.2px 0 rgba(0, 0, 0, 0.25), 0 3.6px 3.6px 0 rgba(255, 255, 255, 0.25) inset;
+    position: absolute; left: 0; top: 5px; z-index: -2;
+}
+
+
+/** 공용 클래스---------------- */
+.pointer {
+    cursor: pointer;
+}
+
+.malgun {
+    font-family: "Malgun" !important;
+}
+
+.malgun_bd {
+    font-family: "Malgunbd" !important;
+}
+
+.batang {
+    font-family: "Bbatang" !important;
+}
+
+/** intro---------------- */
+
+#intro_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /*gap: 100px;*/
+}
+#intro_container #step1Btn{
+    width: 558px;
+    height: 574px;
+    background: url(img/btn_m1.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+#intro_container #step2Btn{
+    width: 558px;
+    height: 574px;
+    background: url(img/btn_m2.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#title_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title_text {
+    font-size: 50px;
+    z-index: 2;
+}
+
+#title_mark {
+    margin-top:-26px;
+    margin-bottom: 85px;
+    width: 446px;
+    height: 39px;
+    background: url(img/yellow_label_back.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#study_activity {
+    flex-direction: column;
+}
+
+/** top -----------------------*/
+#top_container {
+    width: 10000px;
+    height: 95px;
+    /* box-shadow: 0px -6px 20px 0px rgba(0, 0, 0, 0.05) inset; */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: -5px;
+    transform: translateX(-50%);
+}
+
+#topArea_type {
+    width: 250px;
+    height: 74px;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("img/title_bg.png");
+    background-position: center;
+    border: none;
+    outline: none;
+    margin-top: 26px;
+    padding-top: 4px;
+    margin-left: 5040px;
+}
+
+#topArea_title {
+    font-size: 36px;
+    color: white;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#capture {
+    width: 64px;
+    height: 66px;
+    background: url(img/btn_camera.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 6732px;
+}
+
+#homeBtn {
+    width: 64px;
+    height: 66px;
+    background: url(img/btn_home.png) no-repeat;
+    position: absolute;
+    left: 6811px;
+}
+
+#study_container {
+    display: flex;
+    height: 930px;
+}
+
+#concept_learning {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#problem_solving {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/** concept_learning 에서 이동 버튼 */
+/** absolute 를 안 쓸려고 했는데, 이미지 캡쳐가 안되서 사용한다 */
+#concept_nav {
+    position: absolute;
+    width: 560px;
+    height: 60px;
+    bottom: -1px;
+    left: 680px;
+}
+#bot_nav_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+}
+
+#bottom_nav {
+    display: flex;
+    border-radius: 25px 25px 0px 0px;
+    background: #cfcfcf;
+}
+
+.chapterBtn {
+    width: 140px;
+    height: 60px;
+    border-radius: 25px 25px 0 0;
+    background: #cfcfcf;
+    color: #6a6a6a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    font-family: "Malgunbd";
+}
+
+.chapterBtn.clicked{
+    background-color: rgb(32, 158, 44);
+    color: rgb(255, 255, 255);
+}
+
+#popup {
+    position: relative;
+    width: 1920px;
+    height: 1020px;
+    z-index: 999;
+}
+
+#popup #popup_1{
+    width: 100%;
+    height: 100%;
+    background: url(img/popup_1.png) no-repeat;
+    position: absolute;
+}
+#popup #popup_2{
+    width: 100%;
+    height: 100%;
+    background: url(img/popup_2.png) no-repeat;
+    position: absolute;
+}
+
+.popup_close{
+    position: absolute;
+    width: 60px;
+    height: 63px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.popup_close.popup_1{
+    top: 77px;
+    left: 1286px;
+}
+.popup_close.popup_2{
+    top: 78px;
+    left: 1365px;
+}

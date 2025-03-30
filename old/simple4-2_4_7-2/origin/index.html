@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+    <title>벽면 채우기</title>
+    <style>
+        html, body{
+            padding:0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        shadow-component {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <div style="padding:30px; display: flex; justify-content: space-between; align-items: center">
+                <div>
+                    <div class="btn-fullscreen"></div>
+                </div>
+                <div class="title"></div>
+                <div class="btn-reset"></div>
+            </div>
+            <div style="padding:20px 50px 20px 50px; display: flex; justify-content: space-between; align-items: center">
+                <div class="left-box triangle" style="position:relative; display: flex; justify-content: center; align-items: center; flex-direction: column">
+                    <div class="background"></div>
+                    <svg style="z-index:99;" width="1250" height="370" viewBox="0 0 1250 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="366" width="362" height="1242" rx="26" transform="rotate(-90 4 366)" stroke="#97B4FF" stroke-width="8"/>
+                        <path class="drop triangle" d="M363 275L467.993 94.9996L573 275H363Z" fill="#009249" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path class="drop triangle reverse" d="M888 94.9996L783.007 275L678 94.9995L888 94.9996Z" fill="#009249" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path class="drop triangle" d="M573 275L677.993 94.9995L783 275H573Z" fill="#009249" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path class="drop triangle reverse" d="M678 94.9996L573.007 275L468 94.9995L678 94.9996Z" fill="#009249" stroke="#C9CDD9" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M783.027 276.813L888 94.9996H467.973L363 276.813H783.027Z" stroke="#C9CDD9" stroke-width="6"/>
+                    </svg>
+                </div>
+                <div class="right-box triangle">
+                    <div class="drag-zone">
+                        <svg width="218" height="186" viewBox="0 0 218 186" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path style="cursor: pointer" d="M3.13621 183.496L2.25902 185H4H214H215.741L214.864 183.496L109.857 3.4961L108.993 2.01537L108.129 3.49615L3.13621 183.496Z" fill="#009249" stroke="#009249" stroke-width="2"/>
+                        </svg>
+                        <div class="btn-rotate"></div>
+                    </div>
+                    <div class="hand-guide"></div>
+                </div>
+            </div>
+            <div style="padding:20px 50px 20px 50px; display: flex; justify-content: space-between; align-items: center">
+                <div class="left-box parallelogram" style="display: flex; justify-content: center; align-items: center">
+                    <div class="background"></div>
+                    <svg style="z-index:99;" width="1250" height="370" viewBox="0 0 1250 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="366" width="362" height="1242" rx="26" transform="rotate(-90 4 366)" stroke="#97B4FF" stroke-width="8"/>
+                        <path class="drop parallelogram" d="M572.866 275L677.799 95H467.933L363 275H572.866Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <path class="drop parallelogram" d="M783.067 275L888 95H678.134L573.201 275H783.067Z" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M783.027 278H784.751L785.619 276.511L890.591 96.5113L893.222 92H888H467.973H466.249L465.381 93.4887L360.408 273.489L357.778 278H363H783.027Z" stroke="#C9CDD9" stroke-width="6"/>
+                    </svg>
+
+                </div>
+                <div class="right-box parallelogram">
+                    <div class="drag-zone">
+                        <svg width="323" height="184" viewBox="0 0 323 184" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path style="cursor: pointer" d="M213.867 183H214.441L214.731 182.504L319.664 2.50363L320.54 1H318.8H108.933H108.359L108.069 1.49637L3.13608 181.496L2.25952 183H4H213.867Z" fill="#0079C3" stroke="#0079C3" stroke-width="2"/>
+                        </svg>
+                        <div class="btn-rotate"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="z-index:99; position: relative;">
+                <div style="position: absolute; display: flex; justify-content: end; align-items: flex-end;
+                        top: -90px; height: 120px; width: 100%">
+                    <div class="popup" style="display: flex; justify-content: space-between; align-items: center">
+                        <div class="arrow-left off"></div>
+                        <div class="popup-content">
+                            <div class="content-2" data-value="2"></div>
+                        </div>
+                        <div class="arrow-right"></div>
+                    </div>
+                    <div class="character"></div>
+                    <div class="btn-x"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" crossorigin="anonymous" />
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

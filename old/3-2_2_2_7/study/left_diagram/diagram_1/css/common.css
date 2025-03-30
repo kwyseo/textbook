@@ -1,0 +1,130 @@
+.diagram_1 button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    cursor: pointer;
+}
+
+.diagram_1 .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #f9f4fb;
+}
+
+.diagram_1 .wrap * {
+    box-sizing: border-box;
+    /* font-family: 'NanumsquareRound'; */
+    font-family: 'Bbatang';
+}
+
+
+.diagram_1 .active {
+    display: block !important;
+}
+
+.diagram_1 .deactive {
+    display: none !important;
+}
+
+.diagram_1 .activity {
+    width: 1920px;
+    height: 1020px;
+    position: relative;
+    border: 3px solid rgba(239, 229, 243, 1);
+    background-color: #F9F4FB;
+    z-index: 0;
+}
+
+.diagram_1 .fullscreen {
+    position: absolute;
+    left: 27px;
+    top: 47px;
+}
+
+/*
+.diagram_1 .keyboard{width: 1448px; height: 158px; position: absolute; left: 236px; bottom: 32px; display: flex; padding: 0 33px; justify-content: space-between; align-items: center; z-index: 1;}
+.diagram_1 .keyboard:before{content: ''; display: block; width: 1448px; height: 158px; border-radius: 36px; background: #8E8E8E; box-shadow: 0px 3.6px 5.4px 0px rgba(255, 255, 255, 0.25) inset; position: absolute; left: 0; top: 0; z-index: 0;}
+.diagram_1 .keyboard:after{content: ''; display: block; width: 1448px; height: 158px; border-radius: 36px; background: #7E7E7E; position: absolute; left: 0; top: 12px; z-index: -1; box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);}
+.diagram_1 .keyboard button{display: flex; align-items: center; justify-content: center; width: 118px; height: 118px; font-size: 90px; font-weight: 400; color: #383838; position: relative; z-index: 1;}
+.diagram_1 .keyboard button:before{content: ''; display: block; width: 118px; height: 118px; border-radius: 27px; background-color: #fff; position: absolute; left: 0; top: 0; z-index: -1;}
+.diagram_1 .keyboard button:after{content: ''; display: block; width: 118px; height: 118px; border-radius: 27px; background-color: #D2D2D2; box-shadow: 0px 3.6px 7.2px 0px rgba(0, 0, 0, 0.25), 0px 3.6px 3.6px 0px rgba(255, 255, 255, 0.25) inset; position: absolute; left: 0; top: 5px; z-index: -2;}
+*/
+
+.diagram_1 .keyboard{
+    width: 1448px;
+    height: 170px;
+    background: url(../img/key_background.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 236px;
+    bottom: 20px;
+    padding: 0 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.diagram_1 .keyboard .key-btn{
+    width: 138px;
+    height: 138px;
+    background: url(../img/button.png) no-repeat;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*font-family: 'Batang', serif;*/
+    color: #383838;
+    font-size: 90px;
+    line-height: 90px;
+    padding-bottom: 4px;
+    padding-right: 6px;
+}
+.diagram_1 .info_message {position: absolute;left: 175px;bottom: 50px;z-index: 100;}
+.diagram_1 .info_message .pop_img {position: absolute;bottom: 0;left: -88px;display: flex;}
+
+.diagram_1 .info_message .pop_text {display: flex;align-items: center;justify-content: center;width: 1570px;height: 120px;border-radius: 60px;background-color: #fff;border: 4px solid #460096;color: #460096;font-size: 44px;font-weight: 500;}
+
+
+.diagram_1 .blank_input {
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    border: 8px solid #994AF4;
+    font-weight: 500;
+    font-size: 65px;
+    text-align: center;
+    /*
+    background-image: url(../img/Subtract.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #ffffff;
+     */
+    opacity: 1;
+    padding: 0px;
+}
+
+.diagram_1 .blank_input_deactive {
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    border: 8px solid #BFC7DA;
+    font-weight: 500;
+    font-size: 65px;
+    text-align: center;
+    background-color: #E6E9F0;
+    caret-color: black;
+    opacity: 1;
+    padding: 0px;
+}
+
+.diagram_1 .default_text {
+    font-size: 62px;
+    font-weight: 500;
+}
+
+.diagram_1 .default_hangul_text {
+    font-family: "Malgunbd";
+}

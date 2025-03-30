@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+	<title>탐구 활동</title>
+	<style>
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+
+		your-component {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+</head>
+
+
+<body>
+	<your-component></your-component>
+	<!-- Content -->
+	<template id="class--content">
+
+		<div id="viewWrap">
+			<!-- start -->
+			<div class="wrap" id="contentsWrap">
+				<section>
+					<!--------------------헤더 -------------------->
+					<div class="flex" id="header">
+						<div class="btn-box">
+							<button id="full">
+								<img src="./img/full.png?ver=3" style="visibility:hidden" />
+							</button>
+							<div class="title title1 show">
+								<img src="./img/title.png?ver=3" />
+							</div>
+						</div>
+
+						<div class="btn-box">
+							<button id="reset">
+								<img src=" ./img/back.png?ver=3" />
+							</button>
+						</div>
+					</div>
+
+
+
+					<!--------------------메인화면 -------------------->
+					<div id="contents">
+
+						<div class="top">
+							<img src="./img/top.png?ver=3" />
+						</div>
+
+
+						<div class="piece_wrap square">
+							<div class="piece0 piece" tabindex="0" data-num="0">
+								<img id="square" src="./img/square.png?ver=3" />
+								<div id="pencilBox">
+									<img id="pencil" src="./img/pencil.png?ver=3" />
+								</div>
+
+								<div id="lineBox">
+									<div id="lineBox1">
+										<div id="clip1">
+											<img class="line line1" src="./img/line/line1.png?ver=3" />
+										</div>
+										<img class="angle angle1" src="./img/angle/pink.png?ver=3" />
+									</div>
+
+									<div id="lineBox2">
+										<div id="clip2">
+											<img class="line line2" src="./img/line/line2.png?ver=3" />
+										</div>
+										<img class="angle angle2" src="./img/angle/blue.png?ver=3" />
+									</div>
+
+									<div id="lineBox3">
+										<div id="clip3">
+											<img class="line line3" src="./img/line/line3.png?ver=3" />
+										</div>
+										<img class="angle angle3" src="./img/angle/green.png?ver=3" />
+									</div>
+								</div>
+
+
+
+								<div id="guideBox" class="guideBox">
+									<div id="guide" class="guide"></div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+					</div>
+
+
+
+					<!--------------------푸터 -------------------->
+
+					<footer>
+						<div class="" id="footer">
+
+							<!--
+								<div class="btn-box">
+									<button id="eraser">
+										<img src="./img/erase_on.png?ver=3" />
+									</button>
+								</div>
+-->
+
+
+							<div id="chara">
+								<img src=" ./img/chare.png?ver=3" />
+							</div>
+							<div id="pop1">
+								<img src=" ./img/frame.png?ver=3" />
+							</div>
+						</div>
+					</footer>
+
+				</section>
+			</div>
+
+			<!--------------------끝 -------------------->
+
+		</div>
+		<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css?ver=32">
+
+		<script type="module" src="js/jquery-3.7.1.min.js"></script>
+		<script type="module" src="js/app.js?ver=32"></script>
+
+	</template>
+
+	<script type="module" src="./shadow-dom-your.js"></script>
+	<!-- Page js -->
+
+</body></html>

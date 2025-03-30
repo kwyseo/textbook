@@ -1,0 +1,737 @@
+/* MalgunGothic 폰트 정의 */
+@font-face {
+	font-family: 'MalgunGothic';
+	src: url(../fonts/malgun.ttf) format('truetype');
+	font-weight: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MalgunGothic';
+	src: url(../fonts/malgunbd.ttf) format('truetype');
+	font-weight: bold;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MalgunGothic';
+	src: url(../fonts/malgunsl.ttf) format('truetype');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Batang 폰트 정의 */
+@font-face {
+	font-family: 'Batang';
+	src: url(../fonts/batang.ttc) format('truetype');
+	font-weight: normal;
+	font-display: swap;
+}
+
+
+/* span에 폰트 적용 */
+
+*,
+.malgun {
+	font-family: 'MalgunGothic', sans-serif;
+}
+
+.batang {
+	font-family: 'Batang', serif;
+}
+
+
+#viewWrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	background: #fff;
+
+
+
+
+
+}
+
+/*엣지에서 비쥬얼검색 아이콘 제거*/
+#viewWrap img,
+.edge-icon {
+	pointer-events: none;
+}
+
+
+.no-cursor {
+	cursor: default !important;
+}
+
+#contents,
+img {
+	-webkit-user-drag: none;
+	/* Chrome, Safari, Opera */
+	-khtml-user-drag: none;
+	/* Konqueror */
+	-moz-user-drag: none;
+	/* Firefox */
+	-o-user-drag: none;
+	/* Older Opera */
+	user-drag: none;
+	/* Modern browsers */
+	user-select: none;
+	/* Prevents text selection */
+}
+
+section {
+	width: 1920px;
+	height: 1020px;
+	min-height: 1020px;
+	position: relative;
+	overflow: hidden;
+	border: 3px solid var(--Color, #EFE5F3)
+	/*	background: #00800052;*/
+
+}
+
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+button {
+	all: unset;
+}
+
+
+
+.title {
+	display: none;
+	position: relative;
+	top: 80px;
+}
+
+
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+
+	/*배경*/
+
+/*
+
+	background: url(../img/all/17.png) no-repeat;
+	background-size: 1920px 1020px;
+
+*/
+
+
+
+}
+
+
+/*************************************************/
+/*헤더 푸터*/
+/*************************************************/
+#header {
+	padding-top: 48px;
+	padding-left: 25px;
+	padding-right: 45px;
+}
+
+#reset,
+#full {
+	cursor: pointer;
+}
+
+.reset_btn {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	z-index: 1000;
+}
+
+#btn_ruler img {
+	width: 71px;
+}
+
+#viewWrap img {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+#full img {
+	width: 76px;
+	height: 76px;
+}
+
+#reset img {
+	width: 76px;
+	height: 76px;
+}
+
+
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+
+#contents {
+	position: relative;
+/*	width: 1920px;*/
+/*	height: 850px;*/
+	top: 46px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+footer {
+	position: relative;
+	top: -230px;
+	z-index: 0;
+}
+
+.pop {
+	opacity: 0;
+}
+
+.pop.show {
+	opacity: 1;
+	transition: 0.5s;
+}
+
+.pop .chara img {
+	width: 150px;
+	position: absolute;
+	top: 52px;
+	left: 87px;
+	z-index: 1;
+}
+
+.popImg img {
+	position: absolute;
+	top: 152px;
+	left: 169px;
+	width: 1576px;
+	z-index: 0;
+}
+
+.piece:focus {
+	outline: none;
+	/* 포커스 아웃라인 제거 */
+}
+
+.hide{
+	opacity: 0;
+}
+
+/****************************************************/
+/*가이드관련 공통*/
+/****************************************************/
+.guideBox {
+	position: absolute;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.guideBox.hide {
+	opacity: 0;
+	display: none;
+}
+
+.guide {
+	pointer-events: none;
+	background: url('../img/cursor.png?ver=3') no-repeat;
+	background-size: cover;
+	z-index: 2;
+	width: 103px;
+	height: 115px;
+	transition: 0.5s linear;
+	opacity: 0;
+	display: none;
+	position: absolute;
+}
+
+.guide2 {
+	pointer-events: none;
+	z-index: 2;
+	width: 103px;
+	height: 115px;
+	transition: 0.5s linear;
+	opacity: 0;
+	display: none;
+	position: absolute;
+}
+
+.guide.show {
+	opacity: 1;
+}
+
+.guide.hide {
+	opacity: 0;
+}
+
+/****************************************************/
+/*가이드관련 위치*/
+/****************************************************/
+.guide_box1{
+    top: 50px;
+    left: 60px;
+}
+.guide_box1_arrow {
+    top: 65px;
+    left: 41px;
+}
+.guide_box1_2_arrow {
+    top: 35px;
+    left: 45px;
+}
+.guide_box2_2_arrow {
+top: 65px;
+    left: 40px;
+}
+.guide_box2_3_arrow {
+    top: 35px;
+    left: 40px;
+}
+.guideBox{
+	    top: 0px;
+    left: 300px;
+    width: 133px;
+    height: 70px;
+}
+#guide2Box {
+    width: 68px;
+    height: 104px;
+    top: -2px;
+    left: 118px;
+}
+#guide3Box {
+top: -13px;
+    left: 135px;
+    width: 78px;
+    height: 60px;
+}
+#guide4Box{
+	left: 620px;
+}
+#guide7Box{
+	left: 940px;
+}
+
+#guide5Box {
+    width: 68px;
+    height: 104px;
+    top: -2px;
+    left: 118px;
+}
+#guide6Box {
+top: -13px;
+    left: 135px;
+    width: 78px;
+    height: 60px;
+}
+
+#guide8Box {
+    width: 68px;
+    height: 104px;
+    top: -2px;
+    left: 118px;
+}
+#guide9Box {
+top: -13px;
+    left: 135px;
+    width: 78px;
+    height: 60px;
+}
+#guide10Box {
+    width: 413px;
+    height: 415px;
+    top: 198px;
+    left: 427px;
+}
+#guide10{
+	    top: 170px;
+    left: 200px;
+}
+#guide11Box {
+    top: 523px;
+    left: 1214px;
+    width: 67px;
+    height: 104px;
+}
+
+#guide12Box {
+  top: 580px;
+    left: 1321px;
+    width: 70px;
+    height: 100px;
+}
+#guide13{
+	    left: 50px;
+}
+#guide13Box {
+top: 638px;
+    left: 1452px;
+    width: 92px;
+    height: 100px;
+}
+#guide14Box {
+    top: 682px;
+    left: 543px;
+    width: 78px;
+    height: 63px;
+}
+#guide15{
+	    top: 25px;
+    left: 50px;
+}
+#guide16{
+    top: 40px;
+    left: 65px;
+}
+#guide15Box {
+    top: 615px;
+    left: 434px;
+    width: 92px;
+    height: 49px;
+}
+#guide16Box {
+top: 565px;
+    left: 273px;
+    width: 112px;
+    height: 70px;
+}
+
+/*************************************************/
+/*컨텐츠관련*/
+/*************************************************/
+#box_mom1 .boxs .box {
+	position: absolute;
+	top: -8px;
+	left: 212px;
+}
+
+#box_mom1 .boxs .box1 {
+	left: 212px;
+}
+
+#box_mom1 .boxs .box2 {
+	left: 532px;
+}
+
+#box_mom1 .boxs .box3 {
+	left: 852px;
+}
+
+#box_mom1 .boxs .box4 {
+	left: 1172px;
+}
+
+#box_mom1 .boxs .box img {
+	width: 234px;
+	z-index: 1;
+	position: absolute;
+	will-change: opacity;
+}
+
+.numbers{
+	    position: absolute;
+    top: 234px;
+    left: 284px;
+}
+.numbers_img{
+	
+    width: 1106px;
+}
+
+#box_mom1 .arrow_mom{
+    position: absolute;
+    left: 328px;
+    top: 312px;
+    width: 320px;
+    height: 105px;
+}
+
+#box_mom1 .arrow_mom .arrow{
+	width: 100%;
+	position: absolute;
+	clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+	z-index: 0;
+	
+}
+#box_mom1 .arrow_mom .if2{
+    position: absolute;
+    left: 118px;
+	    top: -2px;
+    width: 67px;
+	opacity: 0;
+	z-index: 1;
+}
+#box_mom1 .box_color{
+	z-index: 0;
+}
+
+
+/**********************************************/
+
+#box_mom1 #arrow1_2{
+top: -79px;
+    left: 322px;
+    width: 324px;
+	
+}
+#box_mom1 .arrow_mom .arrow_red{
+    position: absolute;
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+   width: 100%
+  
+	
+}
+#box_mom1 .arrow_mom .if1{
+    position: absolute;
+left: 135px;
+    top: -13px;
+    width: 78px;
+     opacity: 0; 
+    z-index: 1;
+}
+
+#box_mom1 .box_color2_1{
+    width: 23.5px;
+    height: 233px;
+    background: #addef8;
+    position: relative;
+    top: 1px;
+    left: 2px;
+}
+/**********************************************/
+#box_mom1 #arrow2 {
+	    left: 650px;
+}
+#box_mom1 #arrow2_2 {
+	      top: -79px;
+    left: 645px;
+}
+
+#box_mom1 .box_color3_1{
+background: #f7c9dd;
+    width: 24.5px;
+    height: 24.5px;
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+
+
+/**********************************************/
+#box_mom1 #arrow3 {
+	    left: 972px;
+}
+#box_mom1 #arrow3_2 {
+	      top: -79px;
+    left: 964px;
+}
+
+#box_mom1 .box_color4_1{
+    background: #b0a7d1;
+    width: 12.5px;
+    height: 5.5px;
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+#box_mom1 .mini{
+	    position: absolute;
+    width: 38px !important;
+    top: -6px;
+    left: -6px;
+	opacity:0;
+}
+#box_mom1 .line{
+	    position: absolute;
+    width: 429px !important;
+    top: -5px;
+    left: -4px;
+	clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+#box_mom1 .big{
+    position: relative;
+    left: 285px;
+    top: -5px;
+    width: 225px !important;
+	opacity:0;
+}
+
+/****************************************************/
+#box_mom2 .box1{    position: absolute;
+    top: 428px;
+    left: 708px;
+    width: 421px;
+	opacity:0;
+    height: 420px;}
+
+#box_mom2 .box1 img{
+	width: 100%;
+}
+
+
+/****************************************************/
+#arrow4_1 .arrow{
+	    position: absolute;
+    top: 484px;
+    left: 1133px;
+    width: 76px;
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+#arrow4_1 .text{
+    position: absolute;
+    top: 540px;
+    left: 1224px;
+    width: 47px;
+	opacity:0;
+}
+#arrow4_1 .if1{
+    position: absolute;
+    top: 524px;
+    left: 1215px;
+    width: 65px;
+	opacity:0;
+}
+
+/****************************************************/
+#arrow4_2 .arrow{
+	    position: absolute;
+    top: 484px;
+    left: 1133px;
+    width: 177px;
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+#arrow4_2 .text{
+    position: absolute;
+    top: 596px;
+    left: 1322px;
+    width: 68px;
+	opacity:0;
+}
+#arrow4_2 .if1{
+    position: absolute;
+    top: 580px;
+    left: 1322px;
+    width: 69px;
+	opacity:0;
+}
+
+/****************************************************/
+#arrow4_3 .arrow{
+	    position: absolute;
+    top: 484px;
+    left: 1133px;
+    width: 311px;
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+#arrow4_3 .text{
+    position: absolute;
+    top: 652px;
+    left: 1454px;
+    width: 90px;
+	opacity:0;
+}
+#arrow4_3 .if1{
+    position: absolute;
+    top: 638px;
+    left: 1453px;
+    width: 91px;
+	opacity:0;
+}
+/****************************************************/
+#arrow5_1 .arrow{
+position: absolute;
+    top: 686px;
+    left: 626px;
+    width: 75px;
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+#arrow5_1 .text{
+    position: absolute;
+    top: 697px;
+    left: 548px;
+    width: 67px;
+	opacity:0;
+}
+#arrow5_1 .if1{
+position: absolute;
+    top: 682px;
+    left: 544px;
+    width: 76px;
+	opacity:0;
+}
+/****************************************************/
+#arrow5_2 .arrow{
+    position: absolute;
+    top: 583px;
+    left: 523px;
+    width: 176px;
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+#arrow5_2 .text{
+    position: absolute;
+    top: 623px;
+    left: 436px;
+    width: 87px;
+	opacity:0;
+}
+#arrow5_2 .if1{
+    position: absolute;
+    top: 608px;
+    left: 433px;
+    width: 95px;
+	opacity:0;
+}
+/****************************************************/
+#arrow5_3 .arrow{
+position: absolute;
+    top: 479px;
+    left: 390px;
+    width: 310px;
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+#arrow5_3 .text{
+    position: absolute;
+    top: 584px;
+    left: 274px;
+    width: 110px;
+	opacity:0;
+}
+#arrow5_3 .if1{
+position: absolute;
+    top: 565px;
+    left: 274px;
+    width: 110px;
+	opacity:0;
+}

@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Malgun Gothic";
+    src: url('./malgunsl.woff2') format("woff2");
+    src: url('./malgunsl.woff') format("woff");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Malgun Gothic";
+    src: url('./malgun.woff2') format("woff2");
+    src: url('./malgun.woff') format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Malgun Gothic";
+    src: url('./malgunbd.woff2') format("woff2");
+    src: url('./malgunbd.woff') format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Batang";
+    src: url('./batang.woff2') format("woff2");
+    src: url('./batang.woff') format("woff");
+}

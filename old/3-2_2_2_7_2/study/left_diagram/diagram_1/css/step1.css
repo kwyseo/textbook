@@ -1,0 +1,141 @@
+.diagram_1 #st1_container {
+    height: 100%;
+    display: flex;
+}
+
+.diagram_1 #st1_parent1 {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.diagram_1 #st1_parent2 {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #st1_parent3 {
+    width: 10%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.diagram_1 #st1_1_1 {
+    width: 536px;
+    height: 221px;
+    background-image: url("../img/activity/st1_1_1.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #st1_1_2 {
+    width: 536px;
+    height: 596px;
+    background-image: url("../img/activity/st1_1_2.png");
+    margin-top: 40px;
+}
+
+.diagram_1 #st1_2_1 {
+    width: 960px;
+    height: 935px;
+    background-image: url("../img/activity/st1_2_1.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram_1 #st3_1_1 {
+    margin-top: 47px;
+    display: flex;
+    gap: 20px;
+}
+
+.diagram_1 #st1_hammer {
+    width: 160px; 
+    height: 165px; 
+    position: absolute;
+    top: 100px;
+    left: 680px;
+    transform-origin: left bottom;
+    cursor: pointer;
+}
+
+.diagram_1 #st1_2_box1 {
+    width: 730px;
+    height: 848px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.diagram_1 #st1_2_box2 {
+    width: 851px;
+    height: 848px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.diagram_1 .st1_1_2_board_text {
+    font-family: "Malgunbd";
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.diagram_1 .st1_1_1_2_textParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.diagram_1 #st1_1_2_1 {
+    margin-top: 40px;
+}
+
+.diagram_1 #st1_1_2_2 {
+    margin-top: 10px;
+}
+
+.diagram_1 #st1_1_2_3 {
+    margin-top: 30px;
+}
+
+.diagram_1 #st1_1_2_4 {
+    margin-top: 30px;
+}
+
+.diagram_1 #st1_1_2_5 {
+    margin-top: 20px;
+}
+
+.diagram_1 .blank_type1 {
+    width: 180px;
+    /*background-image: url();*/
+}
+
+.diagram_1 .blank_type2 {
+    width: 143px;
+    height: 92px;
+    /*background-image: url();*/
+}
+
+.diagram_1 .blank_type2[type="text"]:disabled {
+    color: rgba(34, 34, 34, 1);
+}
+
+.diagram_1 #drawBoard {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+}

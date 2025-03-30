@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <title>탐구 활동</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        remote-html-embed {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<remote-html-embed></remote-html-embed>
+<template id="class--content">
+    <div class="view-wrap" id="view-wrap" data-index="1">
+        <div class="wrap" id="contentsWrap">
+            <section>
+                <div id="left_area">
+                    <remote-html-embed html-url="../study/left_diagram/diagram_2/shadow-dom-your.html"
+                                       class="embed"></remote-html-embed>
+                </div>
+                <div id="right_area">
+                    <div id="chapter_content">
+                        <div class="paragraph">
+                            <div class="line_text">
+                                <div class="number_circle">1</div>
+                                삼각자의 한 각을 선택하여
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                각에 대어 각의
+                                <div class="click_box indent" style="width: 108px;">
+                                    <div class="click_box_img hide"></div>
+                                    <div class="click_box_img_gray hide"></div>
+                                    <div class="click_box_answer">크기</div>
+                                </div>
+                                을/를
+                            </div>
+                            <div class="line_text">
+                                <div class="numbering_dumy"></div>
+                                비교해 보세요.
+                            </div>
+                        </div>
+                        <div class="paragraph">
+                            <div class="line_text">
+                                <div class="number_circle">2</div>
+                                가장 큰 각은
+                                <div class="select_box" style="margin-left: 10px; margin-right: 5px">
+                                    <div class="select_box_answer">가</div>
+                                    <div class="select_list hide">
+                                        <div class="select_list_box top">가</div>
+                                        <div class="select_list_box">나</div>
+                                        <div class="select_list_box bottom">다</div>
+                                    </div>
+                                </div>
+                                입니다.
+                            </div>
+                        </div>
+                        <div class="paragraph" style="margin-top:65px">
+                            <div class="line_text">
+                                <div class="number_circle">3</div>
+                                가장 작은 각은
+                                <div class="select_box" style="margin-left: 10px; margin-right: 5px">
+                                    <div class="select_box_answer">가</div>
+                                    <div class="select_list">
+                                        <div class="select_list_box top">가</div>
+                                        <div class="select_list_box">나</div>
+                                        <div class="select_list_box bottom">다</div>
+                                    </div>
+                                </div>
+                                입니다.
+                            </div>
+                        </div>
+                        <div class="reset_btn"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="module" src="app.js"></script>
+</template>
+</body>
+
+</html>

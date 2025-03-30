@@ -1,0 +1,602 @@
+/* Edge 브라우저에서 비주얼 검색 아이콘 숨기기 */
+@supports (-ms-ime-align:auto) {
+  .edge-visual-search-button {
+    display: none !important;
+  }
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Thin.woff) format('woff');
+	font-weight: 100;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-ExtraLight.woff) format('woff');
+	font-weight: 200;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Light.woff) format('woff');
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Regular.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Medium.woff) format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundR.woff) format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-SemiBold.woff) format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src: url(../fonts/Pretendard-Bold.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src: url(../fonts/NanumSquareRoundEB.woff) format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+#viewWrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	background: #fff;
+
+
+
+
+
+}
+
+
+#viewWrap img{
+	pointer-events: none;
+}
+
+.wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+/*
+
+
+
+	background: url(../img/all/all3.png) no-repeat;
+	background-size: 1920px 1020px;
+*/
+
+
+
+}
+
+section {
+	width: 1920px;
+    height: 1020px;
+    min-height: 1020px;
+	position: relative;
+	border: 3px solid var(--Color, #EFE5F3)
+	/*	background: #00800052;*/
+
+}
+
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+button {
+	all: unset;
+}
+
+
+
+/*************************************************/
+/*헤더 푸터*/
+/*************************************************/
+#header {
+	padding-top: 48px;
+	padding-left: 25px;
+	padding-right: 45px;
+}
+
+.reset_btn {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	z-index: 1000;
+}
+
+#viewWrap img,#contents  {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+#full img {
+	width: 76px;
+	height: 76px;
+}
+
+#reset img {
+	width: 76px;
+	height: 76px;
+}
+
+
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+
+#contents {
+	position: relative;
+	width: 1920px;
+	height: 850px;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+footer {
+	position: relative;
+	top: -230px;
+	display: none;
+	opacity: 0;
+	z-index: 1;
+}
+
+/*************************************************/
+/*컨텐츠관련*/
+/*************************************************/
+
+.main {
+	/*	background: url(../img/content.png?ver=1) no-repeat;*/
+	width: 1620px;
+	height: 500px;
+	background-size: contain;
+	position: relative;
+	z-index: 1;
+}
+
+.piece:focus {
+            outline: none; /* 포커스 아웃라인 제거 */
+        }
+#reset,
+#full{
+	cursor: pointer;
+}
+
+
+#guide,
+#guide2,
+#guide3,
+#guide4,
+#guide5,
+#guide6 {
+	background: url('../img/cursor.png?ver=1') no-repeat;
+	position: absolute;
+	width: 80px;
+	height: 95px;
+	background-size: cover;
+	z-index: 100;
+	opacity: 0;
+	transition: 0.5s linear;
+	display: none;
+}
+
+
+#guide.show,
+#guide2.show,
+#guide3.show,
+#guide4.show,
+#guide5.show,
+#guide6.show {
+	opacity: 1;
+}
+
+#guide.hide,
+#guide2.hide,
+#guide3.hide,
+#guide4.hide,
+#guide5.hide,
+#guide6.hide {
+	display: none !important;
+}
+
+#guide {
+	top: 142px;
+	left: 152px;
+}
+#guide.motion{
+	transition: 1.5s linear;
+	    top: -270px;
+    left: -330px;
+}
+.title1 img {
+	width: 827px;
+	margin-left: 49px;
+}
+#guideBox.hide{
+	opacity: 0;
+	transition: 0.5s;
+}
+
+.top {
+	position: absolute;
+	top: 19px;
+}
+
+.top img {
+	width: 1620px;
+	height: 451.65px;
+}
+
+#chara,
+#pop1 {
+
+	position: absolute;
+}
+
+#chara img {
+	width: 150px;
+	height: 220px;
+}
+
+#pop1 img {
+	width: 1570px;
+	height: 120px;
+}
+
+#chara {
+	left: 87px;
+	top: 2px;
+	z-index: 1;
+}
+
+#pop1 {
+	left: 175px;
+	top: 102px;
+}
+
+.square {
+	position: absolute;
+	bottom: -26px;
+	cursor: pointer;
+	left: 768px;
+}
+.square.noClick{
+	cursor: default;
+}
+.piece_wrap > div {
+	position: relative;
+}
+
+.piece0 {
+	position: relative;
+	left: 0;
+}
+.piece0.motion{
+	transition: 0.5s;
+}
+#square {
+	width: 382.27px;
+}
+
+.numBOx {
+	position: absolute;
+}
+
+.numBOx img {
+
+	width: 97px;
+	height: 51px;
+}
+
+.pink {
+	left: 522px;
+	top: 377px;
+	opacity: 0;
+}
+
+.numBOx.show {
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.blue {
+	left: 1000px;
+	top: 377px;
+	opacity: 0;
+}
+
+.green {
+	left: 1540px;
+	top: 377px;
+	opacity: 0;
+}
+
+#lineBox .line {
+	width: 100%;
+	height: 100%;
+}
+
+#lineBox1 {
+	position: absolute;
+	top: 39px;
+	left: 31px;
+	width: 324px;
+}
+
+#lineBox2 {
+	position: absolute;
+	top: 71px;
+	left: 31px;
+	width: 324px;
+}
+
+#lineBox3 {
+	position: absolute;
+	top: 107px;
+	left: 59px;
+	width: 313px;
+	transform: rotate(15deg);
+}
+
+#clip1,
+#clip2,
+#clip3 {
+	position: relative;
+	z-index: 2;
+}
+
+.angle1,
+.angle2,
+.angle3 {
+	opacity: 0;
+}
+
+.angle1.show,
+.angle2.show,
+.angle3.show {
+	transition: 0.5s;
+	opacity: 1;
+}
+#clip1{z-index: 5;}
+#clip2{z-index: 3;}
+.angle1 {
+	width: 40px;
+	position: absolute;
+	top: 251px;
+	left: 8px;
+	z-index:4;
+}
+
+.angle2 {
+	width: 25px;
+	position: absolute;
+	top: 220px;
+	left: 35px;
+	z-index: 1;
+}
+
+.angle3 {
+	width: 30px;
+	position: absolute;
+	top: 212px;
+	left: 40px;
+	z-index: 1;
+}
+
+
+#clip1,
+#clip2,
+#clip3 {
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+
+
+#pencilBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: 0.3s;
+	z-index: 10;
+	opacity: 0;
+}
+#pencilBox.show{
+	opacity: 1;
+}
+#pencil {
+	width: 180px;
+	opacity: 0;
+}
+/************첫번째************/
+#pencil.motion1 {
+	position: absolute;
+    top: -138px;
+    left: 83px;
+	opacity: 1;
+}
+
+#pencil.motion2 {
+	position: absolute;
+    top: 156px;
+    left: 31px;
+	transition: 1.5s;
+}
+
+#pencil.motion3 {
+	position: absolute;
+	top: 155px;
+	left: 350px;
+	transition: 1.5s;
+	z-index: 10;
+}
+#clip1.motion2 {
+	clip-path: polygon(0 0, 100% 0, 0 99%, 0 100%);
+	transition: 1.5s;
+}
+
+#clip1.motion3 {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition: 1.5s;
+}
+/************두번째************/
+#pencil.motion4 {
+	position: absolute;
+    top: -105px;
+    left: 249px;
+	opacity: 1;
+}
+
+#pencil.motion5 {
+	position: absolute;
+top: 158px;
+    left: 31px;
+	transition: 1.5s;
+}
+
+#pencil.motion6 {
+	position: absolute;
+	top: 153px;
+	left: 350px;
+	transition: 1.5s;
+	z-index: 10;
+}
+#clip2.motion5 {
+	clip-path: polygon(0 0, 100% 0, 0 99%, 0 100%);
+	transition: 1.5s;
+}
+
+#clip2.motion6 {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition: 1.5s;
+}/************두번째************/
+#pencil.motion4 {
+	position: absolute;
+    top: -105px;
+    left: 249px;
+	opacity: 1;
+}
+
+#pencil.motion5 {
+	position: absolute;
+top: 158px;
+    left: 31px;
+	transition: 1.5s;
+}
+
+#pencil.motion6 {
+	position: absolute;
+	top: 153px;
+	left: 350px;
+	transition: 1.5s;
+	z-index: 10;
+}
+#clip2.motion5 {
+	clip-path: polygon(0 0, 100% 0, 0 99%, 0 100%);
+	transition: 1.5s;
+}
+
+#clip2.motion6 {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition: 1.5s;
+}
+/************세번째************/
+#pencil.motion7 {
+	position: absolute;
+    top: -53px;
+    left: 282px;
+	opacity: 1;
+}
+
+#pencil.motion8 {
+	position: absolute;
+    top: 155px;
+    left: 32px;
+	transition: 1.5s;
+}
+
+#pencil.motion9 {
+	position: absolute;
+top: 155px;
+    left: 351px;
+	transition: 1.5s;
+	z-index: 10;
+}
+#clip3.motion8 {
+	clip-path: polygon(0 0, 100% 0, 0 99%, 0 100%);
+	transition: 1.5s;
+}
+
+#clip3.motion9 {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	transition: 1.5s;
+}
+
+/*
+.piece_wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 0px;
+    position: relative;
+    top: 560px;
+    height: 300px;
+}*/

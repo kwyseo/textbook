@@ -1,0 +1,498 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-focus-ring-color: transparent;
+}
+
+.flex{
+    display: flex;
+}
+
+.menu{
+    justify-content: space-between;
+    padding: 20px 35px 20px 35px;
+    align-items: center;
+}
+
+.menu .btn-fullscreen:before{
+    content: url(../img/btn-fullscreen-on.png);
+    cursor: pointer;
+}
+
+.menu .btn-fullscreen.off{
+    content: url(../img/btn-fullscreen-off.png);
+    cursor: pointer;
+}
+
+.menu .right-menu{
+    display: flex;
+    width: 650px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .btn-refresh{
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.menu .btn-order{
+    width: 216px;
+    height: 118px;
+    content: url(../img/btn_order_on.png);
+    cursor: pointer;
+}
+
+.menu .btn-order.off{
+    content: url(../img/btn_order_off.png);
+}
+
+.menu .btn-method{
+    content: url(../img/btn_method_on.png);
+    cursor: pointer;
+}
+.menu .btn-method.off{
+    content: url(../img/btn_method_off.png);
+    cursor: pointer;
+}
+
+.title{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.title .title-div{
+    width: 770px;
+    height: 99px;
+    background: url(../img/title.svg) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.title .sticker:before{
+    content: url(../img/modal/sticker_01.png);
+}
+
+.title .sticker{
+    position: absolute;
+    top:32px;
+    left:462px;
+}
+
+.title-div .input{
+    margin-left: 42px;
+    margin-top: 8px;
+    width: 687px;
+    height: 85px;
+    font-family: malgunbd, san-serif;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.content .bg:before{
+    content: url(../img/bg.svg);
+}
+.content .bg{
+    position: relative;
+}
+
+.content .q_box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 89px;
+    height: 46px;
+    top: 20px;
+    left: 30px;
+    background: url(../img/q_box.svg) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+}
+.content .q_box.off{
+    background-image: none;
+}
+.content .q_box .select{
+    font-family: Batang, serif;
+    font-size: 33px;
+    font-weight: 400;
+}
+
+.content .q_box .select.korean{
+    font-family: malgun, sans-serif;
+}
+
+.content .sticker_02{
+    position: absolute;
+    content: url(../img/modal/sticker_02.png);
+    bottom: -4px;
+    left: -128px;
+}
+
+.content .sticker_03{
+    position: absolute;
+    content: url(../img/modal/sticker_03.png);
+    top: 10px;
+    left: -100px;
+}
+
+.content .sticker_04_01{
+    position: absolute;
+    content: url(../img/modal/sticker_04_01.png);
+    top: 277px;
+    left: 164px;
+}
+
+.content .sticker_04_02{
+    position: absolute;
+    content: url(../img/modal/sticker_04_02.png);
+    top: 290px;
+    left: 252px;
+}
+
+.content .sticker_05_01{
+    position: absolute;
+    content: url(../img/modal/sticker_05_01.png);
+    top: 44px;
+    left: 325px;
+}
+
+.content .volume{
+    position: absolute;
+    width: 114px;
+    height: 64px;
+    left: 147px;
+    cursor: pointer;
+}
+.content .volume.volume1{
+    top:36px;
+}
+.content .volume.volume2{
+    top:200px;
+}
+.content .volume.volume3{
+    top:360px;
+}
+
+.content .volume input{
+    position: absolute;
+    width: 96px;
+    height: 48px;
+    top: 7px;
+    left: 10px;
+    font-family: Batang, serif;
+    font-weight: 400;
+    font-size: 48px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.content .division{
+    position: absolute;
+    width: 114px;
+    height: 64px;
+    cursor: pointer;
+}
+.content .division.division1{
+    top:558px;
+    left: 23px;
+}
+.content .division.division2{
+    top:612px;
+    left: 150px;
+}
+
+.content .division input{
+    position: absolute;
+    width: 99px;
+    height: 45px;
+    top: 8px;
+    left: 6px;
+    font-family: malgun, sans-serif;
+    font-size: 28px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.content .name{
+    position: absolute;
+    top:576px;
+    width: 150px;
+    height: 84px;
+    cursor: pointer;
+}
+.content .name.name1{
+    left: 288px;
+}
+.content .name.name2{
+    left: 468px;
+}
+.content .name.name3{
+    left: 648px;
+}
+.content .name.name4{
+    left: 828px;
+}
+.content .name.name5{
+    left: 1008px;
+}
+.content .name.name6{
+    left: 1188px;
+}
+.content .name input{
+    position: absolute;
+    width: 132px;
+    height: 66px;
+    top: 8px;
+    left: 8px;
+    font-family: malgun, sans-serif;
+    font-size: 36px;
+    border-width: 0;
+    outline: none;
+    text-align: center;
+    display: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.modal_unit{
+    position: absolute;
+    display: none;
+    top: 380px;
+    left: 280px;
+    width: 511px;
+    height: 486px;
+    background: url(../img/modal/modal_unit.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_method{
+    position: absolute;
+    display: none;
+    top: 160px;
+    right: 150px;
+    z-index: 9999;
+}
+.modal_method.method_01:before{
+    content: url(../img/modal/modal_method_01.png);
+}
+.modal_method.method_02:before{
+    content: url(../img/modal/modal_method_02.png);
+}
+.modal_method.method_03:before{
+    content: url(../img/modal/modal_method_03.png);
+}
+.modal_method.method_04:before{
+    content: url(../img/modal/modal_method_04.png);
+}
+.modal_method.method_05:before{
+    content: url(../img/modal/modal_method_05.png);
+}
+.modal_method .left{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    top: 495px;
+    left: 315px;
+    cursor: pointer;
+}
+.modal_method .right{
+    position: absolute;
+    width: 50px;
+    height: 64px;
+    top: 495px;
+    left: 415px;
+    cursor: pointer;
+}
+.modal_method .left.off, .modal_method .right.off{
+    cursor: default ;
+}
+.modal_method .close{
+    position: absolute;
+    width: 58px;
+    height: 60px;
+    top: 502px;
+    left: 700px;
+    cursor: pointer;
+}
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.png) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.title .guide_hand{
+    position: absolute;
+    top: 58px;
+    left: 935px;
+    content: url(../img/Handguide.svg);
+    opacity: 0;
+    z-index:9999;
+}
+
+.bar_div{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top:7px;
+    left:274px;
+    width: 1072px;
+    height: 546px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.bar_div .drag{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(222, 184, 135, 0);
+    opacity: 0.7;
+    width: 179px;
+    height: 1800px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.bar_div .bar{
+    background-color: rgba(255, 149, 149, 0.9);
+    width: 85px;
+    height: 100%;
+    box-sizing: border-box;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(255, 101, 101, 0.8);
+    display: none;
+    z-index: 999;
+    top:0;
+    left: 22px;
+}
+
+
+

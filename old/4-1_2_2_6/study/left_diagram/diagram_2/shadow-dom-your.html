@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+	<title>탐구 활동</title>
+	<style>
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+
+		your-component {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+</head>
+
+
+<body>
+	<your-component></your-component>
+	<!-- Content -->
+	<template id="class--content">
+
+		<div id="viewWrap">
+			<!-- start -->
+			<div class="wrap" id="contentsWrap">
+				<section>
+					<!--------------------헤더 -------------------->
+					<div class="flex" id="header">
+						<div class="btn-box">
+							<button id="full">
+								<img src="./img/full.png?ver=3" style="visibility: hidden" />
+							</button>
+							<div id="title">
+								<img class="title" src="./img/default/title.png?ver=2" />
+							</div>
+						</div>
+
+						<div class="btn-box">
+							<button id="reset">
+								<img src=" ./img/back.png?ver=3" />
+							</button>
+						</div>
+					</div>
+
+
+
+					<!--------------------메인화면 -------------------->
+					<div id="contents">
+
+
+						<img id="top" class="top" src="./img/default/top.png?ver=2" />
+						<div id="click_off_box">
+							<div id="one" class="click_box"></div>
+							<div id="two" class="click_box"></div>
+							<div id="three" class="click_box"></div>
+						</div>
+
+						<div class="piece_wrap ">
+							<div class="piece0 piece" tabindex="0" data-num="0">
+								<img class="triangle1-off triangle-off" src="./img/angle1/triangle-off.png?ver=2" />
+								<img class="triangle1 triangle show" src="./img/angle1/triangle.png?ver=2" />
+
+
+								<div id="guideBox" class="guideBox">
+									<div id="guide" class="guide"></div>
+								</div>
+							</div>
+
+							<div class="piece1 piece" tabindex="1" data-num="0">
+								<img class="triangle2-off triangle-off" src="./img/angle2/triangle-off.png?ver=2" />
+								<img class="triangle2 triangle show" src="./img/angle2/triangle.png?ver=2" />
+
+
+							</div>
+							
+							<div class="piece2 piece" tabindex="2" data-num="0">
+								<img class="triangle3-off triangle-off" src="./img/angle3/triangle-off.png?ver=2" />
+								<img class="triangle3 triangle show" src="./img/angle3/triangle.png?ver=2" />
+
+
+							</div>
+						</div>
+
+
+
+						<div id="dashBox1" class="dashBox">
+							<div class="clip1 clip">
+								<img class="dash1 dash" src="./img/angle1/dash1.png?ver=2" />
+							</div>
+							<div class="clip2 clip">
+								<img class="dash2 dash" src="./img/angle1/dash2.png?ver=2" />
+							</div>
+							<div class="clip3 clip">
+								<img class="dash3 dash" src="./img/angle1/dash3.png?ver=2" />
+							</div>
+						</div>
+
+						<div id="dashBox2" class="dashBox">
+							<div class="clip1 clip ">
+								<img class="dash1 dash" src="./img/angle2/dash1.png?ver=2" />
+							</div>
+							<div class="clip2 clip ">
+								<img class="dash2 dash" src="./img/angle2/dash2.png?ver=2" />
+							</div>
+							<div class="clip3 clip ">
+								<img class="dash3 dash" src="./img/angle2/dash3.png?ver=2" />
+							</div>
+						</div>
+						
+						<div id="dashBox3" class="dashBox">
+							<div class="clip1 clip ">
+								<img class="dash1 dash" src="./img/angle3/dash1.png?ver=2" />
+							</div>
+							<div class="clip2 clip ">
+								<img class="dash2 dash" src="./img/angle3/dash2.png?ver=2" />
+							</div>
+							<div class="clip3 clip ">
+								<img class="dash3 dash" src="./img/angle3/dash3.png?ver=2" />
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+
+
+					<!--------------------푸터 -------------------->
+					
+					<footer>
+						<div id="chara">
+								<img src=" ./img/default/chare.png?ver=2" />
+							</div>
+							<div id="pop1">
+								<img src=" ./img/default/pop.png?ver=2" />
+							</div>
+					</footer>
+
+				</section>
+			</div>
+
+			<!--------------------끝 -------------------->
+
+		</div>
+		<link rel="stylesheet" type="text/css" href="font/nanumsquareround.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css?ver=10">
+
+		<script type="module" src="js/jquery-3.7.1.min.js"></script>
+		<script type="module" src="js/app.js?ver=10"></script>
+
+	</template>
+
+	<script type="module" src="./shadow-dom-your.js"></script>
+	<!-- Page js -->
+
+</body></html>
