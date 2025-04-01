@@ -5,8 +5,6 @@ import qwerty from "./qwerty.js";
 const metaUrl = import.meta.url;
 let root;
 let scale = 1;  // 화면 스케일링 값
-let methodPage = 1;
-let dragObject = null;
 
 const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -139,14 +137,62 @@ const drawShape = (target)=>{
         return;
     // 다음은 전체 그리기인지 확인한다.
     let isPasteAll = root.querySelector('#paste-all').checked;
+
     // 그려진 도형 갯수
     const childrenCount = target.children.length;
-    const maxNumber = (shapeType === 0 || shapeType === 1) ? 25: 12;
+    const isLeft = target.parentElement.classList.contains('left');
+    let maxNumber = 0;
+    if(shapeType === 0 || shapeType === 1){
+        maxNumber = isLeft ? 25 : 24;
+    }else{
+        maxNumber = isLeft ? 12 : 12;
+    }
     if(childrenCount >= maxNumber){
         return;
     }
     const _draw = (index) => {
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+        const className = shapeType === 0 ? 'circle':shapeType === 1?'square':'rectangle';
+        div.classList.add(className);
+        if(shapeType === 0 || shapeType === 1){
+            const columnCount = isLeft ? 5:6;
+            const left = (index %columnCount) * 114;
+            const top = Math.floor(index / columnCount) * 114;
+            div.style.left = `${left}px`;
+            div.style.top = `${top}px`;
+            //div.style.cursor = "pointer";
+        }else{
+            // 직사각형의 경우
+            const width = 228;
+            const height = 114;
+            if(isLeft){
+                if(index < 10){
+                    const columnCount = 2;
+                    const left = (index % columnCount) * width;
+                    const top = Math.floor(index / columnCount) * height;
+                    div.style.left = `${left}px`;
+                    div.style.top = `${top}px`;
+                }else if(index === 10){
+                    div.style.left = `${width*2}px`;
+                    div.style.top = `0px`;
+                    // transform 을 쓰면 겹치는 부분이 매끄럽지 않다.
+                    div.classList.add('portrait');
+                }else if(index === 11){
+                    div.style.left = `${width*2}px`;
+                    div.style.top = `${width}px`;
+                    div.classList.add('portrait');
+                }
+            }else{
+                const columnCount = 3;
+                const left = (index % columnCount) * width;
+                const top = Math.floor(index / columnCount) * height;
+                div.style.left = `${left}px`;
+                div.style.top = `${top}px`;
+            }
 
+        }
+        target.appendChild(div);
     }
     if(isPasteAll){
         for(let i = 0; i < maxNumber; i++){
@@ -219,8 +265,10 @@ const init = (env) => {
         }
     })
 
-    root.querySelector('.draw-box').addEventListener('click', (event)=>{
-        onClickDrawBox(event);
+    root.querySelectorAll('.draw-box').forEach((box)=>{
+        box.addEventListener('click', (event)=>{
+            onClickDrawBox(event);
+        })
     })
     document.addEventListener('click', stopScaffolding);
 }
