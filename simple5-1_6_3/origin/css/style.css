@@ -1,0 +1,316 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang-01.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222222;
+}
+
+.view-wrap .hide{
+    display: none !important;
+}
+
+.container{
+    display: flex;
+}
+
+.container.reverse{
+    flex-direction: row-reverse;
+}
+.container.menu{
+    justify-content: space-between;
+    padding: 50px 35px 20px 35px;
+    /*align-items: center;*/
+}
+
+.menu .right-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-right: 20px;
+}
+
+.menu .right-menu label{
+    font-family: malgunbd sans-serif;
+    font-size: 45px;
+    margin-left: 10px;
+    margin-right: 25px;
+}
+.menu .right-menu .paste-all-form{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.menu .right-menu #paste-all{
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    border: 4px solid #4D82C3;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+/* Style for checked state */
+#paste-all:checked {
+    background-image: url(../img/checkbox_checked.png);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+/* Optional: Add hover effect */
+#paste-all:hover {
+    border-color: #6386b0; /* Change border color on hover */
+}
+
+.menu .btn-fullscreen{
+    width: 76px;
+    height: 76px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    width: 70px;
+    height: 76px;
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+
+.container.title{
+    align-items: center;
+    justify-content: center;
+    margin-top: -210px;
+}
+.container.title .back-ground{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 912px;
+    height: 199px;
+    border-radius: 34px;
+    background-color: #F2F2F2;
+}
+
+.container .shape{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container .draw-box .shape{
+    pointer-events: none;
+}
+
+.container .circle{
+    width: 118px;
+    height: 118px;
+    background: #FFF687;
+    border-radius: 50%;
+    border: 4px solid #000000;
+}
+.container .square{
+    width: 118px;
+    height: 118px;
+    background: #D9D9D9;
+    border: 4px solid #000000;
+}
+.container .rectangle{
+    width: 235px;
+    height: 118px;
+    background: #D9D9D9;
+    border: 4px solid #000000;
+}
+
+.container .checked{
+    width: 60px;
+    height: 56px;
+    background: url(../img/checked.png) no-repeat;
+    background-size: contain;
+}
+
+.container.content{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container.content .frame{
+    display: flex;
+    width: 1710px;
+    justify-content: space-between;
+}
+
+.frame .left{
+    width: 733px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.frame .left .draw-box{
+    width: 591px;
+    height: 591px;
+    background: #D4BEDD;
+}
+
+
+.frame .right{
+    width: 857px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.frame .right .draw-box{
+    width: 708px;
+    height: 530px;
+    margin-top:  45px;
+    background: #DDE788B2;
+}
+
+.frame .box-title{
+    width: 116px;
+    height: 76px;
+    border-top-right-radius: 38px;
+    border-bottom-right-radius: 38px;
+    background: #D4BEDD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: malgunbd sans-serif;
+    font-size: 50px;
+}
+.frame .right .box-title{
+    background: #DDE788B2;
+}
+
+.frame .box-title div{
+    margin-right: 15px;
+}
+
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.scaffolding{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 1920px;
+    height: 280px;
+    background: url(../img/Scaffolding.svg) no-repeat;
+    background-size: contain;
+}
+
+
+
+

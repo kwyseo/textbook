@@ -68,6 +68,7 @@ const clearAllModalAndArrow = () => {
     if (popup.responseClick) {
         popup.responseClick = false;
         popup.classList.add('hide');
+        getAltFocusElement().focus();
     }
     const content = root.querySelector('.content');
     content.querySelectorAll('.circle-select').forEach((circle) => {
@@ -483,7 +484,7 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
     let barPosition = 0;
     const arrayLength = positions.length;
     let targetIndex = -1;
-    const modalCorrector = (lessonNo === lessons[0]) ? 168 : 69;
+    const modalCorrector = (lessonNo === lessons[0]) ? 168 : 73;
     const leftArrowCorrector = (lessonNo === lessons[0]) ? 79 : 79;
     const rightArrowCorrector = (lessonNo === lessons[0]) ? 162 : 162;
     const centerArrowCorrector = (lessonNo === lessons[0]) ? 122 : 122;
@@ -500,9 +501,14 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
         if (position) {
             const modal = number === 1 ? root.querySelector('.circle-select_1')
                 : root.querySelector('.circle-select_2');
-            // 모달 폭 반만큼 왼쪽으로 이동
-            //modal.style.left = `${(event.clientX - rect.left) / convertedScale + corrector + 168}px`;
-
+            const arrowLeft = number === 1 ? root.querySelector('.arrow-left-1')
+                : root.querySelector('.arrow-left-2');
+            const arrowRight = number === 1 ? root.querySelector('.arrow-right-1')
+                : root.querySelector('.arrow-right-2');
+            if(modal.classList.contains('checked')){
+                drawArrowButtons(number);
+                return;
+            }
             const centerPosition = barPosition + modalCorrector;
             modal.style.left = `${centerPosition}px`;
             modal.classList.remove('hide');
@@ -523,16 +529,15 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
                     : root.querySelector('.shadow-div-2');
                 shadowDiv.innerHTML = input.value;
                 shadowDiv.style.left = `${centerPosition}px`;
+                // 나중에 보여주는 것으로 바꿨다.
                 //shadowDiv.classList.remove('hide');
                 shadowDiv.classList.add('checked');
             }
             // 위의 화살표도 옴겨준다.
-            const arrowLeft = number === 1 ? root.querySelector('.arrow-left-1')
-                : root.querySelector('.arrow-left-2');
-            const arrowRight = number === 1 ? root.querySelector('.arrow-right-1')
-                : root.querySelector('.arrow-right-2');
             arrowLeft.style.left = `${centerPosition + leftArrowCorrector}px`;
+            arrowLeft.classList.add('checked');
             arrowRight.style.left = `${centerPosition + rightArrowCorrector}px`;
+            arrowRight.classList.add('checked');
             modal.querySelector('div').focus();
         } else {
             getAltFocusElement().focus();
@@ -560,6 +565,14 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
             if (positionSecond) {
                 modal = number === 1 ? root.querySelector('.circle-select_3')
                     : root.querySelector('.circle-select_4');
+            }
+            let arrowLeft = number === 1 ? root.querySelector('.arrow-left-1')
+                : root.querySelector('.arrow-left-2');
+            let arrowRight = number === 1 ? root.querySelector('.arrow-right-1')
+                : root.querySelector('.arrow-right-2');
+            if(modal.classList.contains('checked')){
+                drawArrowButtons(number, !!positionFirst, null);
+                return;
             }
             // 모달 폭 반만큼 왼쪽으로 이동
             const centerPosition = barPosition + modalCorrector;
@@ -598,10 +611,6 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
                 shadowDiv.classList.add('checked');
             }
             // 위의 화살표도 옴겨준다.
-            let arrowLeft = number === 1 ? root.querySelector('.arrow-left-1')
-                : root.querySelector('.arrow-left-2');
-            let arrowRight = number === 1 ? root.querySelector('.arrow-right-1')
-                : root.querySelector('.arrow-right-2');
             if (positionFirst) {
                 arrowLeft.classList.add('checked');
                 arrowLeft.style.left = `${centerPosition + centerArrowCorrector}px`;
@@ -992,11 +1001,62 @@ const drawDot = (number, type, xPosition) => {
         ctx.stroke();
     }
 }
+
+const drawArrowButtons = (canvasNum, isLeftModal = true, eventCurrentTarget = null) =>{
+    if (selectedMode === 1){
+        const arrowBox = root.querySelector(`.arrow-box-${canvasNum}`);
+        setAriaLabel(arrowBox, '화살표의 좌측 버튼을 누르면 수직선이 왼쪽으로, 화살표의 우측 버튼을 누르면 수직선이 오른쪽으로 늘어납니다')
+        const leftArrow = root.querySelector(`.arrow-left-${canvasNum}`);
+        leftArrow.classList.remove('hide');
+        root.querySelector(`.arrow-right-${canvasNum}`).classList.remove('hide');
+        arrowBox.style.left = leftArrow.style.left;
+        arrowBox.style.width = '145px';
+        arrowBox.classList.remove('hide');
+        showPopup(8, {focus: arrowBox})
+    }else{
+        // 2개다 선택했는지 어떻게 알 수 있을까????
+        const row = root.querySelector(`.quiz-2 .quiz-row-${canvasNum}`);
+        const firstModal = root.querySelector(`.circle-select_${canvasNum}`);
+        const secondModal = root.querySelector(`.circle-select_${canvasNum + 2}`);
+        if (firstModal.classList.contains('checked') && secondModal.classList.contains('checked')) {
+            const arrowBox = root.querySelector(`.arrow-box-${canvasNum}`);
+            // 입력한 값과 범위를 알아야 한다.
+            const firstInput = row.querySelector('.input.first').value;
+            const firstSelect = row.querySelector('.answer.first').innerHTML;
+            const secondInput = row.querySelector('.input.second').value;
+            const secondSelect = row.querySelector('.answer.second').innerHTML;
+            const label = `주어진 버튼 세 개 중 ${firstInput} ${firstSelect} ${secondInput} ${secondSelect}인 수의 범위를 나타내는 버튼을 선택해 봅시다`;
+            setAriaLabel(arrowBox, label);
+            const arrowLeft = root.querySelector(`.arrow-left-${canvasNum}`);
+            arrowLeft.classList.remove('hide');
+            const arrowLight = root.querySelector(`.arrow-right-${canvasNum}`);
+            arrowLight.classList.remove('hide');
+            arrowBox.style.left = arrowLeft.style.left;
+            const width = Number(arrowLight.style.left.replace('px', '')) - Number(arrowLeft.style.left.replace('px', '')) + 60;
+            arrowBox.style.width = width + 'px';
+            arrowBox.classList.remove('hide');
+            root.querySelector(`.arrow-center-${canvasNum}`).classList.remove('hide');
+            if(eventCurrentTarget)
+                eventCurrentTarget.parentElement.dataset.returnRulerNumber = '';
+            showPopup(8, {focus: arrowBox})
+        } else {
+            // 선택을 다 안했으면 포커스 줄곳을 찾아 포커스를 준다.
+            const rulerNumberIndex = eventCurrentTarget?eventCurrentTarget.parentElement.dataset.returnRulerNumber:'';
+            if (rulerNumberIndex) {
+                root.querySelectorAll('.ruler-number')[Number(rulerNumberIndex)].focus();
+            } else {
+                // 선택을 다 안했으면 캠바스에 포커스를 준다.
+                getCanvas(canvasNum).parentElement.querySelector('.canvas-back').focus();
+            }
+        }
+    }
+}
 const onClickModal = (event, type, canvasNum, isLeftModal = true) => {
     if (selectedMode === 1) {
         const row = root.querySelector(`.quiz-1 .quiz-row-${canvasNum}`);
         const inputValue = Number(row.querySelector('.input').value);
         const selectValue = row.querySelector('.answer').innerHTML;
+        // event.currentTarget.parent 는 circle-select
         event.currentTarget.parentElement.dataset.returnRulerNumber = '';
         if (((selectValue === '이하' || selectValue === '이상') && type === 1) || ((selectValue === '초과' || selectValue === '미만') && type === 2)) {
             // 일단 통과했으면 그림을 그려주어야 한다.
@@ -1006,22 +1066,15 @@ const onClickModal = (event, type, canvasNum, isLeftModal = true) => {
                     xPosition = (position[0] + position[1]) / 2;
             })
             drawDot(canvasNum, type, xPosition);
-            const arrowBox = root.querySelector(`.arrow-box-${canvasNum}`);
-            setAriaLabel(arrowBox, '화살표의 좌측 버튼을 누르면 수직선이 왼쪽으로, 화살표의 우측 버튼을 누르면 수직선이 오른쪽으로 늘어납니다')
-            const leftArrow = root.querySelector(`.arrow-left-${canvasNum}`);
-            leftArrow.classList.remove('hide');
-            arrowBox.style.left = leftArrow.style.left;
-            arrowBox.style.width = '145px';
-            arrowBox.classList.remove('hide');
-            root.querySelector(`.arrow-right-${canvasNum}`).classList.remove('hide');
+            drawArrowButtons(canvasNum);
             root.querySelector(`.circle-select_${canvasNum}`).classList.add('hide');
+            root.querySelector(`.circle-select_${canvasNum}`).classList.add('checked');
             const canvas = getCanvas(canvasNum);
             canvas.parentElement.parentElement.querySelectorAll('.ruler-number').forEach((number) => {
                 if (Number(number.innerHTML) === inputValue) {
                     number.classList.add('text-shadow');
                 }
             })
-            showPopup(8, {focus: arrowBox})
         } else {
             blinkButton(event.currentTarget)
             if(lessonNo !== lessons[0]){
@@ -1066,39 +1119,7 @@ const onClickModal = (event, type, canvasNum, isLeftModal = true) => {
                     number.classList.add('text-shadow');
                 }
             })
-            // 2개다 선택했는지 어떻게 알 수 있을까????
-            const firstModal = root.querySelector(`.circle-select_${canvasNum}`);
-            const secondModal = root.querySelector(`.circle-select_${canvasNum + 2}`);
-            if (firstModal.classList.contains('checked') && secondModal.classList.contains('checked')) {
-                const arrowBox = root.querySelector(`.arrow-box-${canvasNum}`);
-                // 입력한 값과 범위를 알아야 한다. 
-                const firstInput = row.querySelector('.input.first').value;
-                const firstSelect = row.querySelector('.answer.first').innerHTML;
-                const secondInput = row.querySelector('.input.second').value;
-                const secondSelect = row.querySelector('.answer.second').innerHTML;
-                const label = `주어진 버튼 세 개 중 ${firstInput} ${firstSelect} ${secondInput} ${secondSelect}인 수의 범위를 나타내는 버튼을 선택해 봅시다`;
-                setAriaLabel(arrowBox, label);
-                const arrowLeft = root.querySelector(`.arrow-left-${canvasNum}`);
-                arrowLeft.classList.remove('hide');
-                const arrowLight = root.querySelector(`.arrow-right-${canvasNum}`);
-                arrowLight.classList.remove('hide');
-                arrowBox.style.left = arrowLeft.style.left;
-                const width = Number(arrowLight.style.left.replace('px', '')) - Number(arrowLeft.style.left.replace('px', '')) + 60;
-                arrowBox.style.width = width + 'px';
-                arrowBox.classList.remove('hide');
-                root.querySelector(`.arrow-center-${canvasNum}`).classList.remove('hide');
-                event.currentTarget.parentElement.dataset.returnRulerNumber = '';
-                showPopup(8, {focus: arrowBox})
-            } else {
-                // 선택을 다 안했으면 포커스 줄곳을 찾아 포커스를 준다.
-                const rulerNumberIndex = event.currentTarget.parentElement.dataset.returnRulerNumber;
-                if (rulerNumberIndex) {
-                    root.querySelectorAll('.ruler-number')[Number(rulerNumberIndex)].focus();
-                } else {
-                    // 선택을 다 안했으면 캠바스에 포커스를 준다.
-                    getCanvas(canvasNum).parentElement.querySelector('.canvas-back').focus();
-                }
-            }
+            drawArrowButtons(canvasNum, isLeftModal, event.currentTarget);
         } else {
             blinkButton(event.currentTarget)
             if(lessonNo !== lessons[0]){
@@ -1205,6 +1226,7 @@ const onClickArrow = (event, type, modalNum) => {
             setTimeout(()=>{
                 root.querySelector(`.arrow-left-${modalNum}`).classList.add('hide');
                 root.querySelector(`.arrow-right-${modalNum}`).classList.add('hide');
+                root.querySelector(`.arrow-center-${modalNum}`).classList.add('hide');
                 root.querySelector(`.arrow-box-${modalNum}`).classList.add('hide');
                 getAltFocusElement().focus();
             }, 1200)
@@ -1748,24 +1770,12 @@ window.addEventListener("script-loaded", (env) => {
         event.stopPropagation();
         event.stopImmediatePropagation();
         event.currentTarget.classList.add('hide');
-        switch (lessonNo) {
-            case lessons[0]:
-                showPopup(14, {pin: true});
-                break;
-            case lessons[1]:
-            case lessons[2]:
-            case lessons[3]:
-                showPopup(15, {pin: true});
-                break;
-            case lessons[4]:
-            case lessons[5]:
-            case lessons[6]:
-                showPopup(16, {pin: true});
-                break;
-            default:
-                break;
+        const popup = root.querySelector('.popup');
+        if(!popup.classList.contains('hide')){
+            popup.querySelector('.popup-content').focus();
+        }else {
+            setFocusToFullButton();
         }
-        setFocusToFullButton();
     })
     createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
@@ -1784,6 +1794,7 @@ window.addEventListener("script-loaded", (env) => {
     switch (lessonNo) {
         case lessons[0]:
             showIntro();
+            showPopup(14, {pin: true});
             break;
         case lessons[1]: {
             showSetting(null, 1);
@@ -1800,11 +1811,13 @@ window.addEventListener("script-loaded", (env) => {
                 first_select_value: '이상',
                 second_input_value: '37',
                 second_input_label: '삼십칠',
-                second_select_value: '이하'
+                second_select_value: '이하',
+                content_class: 'single-double'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
             setSettingRuler(2, null);
+            showPopup(15, {pin: true});
         }
             break;
         case lessons[2]: {
@@ -1822,11 +1835,13 @@ window.addEventListener("script-loaded", (env) => {
                 first_select_value: '초과',
                 second_input_value: '86',
                 second_input_label: '팔십육',
-                second_select_value: '미만'
+                second_select_value: '미만',
+                content_class: 'single-double'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
             setSettingRuler(2, null);
+            showPopup(15, {pin: true});
         }
             break;
         case lessons[3]: {
@@ -1844,11 +1859,13 @@ window.addEventListener("script-loaded", (env) => {
                 first_select_value: '이상',
                 second_input_value: '11',
                 second_input_label: '십일',
-                second_select_value: '미만'
+                second_select_value: '미만',
+                content_class: 'single-double'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
             setSettingRuler(2, null);
+            showPopup(15, {pin: true});
         }
             break;
         // 범위 구하기
@@ -1867,11 +1884,13 @@ window.addEventListener("script-loaded", (env) => {
                 first_select_value: '이상',
                 second_input_value: '11',
                 second_input_label: '십일',
-                second_select_value: '미만'
+                second_select_value: '미만',
+                content_class: 'single-single'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
             setSettingRuler(2, null);
+            showPopup(16, {pin: true});
         }
             break;
         case lessons[5]:{
@@ -1884,10 +1903,12 @@ window.addEventListener("script-loaded", (env) => {
                 quiz_type: 2,
                 show_canvas_2: false,
                 alt_box_label: '수직선의 눈금을 클릭한 후, 수의 범위를 나타내어 보세요',
-                input_disabled: false
+                input_disabled: false,
+                content_class: 'single-single'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
+            showPopup(16, {pin: true});
         }
             break;
         case lessons[6]:{
@@ -1906,10 +1927,12 @@ window.addEventListener("script-loaded", (env) => {
                 first_select_value: '초과',
                 second_input_value: '3.8',
                 second_input_label: '삼쩜팔',
-                second_select_value: '이하'
+                second_select_value: '이하',
+                content_class: 'single-single'
             });
             // 순서상 뒤에 와야 한다.
             setSettingRuler(1, null);
+            showPopup(16, {pin: true});
         }
             break;
         default:

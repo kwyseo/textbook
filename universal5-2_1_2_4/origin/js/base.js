@@ -78,6 +78,11 @@ export const setStartDim = (root, callback) => {
 
 export const setSingleSetting = (root, options) =>{
     root.querySelector('.content').style.backgroundColor='white';
+    if(options.content_class) {
+        root.querySelector('.content').classList.add(options.content_class);
+        root.querySelector('.canvas-area-1').classList.add(options.content_class);
+        root.querySelector('.canvas-area-2').classList.add(options.content_class);
+    }
     root.querySelector('.popup').classList.add('single');
     if(options.show_canvas_2) {
         root.querySelector('.canvas-area-1 .btn-copy').click();

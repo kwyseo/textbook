@@ -133,6 +133,7 @@ input[type=number] {
 .input-div .input, .input-div .input:disabled{
     border: 7px solid #994AF4;
     border-radius: 30px;
+    background-color: white;
     color: #222222;
     width: 165px;
     height: 92px;
@@ -295,10 +296,15 @@ input[type=number] {
 .quiz .quiz-row{
     display: flex;
     align-items: center;
+    margin-left: 330px;
 }
 
+.content.single-single .quiz .quiz-row, .content.single-double .quiz .quiz-row{
+    margin-left: 230px;
+}
+
+
 .quiz .quiz-row-1{
-    margin-left: 330px;
     margin-top: 110px;
 }
 
@@ -307,8 +313,11 @@ input[type=number] {
 }
 
 .quiz .quiz-row-2{
-    margin-left: 330px;
     margin-top: 275px;
+}
+
+.content.single-double .quiz .quiz-row-2{
+    margin-top: 330px;
 }
 
 
@@ -318,12 +327,16 @@ input[type=number] {
     top: 472px;
     left: 10px;
 }
+
 .canvas-area-1.quiz{
     top: 500px;
     left: 100px;
 }
 .canvas-area-1.quiz.double{
     top: 290px;
+}
+.canvas-area-1.quiz.double.single-double{
+    top: 360px;
 }
 
 .canvas-area-1.quiz.double.single{
@@ -357,6 +370,9 @@ input[type=number] {
     position: absolute;
     top: 660px;
     left: 100px;
+}
+.canvas-area-2.single-double{
+    top: 780px;
 }
 .canvas-area-2.single{
     left: 1px;
@@ -520,6 +536,9 @@ input[type=number] {
     display: flex;
     z-index: 10000;
 }
+.popup.single{
+    left: 45px;
+}
 
 .popup .character{
     background: url(../img/character.png) no-repeat;
@@ -528,6 +547,12 @@ input[type=number] {
     height: 234px;
     pointer-events: none;
     z-index: 3;
+}
+.popup.single .character{
+    background: url(../img/character_square.png) no-repeat;
+    background-size: cover;
+    width: 221px;
+    height: 241px;
 }
 
 .popup .popup-content{
@@ -549,6 +574,8 @@ input[type=number] {
 .popup.single .popup-content{
     color: #222222;
     border: 3px solid #222222;
+    width: 1621px;
+    margin-top: 95px;
 }
 
 .circle-select{
@@ -565,8 +592,19 @@ input[type=number] {
 .content.double .circle-select.circle-select_3{
     top: 400px;
 }
+
+.content.double.single-double .circle-select.circle-select_1,
+.content.double.section-double .circle-select.circle-select_3{
+    top: 475px;
+}
+
 .circle-select.circle-select_2, .circle-select.circle-select_4{
     top: 772px;
+}
+.single-double .circle-select.circle-select_2, .single-double .circle-select.circle-select_4{
+    top: 552px;
+    height: 281px;
+    background: url(../img/circle_select_reverse.png) no-repeat;
 }
 
 .circle-select > div{
@@ -578,6 +616,11 @@ input[type=number] {
     height: 126px;
     margin-top: 69px;
     cursor: pointer;
+}
+
+.single-double .circle-select.circle-select_2 > div,
+.single-double .circle-select.circle-select_4 > div{
+    margin-top: 30px;
 }
 
 .circle-select > div:first-child{
@@ -662,9 +705,15 @@ input[type=number] {
 .content.double .arrow-left.arrow-left-1{
     top: 210px;
 }
+.content.double.single-double .arrow-left.arrow-left-1{
+    top: 270px;
+}
 .arrow-left.arrow-left-2{
     position: absolute;
     top: 580px;
+}
+.single-double .arrow-left.arrow-left-2{
+    top: 675px;
 }
 .arrow-right{
     position: absolute;
@@ -675,19 +724,33 @@ input[type=number] {
     content: url(../img/arrow-right.png);
     cursor: pointer;
 }
+
+.content.single-double{
+    margin-top: 20px;
+}
+
 .content.double .arrow-right.arrow-right-1{
     top: 210px;
 }
+.content.double .arrow-right.arrow-right-1{
+    top: 270px;
+}
 .content.double .arrow-box-1{
-    top: 209px;
+    top: 269px;
+}
+.content.double.single-double .arrow-box-1{
+    top: 269px;
 }
 
 .arrow-right.arrow-right-2{
     top: 580px;
 }
+.single-double .arrow-right.arrow-right-2{
+    top: 675px;
+}
 
 .arrow-box.arrow-box-2{
-    top: 579px;
+    top: 675px;
 }
 
 .arrow-center{

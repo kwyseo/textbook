@@ -446,4 +446,9 @@ export const createTabRule = (shadowRoot) => {
     });
     defineTab('.arrow-center-1','.arrow-left-1', '.arrow-right-1');
     defineTab('.arrow-center-2','.arrow-left-2', '.arrow-right-2');
+    defineTab('.popup-content',()=>{
+        focusAltBox();
+    }, ()=>{
+        focusAltBox();
+    });
 }

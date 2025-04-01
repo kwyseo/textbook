@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <title>cm²를 알아볼까요</title>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <!-- 모달 창 정의 -->
+            <div class="modal_qwerty">
+            </div>
+            <div class="modal_number_pad">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div class="btn-fullscreen"></div>
+                <div class="right-menu">
+                    <img class="btn-refresh" alt="리셋 버튼" ondragstart="return false;" onContextMenu="return false;" />
+                    <div class="paste-all-form">
+                        <input type="checkbox" id="paste-all">
+                        <label for="paste-all">한 번에 붙이기</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container title">
+                <div class="back-ground">
+                    <div class="shape circle"><div class="checked hide"></div></div>
+                    <div class="shape square"><div class="checked hide"></div></div>
+                    <div class="shape rectangle"><div class="checked hide"></div></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="frame">
+                    <div class="left">
+                        <div class="box-title"><div>가</div></div>
+                        <div class="draw-box"></div>
+                    </div>
+                    <div class="right">
+                        <div class="box-title"><div>나</div></div>
+                        <div class="draw-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaffolding">
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" />
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>
