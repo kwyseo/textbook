@@ -14,7 +14,9 @@ time, mark, audio, video {
     margin:0;
     padding:0;
     border:0;
-    outline:0;
+    /*
+    outline:0; 탭으로 움직일 때 표시되야 함으로 사용하지 않는다.
+    */
     font-size:100%;
     vertical-align:baseline;
     background:transparent;

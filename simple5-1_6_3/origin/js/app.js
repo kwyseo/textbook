@@ -1,11 +1,18 @@
 import anime from "./anime.js";
-import qwerty from "./qwerty.js";
-
+import {
+    createTabRule,
+    focus,
+    setAriaLabel,
+    defineTab,
+    setFocusToFullButton
+} from "./tab.js";
 
 const metaUrl = import.meta.url;
 let root;
 let scale = 1;  // 화면 스케일링 값
-
+const koreanNumber = ['영','첫','두','세','네','다섯','여섯','일곱','여덟','아홉',
+    '열','열한','열두','열세','열네','열다섯','열여섯','열일곱','열여덟','열아홉','스무',
+    '스물한','스물두','스물세','스물네','스물다섯'];
 const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
         const requestFullScreen = document.documentElement.requestFullscreen || document.mozRequestFullScreen || document.webkitRequestFullScreen || document.msRequestFullscreen;
@@ -24,6 +31,9 @@ const onClickRefresh = () => {
     root.querySelector('#paste-all').checked = false;
     root.querySelectorAll('.draw-box').forEach((box)=>{
         box.innerHTML = "";
+    })
+    root.querySelectorAll('.shape').forEach((shape)=>{
+        shape.classList.remove('deselected');
     })
 }
 
@@ -126,6 +136,14 @@ const startScaffolding = () => {
     }).restart();
 }
 
+const _setFocusToFullButton = (event)=>{
+    if (event.key === 'Tab' && !event.shiftKey) {
+        event.preventDefault();
+        event.stopPropagation();
+        setFocusToFullButton(true);
+    }
+}
+
 const drawShape = (target)=>{
     // 먼저 그릴 형태를 찾는다.
     let shapeType = -1;
@@ -140,7 +158,7 @@ const drawShape = (target)=>{
 
     // 그려진 도형 갯수
     const childrenCount = target.children.length;
-    const isLeft = target.parentElement.classList.contains('left');
+    const isLeft = target.parentElement.parentElement.classList.contains('left');
     let maxNumber = 0;
     if(shapeType === 0 || shapeType === 1){
         maxNumber = isLeft ? 25 : 24;
@@ -156,16 +174,20 @@ const drawShape = (target)=>{
         const className = shapeType === 0 ? 'circle':shapeType === 1?'square':'rectangle';
         div.classList.add(className);
         if(shapeType === 0 || shapeType === 1){
+            const width = shapeType === 0 ? 118: 117;
             const columnCount = isLeft ? 5:6;
-            const left = (index %columnCount) * 114;
-            const top = Math.floor(index / columnCount) * 114;
+            const left = (index %columnCount) * width;
+            const top = Math.floor(index / columnCount) * width;
             div.style.left = `${left}px`;
             div.style.top = `${top}px`;
+            const shapeName = shapeType === 0 ? '원': '정사각형';
+            const ariaLabel = `${isLeft?"가":"나"} 종이를 채운 ${koreanNumber[index+1]}번째 ${shapeName}`;
+            div.setAttribute('aria-label', ariaLabel);
             //div.style.cursor = "pointer";
         }else{
             // 직사각형의 경우
-            const width = 228;
-            const height = 114;
+            const width = 234;
+            const height = 117;
             if(isLeft){
                 if(index < 10){
                     const columnCount = 2;
@@ -190,9 +212,18 @@ const drawShape = (target)=>{
                 div.style.left = `${left}px`;
                 div.style.top = `${top}px`;
             }
-
+            const ariaLabel = `${isLeft?"가":"나"} 종이를 채운 ${koreanNumber[index+1]}번째 직사각형`;
+            div.setAttribute('aria-label', ariaLabel);
         }
+        div.setAttribute('tabindex', '5');
         target.appendChild(div);
+        // 맨 마지막 도형에서 풀버튼으로 도형 이동
+        if(!isLeft){
+            div.addEventListener('keydown', _setFocusToFullButton);
+            if(index > 0) {
+                div.previousElementSibling.removeEventListener('keydown', _setFocusToFullButton);
+            }
+        }
     }
     if(isPasteAll){
         for(let i = 0; i < maxNumber; i++){
@@ -206,6 +237,29 @@ const drawShape = (target)=>{
 const onClickDrawBox = (event) =>{
     event.preventDefault();
     drawShape(event.currentTarget);
+}
+
+const onClickShape = (event, index) =>{
+    let isChangeAble = true;
+    root.querySelectorAll('.draw-box').forEach((box)=>{
+        if(box.hasChildNodes())
+            isChangeAble = false;
+    });
+    if(!isChangeAble)
+        return;
+    root.querySelectorAll('.shape').forEach(temp=>{
+        temp.classList.add('deselected');
+        temp.querySelector('.checked').classList.add('hide');
+    });
+    event.currentTarget.querySelector('.checked').classList.remove('hide');
+    event.currentTarget.classList.remove('deselected');
+    // draw-box 크기를 도형의 크기에 맞추어 조절해 준다.
+    root.querySelectorAll('.draw-box').forEach((box)=>{
+        if(index === 0)
+            box.classList.remove('square-draw-box');
+        else
+            box.classList.add('square-draw-box');
+    })
 }
 
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -245,12 +299,10 @@ const init = (env) => {
     root.querySelector(".btn-fullscreen").addEventListener('click', toggleFullScreen);
     root.querySelector(".btn-refresh").addEventListener('click', onClickRefresh);
 
+    // 모양 선택
     root.querySelectorAll('.shape').forEach((shape)=>{
-        shape.addEventListener('click', (event)=>{
-            root.querySelectorAll('.shape').forEach(temp=>{
-                temp.querySelector('.checked').classList.add('hide');
-            });
-            shape.querySelector('.checked').classList.remove('hide');
+        shape.addEventListener('click', (event, index)=>{
+            onClickShape(event, index);
         })
     })
     root.querySelector('#paste-all').addEventListener('click', (event)=>{
@@ -270,6 +322,11 @@ const init = (env) => {
             onClickDrawBox(event);
         })
     })
+    root.querySelectorAll('.draw-box-box').forEach((box)=>{
+        box.addEventListener('click', (event)=>{
+            box.parentElement.querySelector('.draw-box').click();
+        })
+    })
     document.addEventListener('click', stopScaffolding);
 }
 
@@ -279,6 +336,7 @@ window.addEventListener("script-loaded",(env)=>{
     const param = u.searchParams.get('embed-unique');
     if(param && param !== env.detail.unique) return;
     root = env.detail.root;
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````

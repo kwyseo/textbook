@@ -12,6 +12,7 @@
 <template>
     <div class="view-wrap">
         <div class="wrap">
+            <div class="alt-box" tabindex="5" aria-label="주어진 모양 세 개 중 원하는 모양 하나를 선택해 가와 나 종이에 선택한 모양을 채우는 활동입니다."></div>
             <!-- 모달 창 정의 -->
             <div class="modal_qwerty">
             </div>
@@ -19,32 +20,39 @@
             </div>
             <!-- 모달 끝 -->
             <div class="container menu">
-                <div class="btn-fullscreen"></div>
+                <div class="btn-fullscreen" role="button" tabindex="5" aria-label="전체화면"></div>
                 <div class="right-menu">
-                    <img class="btn-refresh" alt="리셋 버튼" ondragstart="return false;" onContextMenu="return false;" />
+                    <img class="btn-refresh" role="button" tabindex="5" alt="새로고침" aria-label="새로고침" ondragstart="return false;" onContextMenu="return false;" />
                     <div class="paste-all-form">
-                        <input type="checkbox" id="paste-all">
-                        <label for="paste-all">한 번에 붙이기</label>
+                        <input tabindex="5" aria-label="한 번에 붙이기 버튼" type="checkbox" id="paste-all">
+                        <label tabindex="5" aria-label="한 번에 붙이기" for="paste-all">한 번에 붙이기</label>
                     </div>
                 </div>
             </div>
 
             <div class="container title">
                 <div class="back-ground">
-                    <div class="shape circle"><div class="checked hide"></div></div>
-                    <div class="shape square"><div class="checked hide"></div></div>
-                    <div class="shape rectangle"><div class="checked hide"></div></div>
+                    <div class="shape-box" tabindex="5" aria-label="원하는 모양을 선택합니다"></div>
+                    <div class="shape circle" tabindex="5" aria-label="원"><div class="checked hide"></div></div>
+                    <div class="shape square" tabindex="5" aria-label="정사각형"><div class="checked hide"></div></div>
+                    <div class="shape rectangle" tabindex="5" aria-label="직사각형"><div class="checked hide"></div></div>
                 </div>
             </div>
             <div class="container content">
                 <div class="frame">
                     <div class="left">
-                        <div class="box-title"><div>가</div></div>
-                        <div class="draw-box"></div>
+                        <div class="box-title" tabindex="5" aria-label="가 종이"><div>가</div></div>
+                        <div style="position: relative">
+                            <div class="draw-box-box" tabindex="5" aria-label="선택한 모양으로 가 종이를 채웁니다"></div>
+                            <div class="draw-box"></div>
+                        </div>
                     </div>
                     <div class="right">
-                        <div class="box-title"><div>나</div></div>
-                        <div class="draw-box"></div>
+                        <div class="box-title" tabindex="5" aria-label="나 종이"><div>나</div></div>
+                        <div style="position: relative">
+                            <div class="draw-box-box" tabindex="5" aria-label="선택한 모양으로 나 종이를 채웁니다"></div>
+                            <div class="draw-box"></div>
+                        </div>
                     </div>
                 </div>
             </div>
