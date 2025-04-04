@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8257a726-526d-42dc-aa44-12e7f617eae2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../simple5-1_6_3/origin/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/../simple5-1_6_3/origin/css/reset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple5-1_6_3/origin/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../simple5-1_6_3/origin/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple5-1_6_3/origin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../simple5-1_6_3/origin/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../simple5-1_6_3/origin/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simple5-1_6_3/origin/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simple5-1_6_3/origin/js/tab.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simple5-1_6_3/origin/js/tab.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,14 +58,14 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Commit" order="0" weight="0.25" />
-      <window_info active="true" id="Structure" order="1" side_tool="true" visible="true" weight="0.12630662" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.12604384" />
       <window_info anchor="bottom" id="TypeScript" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info active="true" anchor="bottom" id="Problems View" order="2" visible="true" weight="0.19864254" />
+      <window_info anchor="bottom" id="Problems View" order="2" weight="0.19855073" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
@@ -75,7 +75,7 @@
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="5" side_tool="true" weight="0.15701802" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="5" side_tool="true" weight="0.198219" />
     </layout>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -101,6 +101,7 @@
       <workItem from="1743075192337" duration="598000" />
       <workItem from="1743413290020" duration="1197000" />
       <workItem from="1743579701113" duration="676000" />
+      <workItem from="1743662388863" duration="1204000" />
     </task>
     <servers />
   </component>

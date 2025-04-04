@@ -152,4 +152,5 @@ export const createTabRule = (shadowRoot) => {
             setFocusToFullButton(true);
         }
     });
+    defineTab('.scaffolding', null, '.alt-box');
 }

@@ -41,14 +41,15 @@
             <div class="container content">
                 <div class="frame">
                     <div class="left">
-                        <div class="box-title" tabindex="5" aria-label="가 종이"><div>가</div></div>
+                        <div class="box-title" tabindex="5" aria-label="가 종이"><div aria-hidden="true">가</div></div>
                         <div style="position: relative">
                             <div class="draw-box-box" tabindex="5" aria-label="선택한 모양으로 가 종이를 채웁니다"></div>
                             <div class="draw-box"></div>
+                            <div class="guide_hand hide"></div>
                         </div>
                     </div>
                     <div class="right">
-                        <div class="box-title" tabindex="5" aria-label="나 종이"><div>나</div></div>
+                        <div class="box-title" tabindex="5" aria-label="나 종이"><div aria-hidden="true">나</div></div>
                         <div style="position: relative">
                             <div class="draw-box-box" tabindex="5" aria-label="선택한 모양으로 나 종이를 채웁니다"></div>
                             <div class="draw-box"></div>
@@ -56,9 +57,15 @@
                     </div>
                 </div>
             </div>
-            <div class="scaffolding">
+            <div tabindex="5" class="scaffolding hide">
+                <div>모양을 선택하고,</div>
+                <div class="box left"><div style="margin-right: 10px">가</div></div>
+                <div>와</div>
+                <div class="box right" style="margin-right: 10px"><div>나</div></div>
+                <div>종이를 클릭해 보세요.</div>
             </div>
         </div>
+        <div class="start-dim" tabindex="5">여기를 클릭해 디지털 활동을 시작해 보세요.</div>
     </div>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4" />

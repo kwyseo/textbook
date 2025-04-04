@@ -89,7 +89,7 @@ input[type=number] {
 }
 
 .menu .right-menu label{
-    font-family: malgunbd sans-serif;
+    font-family: 'malgunbd', sans-serif;
     font-size: 45px;
     margin-left: 10px;
     margin-right: 25px;
@@ -215,7 +215,7 @@ input[type=number] {
 }
 
 .container.content{
-    margin-top: 50px;
+    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -232,6 +232,10 @@ input[type=number] {
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+.frame .draw-box.click-able{
+    cursor: pointer;
 }
 
 .frame .left{
@@ -262,7 +266,7 @@ input[type=number] {
 .frame .right .draw-box{
     width: 708px;
     height: 472px;
-    margin-top:  45px;
+    margin-top:  55px;
     background: #DDE788B2;
     position: relative;
 }
@@ -281,7 +285,7 @@ input[type=number] {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: malgunbd sans-serif;
+    font-family: 'malgunbd', sans-serif;
     font-size: 50px;
 }
 .frame .right .box-title{
@@ -347,11 +351,72 @@ input[type=number] {
 .scaffolding{
     position: absolute;
     left: 5px;
-    bottom: 5px;
+    bottom: -30px;
+    padding-top: 25px;
     width: 1920px;
     height: 280px;
-    background: url(../img/Scaffolding.svg) no-repeat;
+    background: url(../img/Scaffolding.png) no-repeat;
     background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 44px;
+}
+
+.scaffolding .box{
+    width: 86px;
+    height: 56px;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scaffolding .box.left{
+    background: #D4BEDD;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.scaffolding .box.right{
+    background: #D0D88F;
+    margin-left: 30px;
+    margin-right: 25px;
+}
+
+.guide_hand{
+    position: absolute;
+    top: 210px;
+    left: 250px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.png) no-repeat;
+    background-size: contain;
+    opacity: 0;
+}
+
+.start-dim {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'malgunbd', sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: #58585891;
+    line-height: 100vh;
+    font-size: min(3.7vw, 8.6vh);
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 

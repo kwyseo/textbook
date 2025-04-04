@@ -16,25 +16,37 @@ const koreanNumber = ['영','첫','두','세','네','다섯','여섯','일곱','
 const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
         const requestFullScreen = document.documentElement.requestFullscreen || document.mozRequestFullScreen || document.webkitRequestFullScreen || document.msRequestFullscreen;
+        setAriaLabel('.btn-fullscreen', '전체 화면 켜져있는 상태입니다');
         requestFullScreen.call(root.firstElementChild);
     }else{
         const cancelFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
+        setAriaLabel('.btn-fullscreen', '전체 화면 꺼져있는 상태입니다');
         cancelFullScreen.call(document);
     }
 }
 
-const onClickRefresh = () => {
+const onClickRefresh = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    stopHandGuidAnimation();
     startScaffolding();
     root.querySelectorAll('.checked').forEach((checked)=>{
         checked.classList.add('hide');
     })
+
     root.querySelector('#paste-all').checked = false;
+
     root.querySelectorAll('.draw-box').forEach((box)=>{
         box.innerHTML = "";
+        box.classList.remove('click-able');
     })
+
     root.querySelectorAll('.shape').forEach((shape)=>{
         shape.classList.remove('deselected');
     })
+    setShapeLabel(-1);
+    setAriaLabel('#paste-all', '한 번에 붙이기 버튼');
+    root.querySelector('.scaffolding').focus();
 }
 
 const checkInput = (input, wantedValue) => {
@@ -73,22 +85,12 @@ const onClickTitle = (event) => {
 }
  */
 
-
-
-const stopPropagation = (event) => {
-    event.stopPropagation();
-    const guideHand = root.querySelector('.guide_hand');
-    guideHand.classList.add('hide');
-    stopScaffolding();
-}
 const handGuideAnimation = () => {
     const guideHand = root.querySelector('.guide_hand');
-    guideHand.addEventListener('mouseover', function() {
-        guideHand.classList.add('hide');
-    });
-    window.addEventListener('click', function() {
-        guideHand.classList.add('hide');
-    });
+    if(!guideHand.classList.contains('hide'))
+        return;
+    guideHand.style.opacity = '0.0';
+    guideHand.classList.remove('hide');
     const animation = anime.timeline({loop:2, complete:()=>{
             if(!guideHand.classList.contains('hide')) {
                 setTimeout(animation.restart, 3000);
@@ -110,30 +112,22 @@ const handGuideAnimation = () => {
     );
 }
 
+const stopHandGuidAnimation = (event) =>{
+    root.querySelector('.guide_hand').classList.add('hide');
+}
+
 const stopScaffolding = (event) => {
     if(event && event.target.classList.contains("btn-refresh")){
         return;
     }
     const scaffolding = root.querySelector(".scaffolding");
     scaffolding.classList.add('hide');
-    anime.remove(scaffolding);
 }
 
 // 처음 시작할 때 나오는 안내 문구
 const startScaffolding = () => {
     const scaffolding = root.querySelector(".scaffolding");
-    scaffolding.style.display = "block";
-    scaffolding.style.opacity = 1;
-    anime({
-        targets: scaffolding,
-        easing: 'easeInOutSine',
-        delay: 4300,
-        duration: 1000,
-        opacity: [1, 0 ],
-        complete:()=>{
-            stopScaffolding();
-        }
-    }).restart();
+    scaffolding.classList.remove('hide');
 }
 
 const _setFocusToFullButton = (event)=>{
@@ -144,7 +138,11 @@ const _setFocusToFullButton = (event)=>{
     }
 }
 
-const drawShape = (target)=>{
+const sleep = (ms) =>{
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const drawShape = async (target)=>{
     // 먼저 그릴 형태를 찾는다.
     let shapeType = -1;
     root.querySelectorAll('.checked').forEach((checked, index)=>{
@@ -227,19 +225,35 @@ const drawShape = (target)=>{
     }
     if(isPasteAll){
         for(let i = 0; i < maxNumber; i++){
-            _draw(i)
+            _draw(i);
+            await sleep(50);
         }
     }else{
         _draw(childrenCount)
     }
 }
 
-const onClickDrawBox = (event) =>{
+const onClickDrawBox = async (event) =>{
     event.preventDefault();
-    drawShape(event.currentTarget);
+    stopHandGuidAnimation();
+    await drawShape(event.currentTarget);
+}
+
+const setShapeLabel = (targetIndex) =>{
+    root.querySelectorAll('.shape').forEach((temp, tempIndex)=>{
+        const shapeName = tempIndex === 0 ? "원": tempIndex === 1 ? "정사각형": "직사각형";
+        if(targetIndex === tempIndex){
+            setAriaLabel(temp, `${shapeName}이 선택되었습니다`)
+        }else{
+            setAriaLabel(temp, `${shapeName}`)
+        }
+    });
 }
 
 const onClickShape = (event, index) =>{
+    event.preventDefault();
+    event.stopPropagation();
+    stopScaffolding();
     let isChangeAble = true;
     root.querySelectorAll('.draw-box').forEach((box)=>{
         if(box.hasChildNodes())
@@ -247,12 +261,16 @@ const onClickShape = (event, index) =>{
     });
     if(!isChangeAble)
         return;
-    root.querySelectorAll('.shape').forEach(temp=>{
+    root.querySelectorAll('.shape').forEach((temp)=>{
         temp.classList.add('deselected');
         temp.querySelector('.checked').classList.add('hide');
     });
     event.currentTarget.querySelector('.checked').classList.remove('hide');
     event.currentTarget.classList.remove('deselected');
+    setShapeLabel(index);
+    root.querySelectorAll('.draw-box').forEach((box)=>{
+        box.classList.add('click-able');
+    })
     // draw-box 크기를 도형의 크기에 맞추어 조절해 준다.
     root.querySelectorAll('.draw-box').forEach((box)=>{
         if(index === 0)
@@ -260,12 +278,29 @@ const onClickShape = (event, index) =>{
         else
             box.classList.add('square-draw-box');
     })
+    handGuideAnimation();
 }
 
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화
 //_____________________________________________________________________________________________________________________
 const init = (env) => {
+    // 새도우돔은 font-face 가 작동하지 않아서 넣는다.
+    const sheets = root.styleSheets;
+    const style = sheets[sheets.length - 1];
+    let href = style.href;
+    href = href.substring(0, href.indexOf('/css'));
+    for (let i = 0; i < style.cssRules.length; i++) {
+        const rule = style.cssRules[i];
+        if (rule.cssText && rule.cssText.indexOf("@font-face") >= 0) {
+            const cssText = rule.cssText.replace("..", href);
+            const st = document.createElement('style');
+            st.appendChild(document.createTextNode(cssText));
+            document
+                .getElementsByTagName('head')[0]
+                .appendChild(st);
+        }
+    }
     const _autoScale = () => {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -292,7 +327,7 @@ const init = (env) => {
     window.addEventListener("resize", _autoScale);
     _autoScale();
     //handGuideAnimation();
-    //startScaffolding();
+    startScaffolding();
     // 자판 만들기, 이거 활성화하면 checkbox 와 충돌한다. 피할려면 click 이벤트에서 window 로 이벤트 안가게 잡아준다.
     //qwerty.init(root, '.modal_qwerty');
 
@@ -300,13 +335,17 @@ const init = (env) => {
     root.querySelector(".btn-refresh").addEventListener('click', onClickRefresh);
 
     // 모양 선택
-    root.querySelectorAll('.shape').forEach((shape)=>{
-        shape.addEventListener('click', (event, index)=>{
+    root.querySelectorAll('.shape').forEach((shape, index)=>{
+        shape.addEventListener('click', (event)=>{
             onClickShape(event, index);
         })
     })
     root.querySelector('#paste-all').addEventListener('click', (event)=>{
         let isShapeDrawn = false;
+        if(event.currentTarget.checked)
+            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 활성화되었습니다')
+        else
+            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 비활성화되었습니다')
         root.querySelectorAll('.draw-box').forEach((box)=>{
             if(box.hasChildNodes())
                 isShapeDrawn = true;
@@ -318,8 +357,8 @@ const init = (env) => {
     })
 
     root.querySelectorAll('.draw-box').forEach((box)=>{
-        box.addEventListener('click', (event)=>{
-            onClickDrawBox(event);
+        box.addEventListener('click', async (event)=>{
+            await onClickDrawBox(event);
         })
     })
     root.querySelectorAll('.draw-box-box').forEach((box)=>{
@@ -327,7 +366,17 @@ const init = (env) => {
             box.parentElement.querySelector('.draw-box').click();
         })
     })
+    const guideHand = root.querySelector('.guide_hand');
+    guideHand.addEventListener('mouseover', function() {
+        guideHand.classList.add('hide');
+    });
     document.addEventListener('click', stopScaffolding);
+    root.querySelector('.start-dim').addEventListener('click', (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        event.currentTarget.classList.add('hide');
+        root.querySelector('.scaffolding').focus();
+    })
 }
 
 window.addEventListener("script-loaded",(env)=>{
@@ -338,6 +387,7 @@ window.addEventListener("script-loaded",(env)=>{
     root = env.detail.root;
     createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝
