@@ -35,6 +35,7 @@ const onClickRefresh = (event) => {
     })
 
     root.querySelector('#paste-all').checked = false;
+    root.querySelector('#paste-all').style.backgroundColor='white';
 
     root.querySelectorAll('.draw-box').forEach((box)=>{
         box.innerHTML = "";
@@ -46,54 +47,26 @@ const onClickRefresh = (event) => {
     })
     setShapeLabel(-1);
     setAriaLabel('#paste-all', '한 번에 붙이기 버튼');
-    root.querySelector('.scaffolding').focus();
+    root.querySelector('.scaffolding-content').focus();
 }
-
-const checkInput = (input, wantedValue) => {
-    if(input.value !== wantedValue){
-        anime({
-            targets: input,
-            easing: 'easeInOutSine',
-            loop: 2,
-            duration: 1000,
-            color: ['rgba(255,0,0,0)', 'rgba(255,0,0,1)'],
-            complete:()=>{
-                input.value = "";
-                input.style.color = 'black';
-                input.style.display = "none";
-            }
-        });
-        return false;
-    }
-    return true;
-}
-
-// 타이틀을 넣을 수 있도록 자판을 띄운다.
-// 나중에 예제를 쓸려고 지우지 않았다
-/*
-const onClickTitle = (event) => {
-    event.preventDefault();
-    stopPropagation(event);
-    const event = new CustomEvent("qwerty-open", {detail:"title"});
-    document.dispatchEvent(event);
-    let input = root.querySelector(".title .input");
-    qwerty.activate(input, 'title', (text, isEnter = false)=>{
-        if(isEnter){ // 엔터를 누르거나 창이 닫히는 경우
-            //checkInput(input, '생활 폐기물 종류별 재활용 폐기물량');
-        }
-    });
-}
- */
 
 const handGuideAnimation = () => {
     const guideHand = root.querySelector('.guide_hand');
-    if(!guideHand.classList.contains('hide'))
-        return;
+    //if(!guideHand.classList.contains('hide'))
+    //    return;
     guideHand.style.opacity = '0.0';
     guideHand.classList.remove('hide');
     const animation = anime.timeline({loop:2, complete:()=>{
             if(!guideHand.classList.contains('hide')) {
-                setTimeout(animation.restart, 3000);
+                //setTimeout(animation.restart, 3000);
+                anime({
+                    targets: guideHand,
+                    opacity: [0, 0, 0, 0, 1],
+                    duration: 1500,
+                    easing: 'linear',
+                    loop: false
+                });
+
             }
         }});
     animation.add({
@@ -223,6 +196,9 @@ const drawShape = async (target)=>{
             }
         }
     }
+    if(!root.querySelector('#paste-all').checked)
+        root.querySelector('#paste-all').style.backgroundColor = '#D9D9D9'
+
     if(isPasteAll){
         for(let i = 0; i < maxNumber; i++){
             _draw(i);
@@ -235,7 +211,10 @@ const drawShape = async (target)=>{
 
 const onClickDrawBox = async (event) =>{
     event.preventDefault();
-    stopHandGuidAnimation();
+    // drawShape 함수에서 event.currentTarget 를 변형시킴으로 먼저 이것을 처리해야 한다.
+    if(event.currentTarget.parentElement.parentElement.classList.contains('left')) {
+        stopHandGuidAnimation();
+    }
     await drawShape(event.currentTarget);
 }
 
@@ -279,6 +258,25 @@ const onClickShape = (event, index) =>{
             box.classList.add('square-draw-box');
     })
     handGuideAnimation();
+}
+
+export const checkIpad = (root) => {
+    const result = [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        ||
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    if(result) {
+        root.querySelector('.btn-fullscreen').classList.add('hide');
+        return true;
+    }
+    return false;
 }
 
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -342,10 +340,12 @@ const init = (env) => {
     })
     root.querySelector('#paste-all').addEventListener('click', (event)=>{
         let isShapeDrawn = false;
-        if(event.currentTarget.checked)
-            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 활성화되었습니다')
-        else
-            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 비활성화되었습니다')
+        if(event.currentTarget.checked) {
+            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 활성화되었습니다');
+        }
+        else {
+            setAriaLabel(event.currentTarget, '한 번에 붙이기 기능이 비활성화되었습니다');
+        }
         root.querySelectorAll('.draw-box').forEach((box)=>{
             if(box.hasChildNodes())
                 isShapeDrawn = true;
@@ -366,16 +366,13 @@ const init = (env) => {
             box.parentElement.querySelector('.draw-box').click();
         })
     })
-    const guideHand = root.querySelector('.guide_hand');
-    guideHand.addEventListener('mouseover', function() {
-        guideHand.classList.add('hide');
-    });
     document.addEventListener('click', stopScaffolding);
     root.querySelector('.start-dim').addEventListener('click', (event)=>{
         event.preventDefault();
         event.stopPropagation();
         event.currentTarget.classList.add('hide');
-        root.querySelector('.scaffolding').focus();
+        //root.querySelector('.scaffolding .scaffolding-content').focus();
+        setFocusToFullButton();
     })
 }
 
@@ -385,6 +382,7 @@ window.addEventListener("script-loaded",(env)=>{
     const param = u.searchParams.get('embed-unique');
     if(param && param !== env.detail.unique) return;
     root = env.detail.root;
+    checkIpad(root);
     createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
     root.querySelector('.start-dim').focus();

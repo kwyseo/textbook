@@ -247,7 +247,7 @@ input[type=number] {
 .frame .left .draw-box{
     width: 590px;
     height: 590px;
-    background: #D4BEDD;
+    background: #E3D5E9B2;
     position: relative;
 }
 
@@ -289,7 +289,7 @@ input[type=number] {
     font-size: 50px;
 }
 .frame .right .box-title{
-    background: #DDE788B2;
+    background: #D0D88F;
 }
 
 .frame .box-title div{
@@ -359,9 +359,15 @@ input[type=number] {
     background-size: contain;
     display: flex;
     justify-content: center;
+}
+.scaffolding .scaffolding-content{
+    display: flex;
+    justify-content: center;
     align-items: center;
     font-family: 'malgunbd', sans-serif;
     font-size: 44px;
+    height: 80px;
+    margin-top: 100px;
 }
 
 .scaffolding .box{
@@ -394,6 +400,7 @@ input[type=number] {
     background: url(../img/Handguide.png) no-repeat;
     background-size: contain;
     opacity: 0;
+    pointer-events: none;
 }
 
 .start-dim {

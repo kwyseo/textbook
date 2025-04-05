@@ -131,7 +131,12 @@ export const createTabRule = (shadowRoot) => {
             setFocusToFullButton(false);
         },
         () => {
-            setFocusToAltBox(true);
+            const popup = root.querySelector('.scaffolding');
+            if(!popup.classList.contains('hide')){
+                popup.querySelector('.scaffolding-content').focus();
+            }else {
+                setFocusToAltBox(true);
+            }
         }
     );
     defineTab('.alt-box', () => {
@@ -152,5 +157,5 @@ export const createTabRule = (shadowRoot) => {
             setFocusToFullButton(true);
         }
     });
-    defineTab('.scaffolding', null, '.alt-box');
+    defineTab('.scaffolding-content', '.btn-refresh', '.alt-box');
 }

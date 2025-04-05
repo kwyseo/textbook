@@ -1,0 +1,480 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang-01.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222222;
+}
+
+.view-wrap .hide{
+    display: none !important;
+}
+
+.wrap .alt-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;  /* 마이너스라도 포커스를 줄 수 있다고 한다. */
+}
+.container{
+    display: flex;
+}
+
+.container.menu{
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 26px 16px 20px 16px;
+}
+
+.menu .right-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.menu .btn-fullscreen{
+    width: 39px;
+    height: 42px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    width: 39px;
+    height: 42px;
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.container.content{
+    margin-top: 1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pink-box{
+    width: 519px;
+    height: 119px;
+    margin-top: 30px;
+    background: url(../img/pink_box.png) no-repeat;
+    background-size: contain;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 35px;
+    line-height: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 27px;
+}
+
+.diagram{
+    position: absolute;
+    top: 170px;
+    left: 38px;
+}
+.diagram .parallelogram {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 564px;
+    height: 164px;
+    background-image: url(../img/parallel_back.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+}
+.diagram .parallelogram.select_1{
+    background-image: url(../img/parallel_1.png);
+}
+.diagram .parallelogram.select_2 {
+    background-image: url(../img/parallel_2.png);
+}
+.diagram .parallelogram.select_3 {
+    background-image: url(../img/parallel_3.png);
+}
+.diagram .parallelogram.select_4{
+    background-image: url(../img/parallel_4.png);
+}
+
+.diagram .select_1_left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 165px;
+    height: 164px;
+    background-image: url(../img/select_1_left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_1_right{
+    position: absolute;
+    top: 0;
+    left: 161px;
+    width: 408px;
+    height: 164px;
+    background-image: url(../img/select_1_right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_2_left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 242px;
+    height: 164px;
+    background-image: url(../img/select_2_left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_2_right{
+    position: absolute;
+    top: 0;
+    left: 238px;
+    width: 326px;
+    height: 164px;
+    background-image: url(../img/select_2_right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_3_left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 327px;
+    height: 164px;
+    background-image: url(../img/select_3_left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_3_right{
+    position: absolute;
+    top: 0;
+    left: 323px;
+    width: 243px;
+    height: 164px;
+    background-image: url(../img/select_3_right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_4_left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 410px;
+    height: 164px;
+    background-image: url(../img/select_4_left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.diagram .select_4_right{
+    position: absolute;
+    top: 0;
+    left: 406px;
+    width: 163px;
+    height: 164px;
+    background-image: url(../img/select_4_right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+
+
+
+.diagram .parallelogram .bar{
+    width: 3px;
+    height: 156px;
+    margin-top: 4px;
+}
+
+.diagram .parallelogram .bar_1{
+    margin-left: 160px;
+}
+
+.diagram .parallelogram .bar_2{
+    margin-left: 78px;
+}
+.diagram .parallelogram .bar_3{
+    margin-left: 79px;
+}
+.diagram .parallelogram .bar_4{
+    margin-left: 79px;
+}
+
+
+
+.scissors-box{
+    position: absolute;
+    top: 347px;
+    left: 250px;
+}
+.scissors-box.first{
+    left: 125px;
+}
+.scissors-box.second{
+    left: 205px;
+}
+.scissors-box.third{
+    left: 287px;
+}
+.scissors-box.fourth{
+    left: 369px;
+}
+.scissors{
+    position: relative;
+    height: 131px;
+    width: 145px;
+}
+
+.scissors-left{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 127px;
+    height: 131px;
+    background: url(../img/scissors-left.png) no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+.scissors-right{
+    position: absolute;
+    top: 1px;
+    left: 19px;
+    width: 132px;
+    height: 129px;
+    background: url(../img/scissors-right.png) no-repeat;
+    background-size: contain;
+    z-index: 3;
+}
+.scissors .trapezoid{
+    z-index: 3;
+    position: absolute;
+    top: 1px;
+    left: -7px;
+    width: 150px;
+    height: 122px;
+    background-color: transparent; /* 사다리꼴의 색상 */
+    clip-path: polygon(35% 0, 65% 0, 100% 100%, 0% 100%);
+    cursor: pointer;
+}
+
+.button-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button{
+    width: 52px;
+    height: 56px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.button.left{
+    background-image: url(../img/button-left.png);
+    margin-left: 10px;
+}
+.button.right{
+    background-image: url(../img/button-right.png);
+    margin-right: 10px;
+}
+
+
+
+
+
+
+/* 쿼티 자판 관련 */
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.scaffolding{
+    position: absolute;
+    left: 25px;
+    bottom: 45px;
+    width: 561px;
+    height: 144px;
+    border-radius: 40px;
+    border: 4px solid #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scaffolding-content{
+   font-family: 'malgunbd', sans-serif;
+    font-size: 35px;
+    line-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.scaffolding .btn-refresh{
+    width: 40px;
+    height: 43px;
+    content: url(../img/btn-reset-scaffolding.png);
+    margin-right: 5px;
+}
+
+.scaffolding .character{
+    width: 131px;
+    height: 153px;
+    content: url(../img/chara_square.png);
+    position: absolute;
+    top: 17px;
+    right: -55px;
+}
+
+.guide_hand{
+    position: absolute;
+    top: 210px;
+    left: 250px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.png) no-repeat;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-dim {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'malgunbd', sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: #58585891;
+    line-height: 100vh;
+    font-size: min(3.7vw, 8.6vh);
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
