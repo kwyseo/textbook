@@ -135,6 +135,13 @@ input[type=number] {
     top: 170px;
     left: 38px;
 }
+.diagram .parallelogram-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 564px;
+    height: 164px;
+}
 .diagram .parallelogram {
     position: absolute;
     top: 0;
@@ -160,111 +167,69 @@ input[type=number] {
     background-image: url(../img/parallel_4.png);
 }
 
-.diagram .select_1_left{
+.diagram .parallelogram_piece{
     position: absolute;
     top: 0;
+    height: 164px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.diagram .select_1_left{
     left: 0;
     width: 165px;
-    height: 164px;
     background-image: url(../img/select_1_left.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_1_right{
-    position: absolute;
-    top: 0;
     left: 161px;
     width: 408px;
-    height: 164px;
     background-image: url(../img/select_1_right.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_2_left {
-    position: absolute;
-    top: 0;
     left: 0;
     width: 242px;
-    height: 164px;
     background-image: url(../img/select_2_left.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_2_right{
-    position: absolute;
-    top: 0;
     left: 238px;
     width: 326px;
-    height: 164px;
     background-image: url(../img/select_2_right.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_3_left {
-    position: absolute;
-    top: 0;
     left: 0;
     width: 327px;
-    height: 164px;
     background-image: url(../img/select_3_left.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_3_right{
-    position: absolute;
-    top: 0;
     left: 323px;
     width: 243px;
-    height: 164px;
     background-image: url(../img/select_3_right.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_4_left{
-    position: absolute;
-    top: 0;
     left: 0;
     width: 410px;
-    height: 164px;
     background-image: url(../img/select_4_left.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 .diagram .select_4_right{
-    position: absolute;
-    top: 0;
     left: 406px;
     width: 163px;
-    height: 164px;
     background-image: url(../img/select_4_right.png);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
-
-
-
 
 
 .diagram .parallelogram .bar{
-    width: 3px;
+    width: 11px;
     height: 156px;
     margin-top: 4px;
+    margin-left: 71px;
 }
 
-.diagram .parallelogram .bar_1{
-    margin-left: 160px;
+.diagram .parallelogram .bar.bar_1{
+    margin-left: 156px;
 }
-
-.diagram .parallelogram .bar_2{
-    margin-left: 78px;
+.diagram .parallelogram .bar.bar_2{
+    margin-left: 69px;
 }
-.diagram .parallelogram .bar_3{
-    margin-left: 79px;
-}
-.diagram .parallelogram .bar_4{
-    margin-left: 79px;
-}
-
 
 
 .scissors-box{
@@ -438,18 +403,6 @@ input[type=number] {
     position: absolute;
     top: 17px;
     right: -55px;
-}
-
-.guide_hand{
-    position: absolute;
-    top: 210px;
-    left: 250px;
-    width: 103px;
-    height: 123px;
-    background: url(../img/Handguide.png) no-repeat;
-    background-size: contain;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .start-dim {

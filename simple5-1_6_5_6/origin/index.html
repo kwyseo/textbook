@@ -14,7 +14,7 @@
     <div class="view-wrap">
         <div class="wrap">
             <div class="alt-box" tabindex="5"
-                 aria-label="주어진 모양 세 개 중 원하는 모양 하나를 선택해 가와 나 종이에 선택한 모양을 채우는 활동입니다."></div>
+                 aria-label="평행사변형을 점선을 따라 가위로 자르고 잘린 도형을 이어붙여 직사각형으로 만들어 평행사변형의 넓이를 구하는 활동입니다"></div>
             <!-- 모달 창 정의 -->
             <div class="modal_qwerty">
             </div>
@@ -31,15 +31,16 @@
                 </div>
             </div>
             <div class="container content">
-                <div class="pink-box">
+                <div class="pink-box" tabindex="5">
                     점선을 따라 잘라 봐.
                 </div>
                 <div class="diagram">
+                    <div class="parallelogram-box" tabindex="5" aria-label="평행사변형"></div>
                     <div class="parallelogram select_1">
-                        <div class="bar bar_1"></div>
-                        <div class="bar bar_2"></div>
-                        <div class="bar bar_3"></div>
-                        <div class="bar bar_4"></div>
+                        <div class="bar bar_1" tabindex="5" aria-label="첫번째 점선"></div>
+                        <div class="bar bar_2" tabindex="5" aria-label="두번째 점선"></div>
+                        <div class="bar bar_3" tabindex="5" aria-label="세번째 점선"></div>
+                        <div class="bar bar_4" tabindex="5" aria-label="네번째 점선"></div>
                     </div>
                     <div class="parallelogram_piece select_1_left hide"></div>
                     <div class="parallelogram_piece select_1_right hide"></div>
@@ -54,20 +55,20 @@
                     <div class="scissors">
                         <div class="scissors-left"></div>
                         <div class="scissors-right"></div>
-                        <div class="trapezoid"></div>
+                        <div class="trapezoid" tabindex="5" aria-label="가위를 클릭하여 평행사변형을 점선을 따라 자릅니다"></div>
                     </div>
                     <div class="button-box">
                         <div>
-                            <div class="button left"></div>
+                            <div class="button left" tabindex="5" aria-label="왼쪽 이동 버튼"></div>
                         </div>
                         <div>
-                            <div class="button right"></div>
+                            <div class="button right" tabindex="5" aria-label="오른쪽 이동 버튼"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="scaffolding hide">
-                <div class="scaffolding-content">
+            <div class="scaffolding hide" tabindex="5" aria-label="새로고침 버튼을 눌러 다른 방법으로도 잘라 보세요">
+                <div class="scaffolding-content" aria-hidden="true">
                     <div style="display: flex; align-items: center">
                         <div class="btn-refresh"></div>
                         를 눌러 다른 방법으로도
@@ -77,7 +78,7 @@
                 <div class="character"></div>
             </div>
         </div>
-        <div class="start-dim hide" tabindex="5">여기를 클릭해 디지털 활동을 시작해 보세요.</div>
+        <div class="start-dim" tabindex="5">여기를 클릭해 디지털 활동을 시작해 보세요.</div>
     </div>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4"/>

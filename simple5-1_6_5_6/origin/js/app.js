@@ -39,47 +39,9 @@ const onClickRefresh = (event) => {
         piece.style.transform = 'translateX(0)';
     })
     root.querySelector('.scissors-box').classList.remove('hide');
+    setAriaLabel('.parallelogram-box', '평행사변형');
     setScissors(1);
     stopScaffolding();
-}
-
-const handGuideAnimation = () => {
-    const guideHand = root.querySelector('.guide_hand');
-    //if(!guideHand.classList.contains('hide'))
-    //    return;
-    guideHand.style.opacity = '0.0';
-    guideHand.classList.remove('hide');
-    const animation = anime.timeline({loop:2, complete:()=>{
-            if(!guideHand.classList.contains('hide')) {
-                //setTimeout(animation.restart, 3000);
-                anime({
-                    targets: guideHand,
-                    opacity: [0, 0, 0, 0, 1],
-                    duration: 1500,
-                    easing: 'linear',
-                    loop: false
-                });
-
-            }
-        }});
-    animation.add({
-            targets: guideHand,
-            delay: 2000,
-            opacity: [0,1,1],
-            duration: 1500,
-            easing:"linear"
-        }
-    ).add({
-            targets: guideHand,
-            opacity: [1,0],
-            duration: 1000,
-            easing:"linear"
-        }
-    );
-}
-
-const stopHandGuidAnimation = (event) =>{
-    root.querySelector('.guide_hand').classList.add('hide');
 }
 
 const stopScaffolding = (event) => {
@@ -93,7 +55,9 @@ const stopScaffolding = (event) => {
 // 처음 시작할 때 나오는 안내 문구
 const startScaffolding = () => {
     const scaffolding = root.querySelector(".scaffolding");
-    scaffolding.classList.remove('hide');
+    scaffolding.classList.remove('hide'); // parallelogram-box
+    setAriaLabel('.parallelogram-box', '잘린 도형을 이어붙여 직사각형으로 만들었습니다');
+    scaffolding.focus();
 }
 
 // 인수값은 1, 2, 3, 4
@@ -300,7 +264,7 @@ const init = (env) => {
 
     root.querySelector(".btn-fullscreen").addEventListener('click', toggleFullScreen);
     root.querySelector(".menu .btn-refresh").addEventListener('click', onClickRefresh);
-    document.addEventListener('click', stopScaffolding);
+    //document.addEventListener('click', stopScaffolding);
     root.querySelector('.start-dim').addEventListener('click', (event)=>{
         event.preventDefault();
         event.stopPropagation();
@@ -327,9 +291,9 @@ window.addEventListener("script-loaded",(env)=>{
     if(param && param !== env.detail.unique) return;
     root = env.detail.root;
     checkIpad(root);
-    //createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
-    //root.querySelector('.start-dim').focus();
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝

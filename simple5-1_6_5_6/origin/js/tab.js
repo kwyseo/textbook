@@ -8,7 +8,7 @@ export const defineTab = (elementClass, beforeFunction, nextFunction, isMultiEle
         ? root.querySelector(elementClass) : elementClass;
     if (isMultiElements)
         targetElement = (typeof elementClass === 'string')
-            ? root.querySelectorAll(elementClass) : elementClass;
+            ? [...root.querySelectorAll(elementClass)] : elementClass;
     const _defineTab = (target) => {
         target.addEventListener('keydown', function (event) {
             if (event.key === 'Tab' && event.shiftKey) {
@@ -37,8 +37,6 @@ export const defineTab = (elementClass, beforeFunction, nextFunction, isMultiEle
             }
         });
     }
-
-
     if (Array.isArray(targetElement)) {
         targetElement.forEach((target) => {
             _defineTab(target);
@@ -71,11 +69,16 @@ const setFocusToRefresh = (next = true) => {
 }
 
 const setFocusToLastElement = () => {
-    const drawBox = root.querySelector('.right .draw-box');
-    if (drawBox.hasChildNodes()) {
-        drawBox.lastElementChild.focus();
-    } else {
-        root.querySelector('.frame .right .draw-box-box').focus();
+    const parallelogram = root.querySelector('.parallelogram');
+    if(!parallelogram.classList.contains('hide')) {
+        const imageNames = ['select_1', 'select_2', 'select_3', 'select_4'];
+        imageNames.forEach((className, index) => {
+            if (parallelogram.classList.contains(className)) {
+                root.querySelectorAll('.parallelogram .bar')[index].focus();
+            }
+        })
+    }else{
+        root.querySelector('.parallelogram-box').focus();
     }
 }
 const setFocusToAltBox = () => {
@@ -131,31 +134,74 @@ export const createTabRule = (shadowRoot) => {
             setFocusToFullButton(false);
         },
         () => {
-            const popup = root.querySelector('.scaffolding');
-            if(!popup.classList.contains('hide')){
-                popup.querySelector('.scaffolding-content').focus();
+            const box = root.querySelector('.pink-box');
+            if(!box.classList.contains('hide')){
+                box.focus();
             }else {
                 setFocusToAltBox(true);
             }
         }
     );
     defineTab('.alt-box', () => {
-        setFocusToRefresh(false);
-    }, '.shape-box');
-    defineTab('.shape-box', '.alt-box', '.shape.circle');
-    defineTab('.shape.circle', '.shape-box', '.shape.square');
-    defineTab('.shape.square', '.shape.circle', '.shape.rectangle');
-    defineTab('.shape.rectangle', '.shape.square', '.paste-all-form label');
-    defineTab('.paste-all-form label', '.shape.rectangle', '#paste-all');
-    defineTab('#paste-all', '.paste-all-form label', '.left .box-title');
-    defineTab('.left .box-title', '#paste-all', '.left .draw-box-box');
-    defineTab('.right .draw-box-box', '.right .box-title', () => {
-        const drawBox = root.querySelector('.right .draw-box');
-        if (drawBox.hasChildNodes()) {
-            drawBox.firstElementChild.focus();
-        } else {
-            setFocusToFullButton(true);
+        const pinkBox = root.querySelector('.pink-box');
+        if(!pinkBox.classList.contains('hide'))
+            pinkBox.focus();
+        else
+            setFocusToRefresh(false);
+    }, '.parallelogram-box');
+    defineTab('.pink-box', '.btn-refresh', '.alt-box');
+    defineTab('.parallelogram-box', '.alt-box', ()=>{
+        const box = root.querySelector('.scissors-box');
+        if(box.classList.contains('hide')){
+            const parallelogram = root.querySelector('.parallelogram ');
+            if(parallelogram.classList.contains('hide'))
+                setFocusToFullButton();
+            else
+                setFocusToLastElement();
+        }else{
+            const buttons = root.querySelectorAll('.button');
+            if(!buttons[1].classList.contains('hide'))
+                buttons[1].focus();
+            else
+                buttons[0].focus();
         }
     });
-    defineTab('.scaffolding-content', '.btn-refresh', '.alt-box');
+    defineTab('.button.right', '.parallelogram-box', ()=>{
+        const leftButton = root.querySelector('.button.left');
+        if(!leftButton.classList.contains('hide'))
+            leftButton.focus();
+        else
+            root.querySelector('.trapezoid').focus();
+    });
+    defineTab('.button.left', ()=>{
+        const rightButton = root.querySelector('.button.right');
+        if(!rightButton.classList.contains('hide'))
+            rightButton.focus();
+        else
+            root.querySelector('.parallelogram-box').focus();
+    }, '.trapezoid');
+    defineTab('.trapezoid', ()=>{
+        const leftButton = root.querySelector('.button.left');
+        if(!leftButton.classList.contains('hide'))
+            leftButton.focus();
+        else
+            root.querySelector('.button.right').focus();
+    }, ()=>{
+        setFocusToLastElement();
+    });
+    defineTab('.parallelogram .bar', ()=>{
+        const box = root.querySelector('.scissors-box');
+        if(box.classList.contains('hide')){
+            setFocusToAltBox();
+        }else{
+            const buttons = root.querySelectorAll('.button');
+            if(!buttons[0].classList.contains('hide'))
+                buttons[0].focus();
+            else
+                buttons[1].focus();
+        }
+    }, ()=>{
+        setFocusToFullButton(true)
+    }, true);
+    defineTab('.scaffolding', '.btn-refresh', '.parallelogram-box');
 }
