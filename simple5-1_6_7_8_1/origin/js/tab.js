@@ -56,29 +56,39 @@ export const setFocusToFullButton = (next = true) => {
         return;
     }
     if (next) {
-        setFocusToRefresh(next);
+        setFocusToScaffolding(next)
     } else {
-        setFocusToLastElement();
+        setFocusToLastElement(next);
     }
 }
 
-const setFocusToRefresh = (next = true) => {
-    const btnRefresh = root.querySelector('.btn-refresh');
-    // 이 차시에서는 refresh 버튼이 없을 수 없다.
-    btnRefresh.focus();
+export const setFocusToScaffolding = (next = true) => {
+    const scaffolding = root.querySelector('.scaffolding');
+    if (!scaffolding.classList.contains('hide'))
+        return scaffolding.querySelector('.scaffolding-content').focus();
+    if (next) {
+        setFocusToIntro(next);
+    } else {
+        setFocusToFullButton(next);
+    }
+}
+
+export const setFocusToIntro = (next = true) => {
+    const intro = root.querySelector('.menu .intro');
+    if (!intro.classList.contains('hide'))
+        return intro.focus();
+    if (next) {
+        setFocusToAltBox(next);
+    } else {
+        setFocusToScaffolding(next);
+    }
 }
 
 const setFocusToLastElement = () => {
-    const parallelogram = root.querySelector('.parallelogram');
-    if(!parallelogram.classList.contains('hide')) {
-        const imageNames = ['select_1', 'select_2', 'select_3', 'select_4'];
-        imageNames.forEach((className, index) => {
-            if (parallelogram.classList.contains(className)) {
-                root.querySelectorAll('.parallelogram .bar')[index].focus();
-            }
-        })
-    }else{
-        root.querySelector('.parallelogram-box').focus();
+    if (isQuizComplete('pink')) {
+        root.querySelector('.complete-box_2').focus();
+    } else {
+        root.querySelector('.triangle-pink.second .red-line-3').focus();
     }
 }
 const setFocusToAltBox = () => {
@@ -104,7 +114,31 @@ export const setAriaLabel = (elementClass, label) => {
         elementClass.setAttribute('aria-label', label);
 }
 
+const isQuizComplete = (type) => {
+    let result = false;
+    const _check = (element) => {
+        const style = getComputedStyle(element);
+        // Extract the transform matrix
+        const transformMatrix = style.transform; // e.g., "matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 0)"
+        // Check if a transform is applied
+        if (transformMatrix !== 'none') {
+            const values = transformMatrix.match(/matrix\(([^)]+)\)/)[1].split(', ');
+            const a = parseFloat(values[0]); // First value (a) in the matrix
+            const b = parseFloat(values[1]); // Second value (b) in the matrix
 
+            // Calculate the rotation angle
+            const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI)); // Convert radians to degrees
+            if (angle)
+                result = true;
+        } else {
+            //
+        }
+    }
+    root.querySelectorAll(`.${type === 'blue' ? 'triangle-blue' : 'triangle-pink'}`).forEach((triangle) => {
+        _check(triangle);
+    })
+    return result;
+}
 export const createTabRule = (shadowRoot) => {
     if (root)
         return;
@@ -126,82 +160,78 @@ export const createTabRule = (shadowRoot) => {
             setFocusToLastElement();
         },
         () => {
-            setFocusToRefresh(true);
+            setFocusToScaffolding(true);
         }
     );
-    defineTab('.btn-refresh',
+    defineTab('.scaffolding-content',
         () => {
-            setFocusToFullButton(false);
+            const content = root.querySelector('.scaffolding-content');
+            if(content.classList.contains('explain'))
+                setFocusToFullButton(false);
+            else{
+                // 음... 원래것으로 돌아가야 하나?
+            }
         },
         () => {
-            const box = root.querySelector('.pink-box');
-            if(!box.classList.contains('hide')){
-                box.focus();
-            }else {
-                setFocusToAltBox(true);
-            }
+            const content = root.querySelector('.scaffolding-content');
+            if(content.classList.contains('explain'))
+                setFocusToIntro(true);
+            else
+                setFocusToAltBox();
         }
     );
+    defineTab('.menu .intro',
+        () => {
+            setFocusToScaffolding(false);
+        }, '.alt-box');
     defineTab('.alt-box', () => {
-        const pinkBox = root.querySelector('.pink-box');
-        if(!pinkBox.classList.contains('hide'))
-            pinkBox.focus();
-        else
-            setFocusToRefresh(false);
-    }, '.parallelogram-box');
-    defineTab('.pink-box', '.btn-refresh', '.alt-box');
-    defineTab('.parallelogram-box', '.alt-box', ()=>{
-        const box = root.querySelector('.scissors-box');
-        if(box.classList.contains('hide')){
-            const parallelogram = root.querySelector('.parallelogram ');
-            if(parallelogram.classList.contains('hide'))
-                setFocusToFullButton();
-            else
-                setFocusToLastElement();
-        }else{
-            const buttons = root.querySelectorAll('.button');
-            if(!buttons[1].classList.contains('hide'))
-                buttons[1].focus();
-            else
-                buttons[0].focus();
+        setFocusToIntro(false)
+    }, '.refresh_1');
+    defineTab('.refresh_1', '.alt-bax', '.title_1');
+    defineTab('.title_1', '.refresh_1', '.draw-box-box_1');
+    defineTab('.draw-box-box_1', '.title_1', () => {
+        if (isQuizComplete('blue')) {
+            root.querySelector('.complete-box_1').focus();
+        } else {
+            root.querySelector('.triangle-blue.first .triangle-box').focus();
         }
     });
-    defineTab('.button.right', '.parallelogram-box', ()=>{
-        const leftButton = root.querySelector('.button.left');
-        if(!leftButton.classList.contains('hide'))
-            leftButton.focus();
-        else
-            root.querySelector('.trapezoid').focus();
-    });
-    defineTab('.button.left', ()=>{
-        const rightButton = root.querySelector('.button.right');
-        if(!rightButton.classList.contains('hide'))
-            rightButton.focus();
-        else
-            root.querySelector('.parallelogram-box').focus();
-    }, '.trapezoid');
-    defineTab('.trapezoid', ()=>{
-        const leftButton = root.querySelector('.button.left');
-        if(!leftButton.classList.contains('hide'))
-            leftButton.focus();
-        else
-            root.querySelector('.button.right').focus();
-    }, ()=>{
-        setFocusToLastElement();
-    });
-    defineTab('.parallelogram .bar', ()=>{
-        const box = root.querySelector('.scissors-box');
-        if(box.classList.contains('hide')){
-            setFocusToAltBox();
-        }else{
-            const buttons = root.querySelectorAll('.button');
-            if(!buttons[0].classList.contains('hide'))
-                buttons[0].focus();
-            else
-                buttons[1].focus();
+    defineTab('.complete-box_1', '.draw-box-box_1', '.refresh_2');
+    defineTab('.triangle-blue.first .triangle-box', '.draw-box-box_1', '.triangle-blue.first .blue-line-1');
+    defineTab('.triangle-blue.first .blue-line-1', '.triangle-blue.first .triangle-box', '.triangle-blue.first .blue-line-2');
+    defineTab('.triangle-blue.first .blue-line-2', '.triangle-blue.first .blue-line-1', '.triangle-blue.first .blue-line-3');
+    defineTab('.triangle-blue.first .blue-line-3', '.triangle-blue.first .blue-line-2', '.triangle-blue.second .triangle-box');
+    defineTab('.triangle-blue.second .triangle-box', '.triangle-blue.first .blue-line-3', '.triangle-blue.second .blue-line-1');
+    defineTab('.triangle-blue.second .blue-line-1', '.triangle-blue.second .triangle-box', '.triangle-blue.second .blue-line-2');
+    defineTab('.triangle-blue.second .blue-line-2', '.triangle-blue.second .blue-line-1', '.triangle-blue.second .blue-line-3');
+    defineTab('.triangle-blue.second .blue-line-3', '.triangle-blue.second .blue-line-2', '.refresh_2');
+    defineTab('.refresh_2', () => {
+        if (isQuizComplete('blue')) {
+            root.querySelector('.complete-box_1').focus();
+        } else {
+            root.querySelector('.triangle-blue.second .blue-line-3').focus();
         }
-    }, ()=>{
-        setFocusToFullButton(true)
-    }, true);
-    defineTab('.scaffolding', '.btn-refresh', '.parallelogram-box');
+    }, '.title_2');
+    defineTab('.title_2', '.refresh_2', '.draw-box-box_2');
+    defineTab('.draw-box-box_2', '.title_2', () => {
+        if (isQuizComplete('pink')) {
+            root.querySelector('.complete-box_2').focus();
+        } else {
+            root.querySelector('.triangle-pink.first .triangle-box').focus();
+        }
+    });
+    defineTab('.complete-box_2', '.draw-box-box_2', () => {
+        setFocusToFullButton(true);
+    });
+    defineTab('.triangle-pink.first .triangle-box', '.draw-box-box_2', '.triangle-pink.first .red-line-1');
+    defineTab('.triangle-pink.first .red-line-1', '.triangle-pink.first .triangle-box', '.triangle-pink.first .red-line-2');
+    defineTab('.triangle-pink.first .red-line-2', '.triangle-pink.first .red-line-1', '.triangle-pink.first .red-line-3');
+    defineTab('.triangle-pink.first .red-line-3', '.triangle-pink.first .red-line-2', '.triangle-pink.second .triangle-box');
+    defineTab('.triangle-pink.second .triangle-box', '.triangle-pink.first .red-line-3', '.triangle-pink.second .red-line-1');
+    defineTab('.triangle-pink.second .red-line-1', '.triangle-pink.second .triangle-box', '.triangle-pink.second .red-line-2');
+    defineTab('.triangle-pink.second .red-line-2', '.triangle-pink.second .red-line-1', '.triangle-pink.second .red-line-3');
+    defineTab('.triangle-pink.second .red-line-3', '.triangle-pink.second .red-line-2', () => {
+        setFocusToFullButton(true);
+    });
+
 }

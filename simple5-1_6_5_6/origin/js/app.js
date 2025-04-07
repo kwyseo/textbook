@@ -87,14 +87,16 @@ const setScissors = (targetNumber) => {
     });
     scissorsBox.classList.add(classNames[targetNumber -1]);
     const leftButton = root.querySelector('.button.left');
+    const rightButton = root.querySelector('.button.right');
     if(targetNumber === 1){
         leftButton.classList.add('hide');
+        rightButton.focus();
     }else{
         leftButton.classList.remove('hide');
     }
-    const rightButton = root.querySelector('.button.right');
     if(targetNumber ===4){
         rightButton.classList.add('hide');
+        leftButton.focus();
     }else{
         rightButton.classList.remove('hide');
     }

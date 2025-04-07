@@ -69,13 +69,30 @@ input[type=number] {
     z-index: -1;  /* 마이너스라도 포커스를 줄 수 있다고 한다. */
 }
 
-
 .container.menu{
     display: flex;
     width: 100%;
+    min-height: 197px;
     justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
-    padding: 50px 27px 20px 27px;
+    padding: 20px 27px 20px 27px;
+}
+
+.menu .intro{
+    background-image: url(../img/intro.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 886px;
+    height: 157px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 50px;
+    z-index: 1;
 }
 
 .menu .right-menu{
@@ -90,6 +107,7 @@ input[type=number] {
     background: url(../img/btn-fullscreen-on.png) no-repeat;
     background-size: contain;
     cursor: pointer;
+    margin-bottom: 45px;
 }
 
 .menu .btn-fullscreen.off{
@@ -107,7 +125,7 @@ input[type=number] {
 }
 
 .container.content{
-    margin-top: 1px;
+    margin-top: -45px;
 }
 
 .container.content section{
@@ -129,6 +147,13 @@ section .title{
     border-top-right-radius: 38px;
     border-bottom-right-radius: 38px;
     background-color: #BADAF3;
+    padding-right: 15px;
+    box-sizing: border-box;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section .title:last-child{
@@ -142,6 +167,24 @@ section .draw-box{
     border: 4px solid #75D4FF;
     position: relative;
 }
+section .draw-box .draw-box-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+section .draw-box .complete-box{
+     position: absolute;
+     width: 1359px;
+     height: 363px;
+    top: 20px;
+    left: 150px;
+ }
+
+.triangle-box{
+    width: 100%;
+    height: 100%;
+}
 
 section .triangle-blue{
     position: absolute;
@@ -151,6 +194,21 @@ section .triangle-blue{
     background-image: url(../img/triangle_blue.png);
     background-repeat: no-repeat;
     background-size: contain;
+}
+section .triangle-blue.triangle-blue2{
+    background-image: url(../img/triangle_blue2.png);
+}
+section .triangle-blue.triangle-blue3{
+    background-image: url(../img/triangle_blue3.png);
+}
+section .triangle-blue.triangle-blue4{
+    background-image: url(../img/triangle_blue4.png);
+}
+section .triangle-blue.triangle-blue5{
+    background-image: url(../img/triangle_blue5.png);
+}
+section .triangle-blue.triangle-blue6{
+    background-image: url(../img/triangle_blue6.png);
 }
 section .triangle-blue.first{
     left: 94px;
@@ -162,11 +220,12 @@ section .click-line{
     height: 9px;
     border-radius: 5px;
     position: absolute;
-    background-color: transparent;
+    background-color: #F65439;
+    opacity: .0;
     cursor: pointer;
 }
 section .click-line.clicked{
-    background-color: #F65439;
+    opacity: 1;
 }
 
 section .blue-line-1{
@@ -195,6 +254,21 @@ section .triangle-pink{
     background-image: url(../img/triangle_pink.png);
     background-repeat: no-repeat;
     background-size: contain;
+}
+section .triangle-pink.triangle-pink2{
+    background-image: url(../img/triangle_pink2.png);
+}
+section .triangle-pink.triangle-pink3{
+    background-image: url(../img/triangle_pink3.png);
+}
+section .triangle-pink.triangle-pink4{
+    background-image: url(../img/triangle_pink4.png);
+}
+section .triangle-pink.triangle-pink5{
+    background-image: url(../img/triangle_pink5.png);
+}
+section .triangle-pink.triangle-blue6{
+    background-image: url(../img/triangle_pink6.png);
 }
 
 section .triangle-pink.first{
@@ -279,33 +353,33 @@ section .red-line-3{
 
 .scaffolding{
     position: absolute;
-    left: 25px;
-    bottom: 45px;
-    width: 561px;
-    height: 144px;
-    border-radius: 40px;
+    left: 165px;
+    bottom: 25px;
+    width: 1631px;
+    height: 106px;
+    border-radius: 60px;
     border: 4px solid #222222;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 .scaffolding-content{
-   font-family: 'malgunbd', sans-serif;
-    font-size: 35px;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 44px;
     line-height: 50px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .scaffolding .character{
-    width: 131px;
-    height: 153px;
     content: url(../img/chara_square.png);
+    width: 221px;
+    height: 241px;
     position: absolute;
-    top: 17px;
-    right: -55px;
+    top: -100px;
+    left: -120px;
 }
 
 .start-dim {
