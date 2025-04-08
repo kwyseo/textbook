@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <title>삼각형의 넓이를 구해 볼까요</title>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <div class="alt-box" tabindex="5"
+                 aria-label="서로 길이가 같은 변끼리 이어붙인 두 개의 삼각형을 통해 평행사변형의 넓이를 구하는 활동입니다"></div>
+            <!-- 모달 창 정의 -->
+            <div class="modal_qwerty">
+            </div>
+            <div class="modal_number_pad">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div>
+                    <div class="btn-fullscreen" role="button" tabindex="5" aria-label="전체화면"></div>
+                </div>
+                <div class="right-menu">
+                    <div class="btn-refresh" tabindex="5" aria-label="새로고침"></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="left">
+                    <div class="button">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">1
+                    </div>
+                    </div>
+                    <div class="button off">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">
+                        2
+                    </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="draw-box draw-box_1">
+                        <div class="triangle-box quiz_1"></div>
+                        <div class="triangle_piece triangle_piece_1_2 hide"></div>
+                        <div class="triangle_piece triangle_piece_1_1 hide"></div>
+                        <div class="scissors horizontal">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                    </div>
+                    <div class="draw-box draw-box_2 hide">
+                        <div class="triangle-box quiz_2"></div>
+                        <div class="triangle_piece triangle_piece_2_3_1 hide"></div>
+                        <div class="triangle_piece triangle_piece_2_1_2 hide"></div>
+                        <div class="triangle_piece triangle_piece_2_1_1 hide"></div>
+                        <div class="triangle_piece triangle_piece_2_2_2 hide"></div>
+                        <div class="triangle_piece triangle_piece_2_2_1 hide"></div>
+                        <div class="scissors vertical vertical_1">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                        <div class="scissors vertical vertical_2">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaffolding">
+                <div class="scaffolding-content" tabindex="5" aria-label="점선 또는 가위를 클릭하여 삼각형을 잘라 보세요">
+                    <div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>
+                </div>
+                <div class="character"></div>
+            </div>
+        </div>
+        <div class="start-dim hide" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
+             aria-hidden="true">
+            여기를 클릭해 디지털 활동을 시작해 보세요.
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4"/>
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

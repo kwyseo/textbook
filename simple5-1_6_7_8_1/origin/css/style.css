@@ -156,7 +156,7 @@ section .title{
     align-items: center;
 }
 
-section .title:last-child{
+section .title.title_2{
     background-color: #F7C8DA;
 }
 
@@ -220,12 +220,17 @@ section .click-line{
     height: 9px;
     border-radius: 5px;
     position: absolute;
-    background-color: #F65439;
-    opacity: .0;
+    background-color: transparent;
     cursor: pointer;
 }
+
+section .click-line:focus{
+    outline: 2px solid black;
+    outline-offset: 10px; /* 간격 설정 */
+}
+
 section .click-line.clicked{
-    opacity: 1;
+    background-color: #F65439;
 }
 
 section .blue-line-1{
@@ -388,8 +393,8 @@ section .red-line-3{
     margin: 0;
     text-align: center;
     font-family: 'malgunbd', sans-serif;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: #58585891;
     line-height: 100vh;
     font-size: min(3.7vw, 8.6vh);

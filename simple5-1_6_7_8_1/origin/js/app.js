@@ -27,7 +27,7 @@ const onClickRefresh = (event, button, index) => {
     event.preventDefault();
     event.stopPropagation();
     const section = button.parentElement.parentElement;
-    root.querySelector('.menu .intro').classList.remove('hide');
+    //root.querySelector('.menu .intro').classList.remove('hide');
     section.querySelectorAll('.triangle').forEach((triangle)=>{
         if(index===0)
             addBlueLineCss(triangle)
@@ -45,7 +45,7 @@ const onClickRefresh = (event, button, index) => {
         triangle.style.transform = null;
     })
     stopScaffolding();
-    onFocusLine();
+    //onFocusLine();
 }
 
 const stopScaffolding = (event) => {
@@ -187,12 +187,15 @@ const onClickLine = (event, lineElement, lineIndex) => {
     for(let i = 0; i < testLines.length; i++){
         if(testLines[i].classList.contains('clicked')){
             if(i!==clickIndex && i!==symmetryIndex){
+                // 잘못 누른 경우
                 const content = root.querySelector('.scaffolding-content');
                 content.classList.remove('explain');
                 content.classList.add('error');
                 content.setAttribute('aria-label', '변의 길이가 달라요. 다시 생각해 보세요')
                 content.innerHTML
                     = '<div aria-hidden="true">변의 길이가 달라요. 다시 생각해 보세요.</div>';
+                lineElement.style.opacity = '.0';
+                lineElement.classList.add('clicked');
                 anime({
                     targets: lineElement,
                     opacity:[0, 1, 1, 1, 0, 0, 0],
@@ -200,6 +203,8 @@ const onClickLine = (event, lineElement, lineIndex) => {
                     easing: 'easeInOutQuad',
                     loop: 2,
                     complete: ()=>{
+                        lineElement.classList.remove('clicked');
+                        lineElement.style.opacity = '1';
                         startScaffolding({
                             dismissTime: 2000,
                             focusElement: root.querySelector('.alt-box')
@@ -285,7 +290,6 @@ const init = (env) => {
     const _autoScale = () => {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-        const body = root.querySelector('body');
         const viewWarp = root.querySelector('.view-wrap');
         const wrap = root.querySelector('.wrap');
         const targetWidth = 1920;
@@ -307,6 +311,10 @@ const init = (env) => {
     };
     window.addEventListener("resize", _autoScale);
     _autoScale();
+    // 삼성 브라우져 때문에 넣는다.
+    setTimeout(()=>{
+        _autoScale();
+    }, 1);
     // 자판 만들기, 이거 활성화하면 checkbox 와 충돌한다. 피할려면 click 이벤트에서 window 로 이벤트 안가게 잡아준다.
     //qwerty.init(root, '.modal_qwerty');
 
@@ -323,7 +331,7 @@ const init = (env) => {
         setFocusToFullButton();
     })
     startDim.addEventListener('keydown', (event)=>{
-        // Enter는 nvda+space를 눌러서 포커스모드로 바꿔야 한다.
+        // Enter 는 nvda+space 를 눌러서 포커스모드로 바꿔야 한다.
         if (event.key === 'Tab' || event.key === 'Enter') {
             if(!root.querySelector('.start-dim').classList.contains('hide')) {
                 event.preventDefault();
@@ -334,10 +342,14 @@ const init = (env) => {
         }
     })
     root.querySelectorAll('.click-line').forEach((line, index)=>{
-        line.addEventListener('click', (event)=>{
+        line.addEventListener('mousedown', (event)=>{
+            event.preventDefault();
             onClickLine(event, line, index);
         });
         /*
+        line.addEventListener('click', (event)=>{
+            onClickLine(event, line, index);
+        });
         line.addEventListener('mouseover', (event)=>{
             onFocusLine(event);
         });

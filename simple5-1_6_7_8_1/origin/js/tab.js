@@ -17,8 +17,14 @@ export const defineTab = (elementClass, beforeFunction, nextFunction, isMultiEle
                 event.preventDefault();
                 event.stopPropagation();
 
-                if (typeof beforeFunction === 'string')
-                    root.querySelector(beforeFunction).focus();
+                if (typeof beforeFunction === 'string') {
+                    try
+                    {
+                        root.querySelector(beforeFunction).focus();
+                    }catch (e){
+                        console.log('not found: ' + beforeFunction)
+                    }
+                }
                 else if (typeof beforeFunction === 'function')
                     beforeFunction(event);
                 else
@@ -147,9 +153,23 @@ export const createTabRule = (shadowRoot) => {
     root.querySelectorAll('[tabindex]').forEach((tab) => {
         if (parseInt(tab.getAttribute('tabindex')) > 0) {
             tab.addEventListener('keydown', function (event) {
-                //console.log('tabIndex:' + event.key);
                 if (event.key === 'Enter') {
-                    tab.click()
+                    // 주의: nvda 를 키면 nvda 가 후킹을 해서 여기까지도 오지 않는다.
+                    // 그래도 넣은 것은 nvda 를 켜지 않았을 때 엔터가 먹도록 넣은 것이다.
+                    //const customClickEvent = new CustomEvent('click', {
+                    //    detail: {isFromEnter: true}
+                    //});
+                    //tab.dispatchEvent(customClickEvent);
+                    if(event.currentTarget.classList.contains('click-line')){
+                        const mouseDownEvent = new MouseEvent('mousedown', {
+                            bubbles: true,      // Allows the event to bubble up through the DOM
+                            cancelable: true,   // Allows the event to be canceled
+                            view: window        // Specifies the view (usually the window)
+                        });
+                        tab.dispatchEvent(mouseDownEvent);
+                    }else {
+                        tab.click()
+                    }
                     event.stopPropagation();
                 }
             });
@@ -187,7 +207,7 @@ export const createTabRule = (shadowRoot) => {
     defineTab('.alt-box', () => {
         setFocusToIntro(false)
     }, '.refresh_1');
-    defineTab('.refresh_1', '.alt-bax', '.title_1');
+    defineTab('.refresh_1', '.alt-box', '.title_1');
     defineTab('.title_1', '.refresh_1', '.draw-box-box_1');
     defineTab('.draw-box-box_1', '.title_1', () => {
         if (isQuizComplete('blue')) {
