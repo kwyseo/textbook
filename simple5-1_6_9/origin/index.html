@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <title>삼각형의 넓이를 구해 볼까요</title>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <div class="alt-box" tabindex="5"
+                 aria-label="삼각형을 잘라 이어붙인 평행사변형의 넓이를 삼각형을 통해 구하는 활동입니다"></div>
+            <!-- 모달 창 정의 -->
+            <div class="modal_qwerty">
+            </div>
+            <div class="modal_number_pad">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div>
+                    <div class="btn-fullscreen" role="button" tabindex="5" aria-label="전체화면"></div>
+                </div>
+                <div class="right-menu">
+                    <div class="btn-refresh" tabindex="5" aria-label="새로고침"></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="content-box">
+                    <div class="draw-box"></div>
+                    <div class="diagram_piece diagram_above hide"></div>
+                    <div class="diagram_piece diagram_below hide"></div>
+                    <div class="diagram_piece diagram_left hide"></div>
+                    <div class="diagram_piece diagram_right hide"></div>
+                    <div class="click-bar click-bar-horizontal"></div>
+                    <div class="click-bar click-bar-vertical"></div>
+                    <div class="diagram_piece diagram_above_left hide"></div>
+                    <div class="diagram_piece diagram_above_right hide"></div>
+                    <div class="diagram_piece diagram_below_left hide"></div>
+                    <div class="diagram_piece diagram_below_right hide"></div>
+                    <div class="scissors horizontal" tabindex="5" aria-label="가위을 클릭해 삼각형을 자릅니다">
+                        <div class="scissors-left"></div>
+                        <div class="scissors-right"></div>
+                    </div>
+                    <div class="scissors vertical" tabindex="5" aria-label="첫번째 가위을 클릭해 삼각형을 자릅니다">
+                        <div class="scissors-left"></div>
+                        <div class="scissors-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaffolding">
+                <div class="scaffolding-content explain" tabindex="5" aria-label="점선 또는 가위를 클릭하여 삼각형을 잘라 보세요">
+                    <div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>
+
+                </div>
+                <div class="character"></div>
+            </div>
+        </div>
+        <div class="start-dim hide" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
+             aria-hidden="true">
+            여기를 클릭해 디지털 활동을 시작해 보세요.
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4"/>
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>

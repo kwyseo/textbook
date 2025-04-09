@@ -152,6 +152,28 @@ input[type=number] {
     height: 100%;
 }
 
+.content .right .draw-box-box{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 687px;
+    height: 100%;
+}
+.content .right .complete-box_1{
+    position: absolute;
+    width: 985px;
+    top: 200px;
+    left: -135px;
+    height: 300px;
+}
+.content .right .complete-box_2{
+    position: absolute;
+    top: -30px;
+    left: 186px;
+    width: 425px;
+    height: 535px;
+}
+
 .content .right .draw-box{
     position: absolute;
     width: 100%;
@@ -174,6 +196,31 @@ input[type=number] {
 }
 .content .right .triangle-box.quiz_2{
     background-image: url(../img/triangle_2.png);
+}
+
+.content .right .click-bar-horizontal{
+    position: absolute;
+    top: 235px;
+    left: 222px;
+    width: 350px;
+    height: 16px;
+    border-radius: 8px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.content .right .click-bar-vertical{
+    position: absolute;
+    top: 240px;
+    left: 212px;
+    width: 16px;
+    height: 227px;
+    border-radius: 8px;
+    z-index: 2;
+    cursor: pointer;
+}
+.content .right .click-bar-vertical.click-bar-vertical_2{
+    left: 566px;
 }
 .content .right .triangle_piece{
     position: absolute;
@@ -220,11 +267,13 @@ input[type=number] {
     left: -6px;
 }
 .content .right .triangle_piece_2_2_2{
+    /*
     background-image: url(../img/triangle_piece_2_2_2.png);
-    width: 580px;
-    height: 466px;
-    top: 5px;
-    left: -3px;
+     */
+    width: 576px;
+    height: 464px;
+    top: 6px;
+    left: 1px;
 }
 .content .right .triangle_piece_2_2_1{
     background-image: url(../img/triangle_piece_2_2_1.png);
@@ -238,14 +287,16 @@ input[type=number] {
     position: absolute;
     top: 138px;
     left: 700px;
-    height: 131px;
-    width: 145px;
+    height: 205px;
+    width: 175px;
     cursor: pointer;
 }
 .content .right .scissors.vertical{
     /* rotate 를 하면 z-index 가 원하는 대로 작동하지 않는다*/
     /*transform: rotate(90deg);*/
     top: 480px;
+    width: 150px;
+    height: 175px;
 }
 
 .content .right .scissors.vertical.vertical_1{

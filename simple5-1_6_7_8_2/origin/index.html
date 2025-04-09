@@ -14,7 +14,7 @@
     <div class="view-wrap">
         <div class="wrap">
             <div class="alt-box" tabindex="5"
-                 aria-label="서로 길이가 같은 변끼리 이어붙인 두 개의 삼각형을 통해 평행사변형의 넓이를 구하는 활동입니다"></div>
+                 aria-label="삼각형을 잘라 이어붙인 평행사변형의 넓이를 삼각형을 통해 구하는 활동입니다"></div>
             <!-- 모달 창 정의 -->
             <div class="modal_qwerty">
             </div>
@@ -31,36 +31,42 @@
             </div>
             <div class="container content">
                 <div class="left">
-                    <div class="button">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">1
+                    <div class="button button_1" tabindex="5">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">1
                     </div>
                     </div>
-                    <div class="button off">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">
+                    <div class="button button_2 off" tabindex="5">방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">
                         2
                     </div>
                     </div>
                 </div>
                 <div class="right">
+                    <div class="draw-box-box" tabindex="5" aria-label="삼각형을 잘라 이어붙여 평행사변형을 만듭니다"></div>
                     <div class="draw-box draw-box_1">
                         <div class="triangle-box quiz_1"></div>
+                        <div class="complete-box complete-box_1 hide" tabindex="5" aria-label="삼각형을 잘라 만든 평행사변형입니다"></div>
+                        <div class="click-bar click-bar-horizontal" tabindex="5" aria-label="점선을 클릭해 삼각형을 자릅니다"></div>
                         <div class="triangle_piece triangle_piece_1_2 hide"></div>
                         <div class="triangle_piece triangle_piece_1_1 hide"></div>
-                        <div class="scissors horizontal">
+                        <div class="scissors horizontal" tabindex="5" aria-label="가위을 클릭해 삼각형을 자릅니다">
                             <div class="scissors-left"></div>
                             <div class="scissors-right"></div>
                         </div>
                     </div>
                     <div class="draw-box draw-box_2 hide">
                         <div class="triangle-box quiz_2"></div>
+                        <div class="complete-box complete-box_2 hide" tabindex="5" aria-label="삼각형을 잘라 만든 평행사변형입니다"></div>
                         <div class="triangle_piece triangle_piece_2_3_1 hide"></div>
                         <div class="triangle_piece triangle_piece_2_1_2 hide"></div>
                         <div class="triangle_piece triangle_piece_2_1_1 hide"></div>
-                        <div class="triangle_piece triangle_piece_2_2_2 hide"></div>
+                        <img src="img/triangle_piece_2_2_2.png" alt="" class="triangle_piece triangle_piece_2_2_2 hide"></img>
                         <div class="triangle_piece triangle_piece_2_2_1 hide"></div>
-                        <div class="scissors vertical vertical_1">
+                        <div class="click-bar click-bar-vertical click-bar-vertical_1" tabindex="5" aria-label="첫번째 점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="click-bar click-bar-vertical click-bar-vertical_2" tabindex="5" aria-label="두번째 점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="scissors vertical vertical_1" tabindex="5" aria-label="첫번째 가위을 클릭해 삼각형을 자릅니다">
                             <div class="scissors-left"></div>
                             <div class="scissors-right"></div>
                         </div>
-                        <div class="scissors vertical vertical_2">
+                        <div class="scissors vertical vertical_2" tabindex="5" aria-label="두번째 가위을 클릭해 삼각형을 자릅니다">
                             <div class="scissors-left"></div>
                             <div class="scissors-right"></div>
                         </div>
@@ -68,13 +74,13 @@
                 </div>
             </div>
             <div class="scaffolding">
-                <div class="scaffolding-content" tabindex="5" aria-label="점선 또는 가위를 클릭하여 삼각형을 잘라 보세요">
+                <div class="scaffolding-content explain" tabindex="5" aria-label="점선 또는 가위를 클릭하여 삼각형을 잘라 보세요">
                     <div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>
                 </div>
                 <div class="character"></div>
             </div>
         </div>
-        <div class="start-dim hide" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
+        <div class="start-dim" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
              aria-hidden="true">
             여기를 클릭해 디지털 활동을 시작해 보세요.
         </div>

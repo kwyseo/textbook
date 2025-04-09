@@ -43,6 +43,12 @@ const onClickRefresh = (event) => {
     root.querySelectorAll('.scissors').forEach((scissors)=>{
         scissors.classList.remove('hide');
     });
+    root.querySelectorAll('.click-bar').forEach((bar)=>{
+        bar.classList.remove('hide');
+    });
+    root.querySelectorAll('.complete-box').forEach((box)=>{
+        box.classList.add('hide');
+    });
     setScaffoldingText(1);
 }
 
@@ -79,14 +85,39 @@ const onClickButton = (event, index)=>{
     buttons[opponentNumber].classList.add('off');
     drawBoxes[index].classList.remove('hide');
     drawBoxes[opponentNumber].classList.add('hide');
+    // 도형이 완성되었는지 확인해서 scaffolding 내용도 바꾸어 주어야 한다.
+    let isComplete = true;
+    drawBoxes[index].querySelectorAll('.click-bar').forEach((bar)=>{
+        if(!bar.classList.contains('hide'))
+            isComplete = false;
+    })
+    if(isComplete)
+        setScaffoldingText(2);
+    else
+        setScaffoldingText(1);
 }
-const setScaffoldingText = (type) => {
+const setScaffoldingText = (type, setFocus = false) => {
     const text = type === 1
-        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요</div>'
+        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>'
         :'<div aria-hidden="true">삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요.</div>';
+    const ariaLabel = type === 1
+        ? '점선 또는 가위를 클릭하여 삼각형을 잘라 보세요'
+        :'삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요';
     const contentDiv = root.querySelector('.scaffolding-content');
     contentDiv.innerHTML = text;
-    setAriaLabel(contentDiv, text);
+    if(type === 1){
+        contentDiv.classList.add('explain');
+        contentDiv.classList.remove('complete');
+    }else{
+        contentDiv.classList.add('complete');
+        contentDiv.classList.remove('explain');
+    }
+    setAriaLabel(contentDiv, ariaLabel);
+    if(setFocus) {
+        setTimeout(()=>{
+            contentDiv.focus();
+        }, 10)
+    }
 }
 
 const moveScissorsHorizontal = (scissors) => {
@@ -115,8 +146,11 @@ const moveScissorsHorizontal = (scissors) => {
             const moveTriangle2 = root.querySelector('.triangle_piece_1_2');
             moveTriangle2.classList.remove('hide');
             root.querySelector('.triangle-box.quiz_1').classList.add('hide');
+            root.querySelector('.click-bar-horizontal').classList.add('hide');
             const animation = anime.timeline({complete:()=>{
                     isAnimating = false;
+                    setScaffoldingText(2, true);
+                    root.querySelector('.complete-box_1').classList.remove('hide');
                 }});
             animation.add({
                     targets: moveTriangle1,
@@ -185,6 +219,7 @@ const moveScissorsVertical = (scissors, index) => {
             const centerBig = root.querySelector('.triangle_piece_2_3_1');
             const leftScissorsShown = !root.querySelector('.scissors.vertical_1').classList.contains('hide');
             const rightScissorsShown = !root.querySelector('.scissors.vertical_2').classList.contains('hide');
+            root.querySelectorAll('.click-bar-vertical')[index].classList.add('hide');
             let small = null;
             let big = null;
             if(index=== 0){
@@ -207,6 +242,16 @@ const moveScissorsVertical = (scissors, index) => {
             const secondRotate = index=== 0 ? 180: -180;
             const animation = anime.timeline({complete:()=>{
                     isAnimating = false;
+                    if(big === centerBig) {
+                        setScaffoldingText(2, true);
+                        root.querySelector('.complete-box_2').classList.remove('hide');
+                    }else{
+                        if(index === 0){
+                            root.querySelector('.click-bar-vertical_2').focus();
+                        }else{
+                            setFocusToFullButton(true);
+                        }
+                    }
                 }});
             animation.add({
                     targets: small,
@@ -223,18 +268,6 @@ const moveScissorsVertical = (scissors, index) => {
                     easing:"easeInOutQuad"
                 }
             );
-            /*
-            const animation2 = anime.timeline({complete:()=>{
-
-                }});
-            animation2.add({
-                    targets: moveTriangle2,
-                    translateX: -100,
-                    duration: 2000,
-                    easing:"easeInOutQuad"
-                }
-            );
-             */
         }
     }
     _smoothVerticalMove();
@@ -309,6 +342,19 @@ const init = (env) => {
         event.currentTarget.classList.add('hide');
         setFocusToFullButton();
     })
+
+    startDim.addEventListener('keydown', (event)=>{
+        // Enter 는 nvda+space 를 눌러서 포커스모드로 바꿔야 한다.
+        if (event.key === 'Tab' || event.key === 'Enter') {
+            if(!root.querySelector('.start-dim').classList.contains('hide')) {
+                event.preventDefault();
+                event.stopPropagation();
+                root.querySelector('.start-dim').classList.add('hide');
+                setFocusToFullButton();
+            }
+        }
+    })
+
     root.querySelectorAll('.button').forEach((button, index)=>{
         button.addEventListener('click', (event)=>{onClickButton(event, index)})
     })
@@ -316,6 +362,19 @@ const init = (env) => {
     root.querySelectorAll('.scissors.vertical').forEach((scissors, index)=>{
         scissors.addEventListener('click', (event)=>{
             onClickVerticalScissors(event, index);
+        })
+    })
+
+    root.querySelector('.click-bar-horizontal').addEventListener('click', (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        root.querySelector('.scissors.horizontal').click();
+    });
+    root.querySelectorAll('.click-bar-vertical').forEach((bar, index)=>{
+        bar.addEventListener('click', (event)=>{
+            event.preventDefault();
+            event.stopPropagation();
+            root.querySelectorAll('.scissors.vertical')[index].click();
         })
     })
 }
@@ -327,9 +386,9 @@ window.addEventListener("script-loaded",(env)=>{
     if(param && param !== env.detail.unique) return;
     root = env.detail.root;
     checkIpad(root);
-    //createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
-    //root.querySelector('.start-dim').focus();
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝

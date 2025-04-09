@@ -62,39 +62,42 @@ export const setFocusToFullButton = (next = true) => {
         return;
     }
     if (next) {
-        setFocusToScaffolding(next)
+        setFocusToRefresh(next)
     } else {
         setFocusToLastElement(next);
     }
 }
 
-export const setFocusToScaffolding = (next = true) => {
-    const scaffolding = root.querySelector('.scaffolding');
-    if (!scaffolding.classList.contains('hide'))
-        return scaffolding.querySelector('.scaffolding-content').focus();
-    if (next) {
-        setFocusToIntro(next);
-    } else {
-        setFocusToFullButton(next);
-    }
+export const setFocusToRefresh = (next = true) => {
+    root.querySelector('.btn-refresh').focus();
 }
 
-export const setFocusToIntro = (next = true) => {
-    const intro = root.querySelector('.menu .intro');
-    if (!intro.classList.contains('hide'))
-        return intro.focus();
-    if (next) {
-        setFocusToAltBox(next);
-    } else {
-        setFocusToScaffolding(next);
-    }
+export const setFocusToScaffolding = (next = true) => {
+    const scaffolding = root.querySelector('.scaffolding-content');
+    // 이 차시에는 이게 사라지는 일이 없다.
+    scaffolding.focus();
 }
 
 const setFocusToLastElement = () => {
-    if (isQuizComplete('pink')) {
-        root.querySelector('.complete-box_2').focus();
-    } else {
-        root.querySelector('.triangle-pink.second .red-line-3').focus();
+    const drawBoxes = root.querySelectorAll('.draw-box');
+    if(!drawBoxes[0].classList.contains('hide')){
+        // 가위 확인
+        const scissors = root.querySelector('.scissors.horizontal');
+        if(!scissors.classList.contains('hide'))
+            scissors.focus();
+        else
+            root.querySelector('.complete-box_1').focus();
+    }else{
+        // 두번째 박스가 활성화된 상태
+        const scissors1 = root.querySelector('.scissors.vertical_1');
+        const scissors2 = root.querySelector('.scissors.vertical_2');
+        if(!scissors2.classList.contains('hide'))
+            scissors2.focus();
+        else if(!scissors1.classList.contains('hide'))
+            scissors1.focus();
+        else{
+            root.querySelector('.complete-box_2').focus();
+        }
     }
 }
 const setFocusToAltBox = () => {
@@ -120,31 +123,11 @@ export const setAriaLabel = (elementClass, label) => {
         elementClass.setAttribute('aria-label', label);
 }
 
-const isQuizComplete = (type) => {
-    let result = false;
-    const _check = (element) => {
-        const style = getComputedStyle(element);
-        // Extract the transform matrix
-        const transformMatrix = style.transform; // e.g., "matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 0)"
-        // Check if a transform is applied
-        if (transformMatrix !== 'none') {
-            const values = transformMatrix.match(/matrix\(([^)]+)\)/)[1].split(', ');
-            const a = parseFloat(values[0]); // First value (a) in the matrix
-            const b = parseFloat(values[1]); // Second value (b) in the matrix
-
-            // Calculate the rotation angle
-            const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI)); // Convert radians to degrees
-            if (angle)
-                result = true;
-        } else {
-            //
-        }
-    }
-    root.querySelectorAll(`.${type === 'blue' ? 'triangle-blue' : 'triangle-pink'}`).forEach((triangle) => {
-        _check(triangle);
-    })
-    return result;
+const isExplain = ()=> {
+    const content = root.querySelector('.scaffolding-content');
+    return content.classList.contains('explain');
 }
+
 export const createTabRule = (shadowRoot) => {
     if (root)
         return;
@@ -160,16 +143,7 @@ export const createTabRule = (shadowRoot) => {
                     //    detail: {isFromEnter: true}
                     //});
                     //tab.dispatchEvent(customClickEvent);
-                    if(event.currentTarget.classList.contains('click-line')){
-                        const mouseDownEvent = new MouseEvent('mousedown', {
-                            bubbles: true,      // Allows the event to bubble up through the DOM
-                            cancelable: true,   // Allows the event to be canceled
-                            view: window        // Specifies the view (usually the window)
-                        });
-                        tab.dispatchEvent(mouseDownEvent);
-                    }else {
-                        tab.click()
-                    }
+                    tab.click()
                     event.stopPropagation();
                 }
             });
@@ -180,77 +154,110 @@ export const createTabRule = (shadowRoot) => {
             setFocusToLastElement();
         },
         () => {
-            setFocusToScaffolding(true);
+            setFocusToRefresh(true);
         }
     );
-    defineTab('.scaffolding-content',
+    defineTab('.btn-refresh',
         () => {
-            const content = root.querySelector('.scaffolding-content');
-            if(content.classList.contains('explain'))
-                setFocusToFullButton(false);
-            else{
-                // 음... 원래것으로 돌아가야 하나?
-            }
+            setFocusToFullButton(false);
         },
         () => {
-            const content = root.querySelector('.scaffolding-content');
-            if(content.classList.contains('explain'))
-                setFocusToIntro(true);
-            else
+            if(isExplain()) {
+                setFocusToScaffolding(true);
+            }else{
                 setFocusToAltBox();
+            }
         }
     );
-    defineTab('.menu .intro',
-        () => {
-            setFocusToScaffolding(false);
-        }, '.alt-box');
-    defineTab('.alt-box', () => {
-        setFocusToIntro(false)
-    }, '.refresh_1');
-    defineTab('.refresh_1', '.alt-box', '.title_1');
-    defineTab('.title_1', '.refresh_1', '.draw-box-box_1');
-    defineTab('.draw-box-box_1', '.title_1', () => {
-        if (isQuizComplete('blue')) {
-            root.querySelector('.complete-box_1').focus();
-        } else {
-            root.querySelector('.triangle-blue.first .triangle-box').focus();
+
+
+    defineTab('.scaffolding-content', ()=>{
+        const content = root.querySelector('.scaffolding-content');
+        if(content.classList.contains('explain'))
+            setFocusToRefresh(false);
+        else
+            root.querySelector('.button_2').focus();
+    },()=>{
+        const content = root.querySelector('.scaffolding-content');
+        if(content.classList.contains('explain'))
+            setFocusToAltBox();
+        else{
+            // 도형이 완성된 상태
+            const boxes = root.querySelectorAll('.draw-box');
+            if(!boxes[0].classList.contains('hide')) {
+                root.querySelector('.complete-box_1').focus();
+            }else{
+                root.querySelector('.complete-box_2').focus();
+            }
         }
     });
-    defineTab('.complete-box_1', '.draw-box-box_1', '.refresh_2');
-    defineTab('.triangle-blue.first .triangle-box', '.draw-box-box_1', '.triangle-blue.first .blue-line-1');
-    defineTab('.triangle-blue.first .blue-line-1', '.triangle-blue.first .triangle-box', '.triangle-blue.first .blue-line-2');
-    defineTab('.triangle-blue.first .blue-line-2', '.triangle-blue.first .blue-line-1', '.triangle-blue.first .blue-line-3');
-    defineTab('.triangle-blue.first .blue-line-3', '.triangle-blue.first .blue-line-2', '.triangle-blue.second .triangle-box');
-    defineTab('.triangle-blue.second .triangle-box', '.triangle-blue.first .blue-line-3', '.triangle-blue.second .blue-line-1');
-    defineTab('.triangle-blue.second .blue-line-1', '.triangle-blue.second .triangle-box', '.triangle-blue.second .blue-line-2');
-    defineTab('.triangle-blue.second .blue-line-2', '.triangle-blue.second .blue-line-1', '.triangle-blue.second .blue-line-3');
-    defineTab('.triangle-blue.second .blue-line-3', '.triangle-blue.second .blue-line-2', '.refresh_2');
-    defineTab('.refresh_2', () => {
-        if (isQuizComplete('blue')) {
-            root.querySelector('.complete-box_1').focus();
-        } else {
-            root.querySelector('.triangle-blue.second .blue-line-3').focus();
-        }
-    }, '.title_2');
-    defineTab('.title_2', '.refresh_2', '.draw-box-box_2');
-    defineTab('.draw-box-box_2', '.title_2', () => {
-        if (isQuizComplete('pink')) {
-            root.querySelector('.complete-box_2').focus();
-        } else {
-            root.querySelector('.triangle-pink.first .triangle-box').focus();
-        }
-    });
-    defineTab('.complete-box_2', '.draw-box-box_2', () => {
+    defineTab('.complete-box_1', '.scaffolding-content',()=>{
         setFocusToFullButton(true);
     });
-    defineTab('.triangle-pink.first .triangle-box', '.draw-box-box_2', '.triangle-pink.first .red-line-1');
-    defineTab('.triangle-pink.first .red-line-1', '.triangle-pink.first .triangle-box', '.triangle-pink.first .red-line-2');
-    defineTab('.triangle-pink.first .red-line-2', '.triangle-pink.first .red-line-1', '.triangle-pink.first .red-line-3');
-    defineTab('.triangle-pink.first .red-line-3', '.triangle-pink.first .red-line-2', '.triangle-pink.second .triangle-box');
-    defineTab('.triangle-pink.second .triangle-box', '.triangle-pink.first .red-line-3', '.triangle-pink.second .red-line-1');
-    defineTab('.triangle-pink.second .red-line-1', '.triangle-pink.second .triangle-box', '.triangle-pink.second .red-line-2');
-    defineTab('.triangle-pink.second .red-line-2', '.triangle-pink.second .red-line-1', '.triangle-pink.second .red-line-3');
-    defineTab('.triangle-pink.second .red-line-3', '.triangle-pink.second .red-line-2', () => {
+    defineTab('.complete-box_2', '.scaffolding-content',()=>{
+        setFocusToFullButton(true);
+    });
+    //'.scaffolding-content'
+    defineTab('.alt-box', ()=>{
+        if(isExplain())
+            root.querySelector('.scaffolding-content').focus();
+        else
+            setFocusToRefresh(false)
+    },'.button_1');
+
+
+    defineTab('.button_1', '.alt-box','.button_2');
+    defineTab('.button_2', '.button_1',()=>{
+        if(isExplain())
+            root.querySelector('.draw-box-box').focus();
+        else
+            setFocusToScaffolding(true);
+    });
+    defineTab('.draw-box-box', '.button_2',()=>{
+        const drawBoxes = root.querySelectorAll('.draw-box');
+        if(!drawBoxes[0].classList.contains('hide')){
+            // 완성인지 아닌지 알아야 한다.
+            const bar = root.querySelector('.click-bar-horizontal');
+            if(!bar.classList.contains('hide')){
+                bar.focus();
+            }else{
+                // 도형 이동이 완성된 상태
+                setFocusToScaffolding(true);
+            }
+        }else{
+            // 두번째 박스가 활성화된 상태
+            const bar1 = root.querySelector('.click-bar-vertical_1');
+            const bar2 = root.querySelector('.click-bar-vertical_2');
+            if(!bar1.classList.contains('hide'))
+                bar1.focus();
+            else if(!bar2.classList.contains('hide'))
+                bar2.focus();
+            else{
+                // 도형 이동이 완성된 상태
+                setFocusToScaffolding(true);
+            }
+        }
+    });
+    defineTab('.click-bar-horizontal', '.draw-box-box', '.scissors.horizontal');
+    defineTab('.click-bar-vertical_1', '.draw-box-box', '.scissors.vertical_1');
+    defineTab('.click-bar-vertical_2', ()=>{
+        const scissors = root.querySelector('.scissors.vertical_1');
+        if(!scissors.classList.contains('hide'))
+            scissors.focus();
+        else
+            root.querySelector('.draw-box-box').focus();
+    }, '.scissors.vertical_2');
+    defineTab('.scissors.horizontal', '.click-bar-horizontal', ()=>{
+        setFocusToFullButton(true);
+    });
+    defineTab('.scissors.vertical_1', '.click-bar-vertical_1', ()=>{
+        const bar2 = root.querySelector('.click-bar-vertical_2');
+        if(!bar2.classList.contains('hide'))
+            bar2.focus();
+        else
+            setFocusToFullButton(true);
+    });
+    defineTab('.scissors.vertical_2', '.click-bar-vertical_2', ()=>{
         setFocusToFullButton(true);
     });
 
