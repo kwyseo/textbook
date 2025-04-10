@@ -79,26 +79,16 @@ export const setFocusToScaffolding = (next = true) => {
 }
 
 const setFocusToLastElement = () => {
-    const drawBoxes = root.querySelectorAll('.draw-box');
-    if(!drawBoxes[0].classList.contains('hide')){
-        // 가위 확인
-        const scissors = root.querySelector('.scissors.horizontal');
-        if(!scissors.classList.contains('hide'))
-            scissors.focus();
-        else
-            root.querySelector('.complete-box_1').focus();
-    }else{
-        // 두번째 박스가 활성화된 상태
-        const scissors1 = root.querySelector('.scissors.vertical_1');
-        const scissors2 = root.querySelector('.scissors.vertical_2');
-        if(!scissors2.classList.contains('hide'))
-            scissors2.focus();
-        else if(!scissors1.classList.contains('hide'))
-            scissors1.focus();
-        else{
-            root.querySelector('.complete-box_2').focus();
-        }
+    const scissorsHorizontal = root.querySelector('.scissors.horizontal');
+    const scissorsVertical = root.querySelector('.scissors.vertical');
+    if(!scissorsVertical.classList.contains('hide'))
+        scissorsVertical.focus();
+    else if(!scissorsHorizontal.classList.contains('hide'))
+        scissorsHorizontal.focus();
+    else{
+        root.querySelector('.complete-box').focus();
     }
+
 }
 const setFocusToAltBox = () => {
     root.querySelector('.wrap .alt-box').focus();
@@ -170,95 +160,65 @@ export const createTabRule = (shadowRoot) => {
         }
     );
 
-
     defineTab('.scaffolding-content', ()=>{
         const content = root.querySelector('.scaffolding-content');
         if(content.classList.contains('explain'))
             setFocusToRefresh(false);
         else
-            root.querySelector('.button_2').focus();
+            setFocusToAltBox();
     },()=>{
         const content = root.querySelector('.scaffolding-content');
         if(content.classList.contains('explain'))
             setFocusToAltBox();
         else{
             // 도형이 완성된 상태
-            const boxes = root.querySelectorAll('.draw-box');
-            if(!boxes[0].classList.contains('hide')) {
-                root.querySelector('.complete-box_1').focus();
-            }else{
-                root.querySelector('.complete-box_2').focus();
-            }
+            root.querySelector('.complete-box').focus();
         }
     });
-    defineTab('.complete-box_1', '.scaffolding-content',()=>{
+    defineTab('.complete-box', '.scaffolding-content',()=>{
         setFocusToFullButton(true);
     });
-    defineTab('.complete-box_2', '.scaffolding-content',()=>{
-        setFocusToFullButton(true);
-    });
-    //'.scaffolding-content'
+
     defineTab('.alt-box', ()=>{
         if(isExplain())
             root.querySelector('.scaffolding-content').focus();
         else
             setFocusToRefresh(false)
-    },'.button_1');
-
-
-    defineTab('.button_1', '.alt-box','.button_2');
-    defineTab('.button_2', '.button_1',()=>{
+    },()=>{
         if(isExplain())
-            root.querySelector('.draw-box-box').focus();
+            root.querySelector('.content-box-box').focus();
         else
             setFocusToScaffolding(true);
     });
-    defineTab('.draw-box-box', '.button_2',()=>{
-        const drawBoxes = root.querySelectorAll('.draw-box');
-        if(!drawBoxes[0].classList.contains('hide')){
-            // 완성인지 아닌지 알아야 한다.
-            const bar = root.querySelector('.click-bar-horizontal');
-            if(!bar.classList.contains('hide')){
-                bar.focus();
-            }else{
-                // 도형 이동이 완성된 상태
-                setFocusToScaffolding(true);
-            }
+
+    defineTab('.content-box-box', '.alt-box',()=>{
+        const clickBarHorizontal = root.querySelector('.click-bar-horizontal');
+        const clickBarVertical = root.querySelector('.click-bar-vertical');
+        if(!clickBarHorizontal.classList.contains('hide')){
+            clickBarHorizontal.focus();
+        }else if(!clickBarVertical.classList.contains('hide')){
+            clickBarVertical.focus();
         }else{
-            // 두번째 박스가 활성화된 상태
-            const bar1 = root.querySelector('.click-bar-vertical_1');
-            const bar2 = root.querySelector('.click-bar-vertical_2');
-            if(!bar1.classList.contains('hide'))
-                bar1.focus();
-            else if(!bar2.classList.contains('hide'))
-                bar2.focus();
-            else{
-                // 도형 이동이 완성된 상태
-                setFocusToScaffolding(true);
-            }
+            // 도형 이동이 완성된 상태...음... 도형이 완성된 상태에서 content-box-box 를 클릭할 수 있나?
+            setFocusToScaffolding(true);
         }
     });
-    defineTab('.click-bar-horizontal', '.draw-box-box', '.scissors.horizontal');
-    defineTab('.click-bar-vertical_1', '.draw-box-box', '.scissors.vertical_1');
-    defineTab('.click-bar-vertical_2', ()=>{
-        const scissors = root.querySelector('.scissors.vertical_1');
+    defineTab('.click-bar-horizontal', '.content-box-box', '.scissors.horizontal');
+    defineTab('.click-bar-vertical', ()=>{
+        const scissors = root.querySelector('.scissors.horizontal');
         if(!scissors.classList.contains('hide'))
             scissors.focus();
         else
-            root.querySelector('.draw-box-box').focus();
-    }, '.scissors.vertical_2');
+            root.querySelector('.content-box-box').focus();
+    }, '.scissors.vertical');
     defineTab('.scissors.horizontal', '.click-bar-horizontal', ()=>{
-        setFocusToFullButton(true);
-    });
-    defineTab('.scissors.vertical_1', '.click-bar-vertical_1', ()=>{
-        const bar2 = root.querySelector('.click-bar-vertical_2');
-        if(!bar2.classList.contains('hide'))
-            bar2.focus();
+        const clickBar = root.querySelector('.click-bar-vertical');
+        if(!clickBar.classList.contains('hide'))
+            clickBar.focus();
         else
             setFocusToFullButton(true);
     });
-    defineTab('.scissors.vertical_2', '.click-bar-vertical_2', ()=>{
+    defineTab('.scissors.vertical', '.click-bar-vertical', ()=>{
         setFocusToFullButton(true);
     });
-
 }

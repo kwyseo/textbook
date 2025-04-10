@@ -27,33 +27,20 @@ const toggleFullScreen = () => {
 const onClickRefresh = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const buttons = root.querySelectorAll('.button');
-    buttons[0].classList.remove('off');
-    buttons[1].classList.add('off');
-    const drawBoxes = root.querySelectorAll('.draw-box');
-    drawBoxes[0].classList.remove('hide');
-    drawBoxes[1].classList.add('hide');
-    root.querySelectorAll('.triangle-box').forEach((box) => {
-        box.classList.remove('hide');
-    });
-    root.querySelectorAll('.triangle_piece').forEach((piece) => {
+    root.querySelector('.draw-box').classList.remove('hide');
+    root.querySelectorAll('.diagram_piece').forEach((piece) => {
         piece.classList.add('hide');
         piece.style.transform = null;
-    });
-    root.querySelectorAll('.scissors').forEach((scissors) => {
-        scissors.classList.remove('hide');
     });
     root.querySelectorAll('.click-bar').forEach((bar) => {
         bar.classList.remove('hide');
     });
-    root.querySelectorAll('.complete-box').forEach((box) => {
-        box.classList.add('hide');
+    root.querySelectorAll('.scissors').forEach((scissors) => {
+        scissors.classList.remove('hide');
     });
+    root.querySelector('.complete-box').classList.add('hide');
+    stopHandGuidAnimation();
     setScaffoldingText(1);
-}
-
-const sleep = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export const checkIpad = (root) => {
@@ -75,34 +62,13 @@ export const checkIpad = (root) => {
     return false;
 }
 
-const onClickButton = (event, index) => {
-    const buttons = root.querySelectorAll('.button');
-    if (!buttons[index].classList.contains('off'))
-        return;
-    const opponentNumber = index === 1 ? 0 : 1;
-    const drawBoxes = root.querySelectorAll('.draw-box');
-    buttons[index].classList.remove('off');
-    buttons[opponentNumber].classList.add('off');
-    drawBoxes[index].classList.remove('hide');
-    drawBoxes[opponentNumber].classList.add('hide');
-    // 도형이 완성되었는지 확인해서 scaffolding 내용도 바꾸어 주어야 한다.
-    let isComplete = true;
-    drawBoxes[index].querySelectorAll('.click-bar').forEach((bar) => {
-        if (!bar.classList.contains('hide'))
-            isComplete = false;
-    })
-    if (isComplete)
-        setScaffoldingText(2);
-    else
-        setScaffoldingText(1);
-}
 const setScaffoldingText = (type, setFocus = false) => {
     const text = type === 1
-        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>'
-        : '<div aria-hidden="true">삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요.</div>';
+        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 마름모를 잘라 보세요.</div>'
+        : '<div aria-hidden="true">마름모를 잘라 만든 직사각형의 넓이를 구해 보세요.</div>';
     const ariaLabel = type === 1
-        ? '점선 또는 가위를 클릭하여 삼각형을 잘라 보세요'
-        : '삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요';
+        ? '점선 또는 가위를 클릭하여 마름모를 잘라 보세요'
+        : '마름모를 잘라 만든 직사각형의 넓이를 구해 보세요';
     const contentDiv = root.querySelector('.scaffolding-content');
     contentDiv.innerHTML = text;
     if (type === 1) {
@@ -152,7 +118,11 @@ const diagramArrange = () =>{
         translateY: -115,
         duration: 1000,
         easing: 'easeInOutQuad',
-        complete:()=>{isAnimating = false;}
+        complete:()=>{
+            isAnimating = false;
+            root.querySelector('.complete-box').classList.remove('hide');
+            setScaffoldingText(2, true);
+        }
     });
 }
 
@@ -201,10 +171,13 @@ const moveScissorsHorizontal = (scissors) => {
                     easing: 'easeInOutQuad',
                     complete: () => {
                         isAnimating = false;
+                        handGuideAnimation();
+                        root.querySelector('.click-bar-vertical').focus();
                     }
                 });
                 root.querySelector('.draw-box').classList.add('hide');
             } else {
+                // 두개다 선택된 경우
                 aboveLeft.classList.remove('hide');
                 aboveRight.classList.remove('hide');
                 belowLeft.classList.remove('hide');
@@ -307,10 +280,14 @@ const moveScissorsVertical = (scissors, index) => {
                     easing: 'easeInOutQuad',
                     complete: () => {
                         isAnimating = false;
+                        handGuideAnimation();
+                        //root.querySelector('.click-bar-horizontal').focus();
+                        setFocusToFullButton(true);
                     }
                 });
                 root.querySelector('.draw-box').classList.add('hide');
             } else {
+                // 두개다 선택된 경우
                 aboveLeft.classList.remove('hide');
                 aboveRight.classList.remove('hide');
                 belowLeft.classList.remove('hide');
@@ -370,7 +347,36 @@ const onClickVerticalScissors = (event, index) => {
     moveScissorsVertical(event.currentTarget, index)
 }
 
+const stopHandGuidAnimation = (event) =>{
+    root.querySelector('.guide_hand').classList.add('hide');
+}
+const handGuideAnimation = () => {
+    const guideHand = root.querySelector('.guide_hand');
+    guideHand.style.opacity = '0.0';
+    guideHand.classList.remove('hide');
+    setTimeout(()=>{
+        const animation = anime.timeline({loop:2, complete:()=>{
+                if(!guideHand.classList.contains('hide')) {
+                    anime({
+                        targets: guideHand,
+                        opacity: [0, 0, 0, 0, 1],
+                        duration: 1500,
+                        easing: 'linear',
+                        loop: false
+                    });
 
+                }
+            }});
+        animation.add({
+                targets: guideHand,
+                opacity: [0, 0, 1, 1, 1, 0],
+                duration: 2500,
+                easing:"linear"
+            }
+        );
+    }, 2000);
+
+}
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화
 //_____________________________________________________________________________________________________________________
@@ -444,9 +450,13 @@ const init = (env) => {
         }
     })
 
-    root.querySelector('.scissors.horizontal').addEventListener('click', onClickHorizontalScissors);
+    root.querySelector('.scissors.horizontal').addEventListener('click', (event)=>{
+        stopHandGuidAnimation();
+        onClickHorizontalScissors(event)
+    });
     root.querySelectorAll('.scissors.vertical').forEach((scissors, index) => {
         scissors.addEventListener('click', (event) => {
+            stopHandGuidAnimation();
             onClickVerticalScissors(event, index);
         })
     })
@@ -456,6 +466,7 @@ const init = (env) => {
         event.stopPropagation();
         root.querySelector('.scissors.horizontal').click();
     });
+
     root.querySelectorAll('.click-bar-vertical').forEach((bar, index) => {
         bar.addEventListener('click', (event) => {
             event.preventDefault();
@@ -472,9 +483,9 @@ window.addEventListener("script-loaded", (env) => {
     if (param && param !== env.detail.unique) return;
     root = env.detail.root;
     checkIpad(root);
-    //createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
-    //root.querySelector('.start-dim').focus();
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝

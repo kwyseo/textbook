@@ -1,0 +1,272 @@
+@font-face {
+    font-family: "malgun";
+    src: url("../font/malgun.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunbd";
+    src: url("../font/malgunbd.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "malgunsl";
+    src: url("../font/malgunsl.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Batang";
+    src: url("../font/Batang-01.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "BatangChe";
+    src: url("../font/BatangChe-02.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "Gungsuh";
+    src: url("../font/Gungsuh-03.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: "GungsuhChe";
+    src: url("../font/GungsuhChe-04.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+/* full 스크린이 되었을 때 백 그라운드가 검정이 되는 것을 막는다 */
+:not(:root):fullscreen::backdrop {
+    background: #fff
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.view-wrap {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    -moz-user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222222;
+}
+
+.view-wrap .hide{
+    display: none !important;
+}
+
+.wrap .alt-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;  /* 마이너스라도 포커스를 줄 수 있다고 한다. */
+}
+
+.container.menu{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 45px 45px 0 27px;
+}
+
+.menu .right-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.menu .btn-fullscreen{
+    width: 76px;
+    height: 76px;
+    background: url(../img/btn-fullscreen-on.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.menu .btn-fullscreen.off{
+    background: url(../img/btn-fullscreen-off.png) no-repeat;
+    background-size: contain;
+}
+
+.menu .btn-refresh{
+    width: 70px;
+    height: 76px;
+    content: url(../img/btn-reset-all.png);
+    cursor: pointer;
+}
+
+.container.content{
+    margin-top: 1px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.content .intro{
+    background-image: url(../img/intro.png);
+    width: 886px;
+    height: 157px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 47px;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 50px;
+}
+
+.content .content-box{
+    position: relative;
+    width: 1390px;
+    height: 408px;
+}
+
+.draw-box{
+    position: absolute;
+    top: 0;
+    background-image: url(../img/trapezoid.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 605px;
+    height: 408px;
+}
+.draw-box.draw-box-1{
+    left:0;
+}
+.draw-box.draw-box-2{
+    left:785px;
+}
+
+
+
+
+
+/* 쿼티 자판 관련 */
+.modal_qwerty{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 400px;
+    width: 1106px;
+    height: 496px;
+    background: url(../img/keyboard/bg.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.modal_number_pad{
+    position: absolute;
+    display: none;
+    bottom: 30px;
+    left: 220px;
+    width: 1456px;
+    height: 178px;
+    background: url(../img/modal/numberPad.svg) no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+.qbutton32.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton42.shift{
+    content: url(../img/keyboard/49.svg);
+}
+.qbutton11.shift{
+    content: url(../img/keyboard/50.svg);
+}
+.qbutton12.shift{
+    content: url(../img/keyboard/51.svg);
+}
+.qbutton13.shift{
+    content: url(../img/keyboard/52.svg);
+}
+.qbutton14.shift{
+    content: url(../img/keyboard/53.svg);
+}
+.qbutton15.shift{
+    content: url(../img/keyboard/54.svg);
+}
+.qbutton19.shift{
+    content: url(../img/keyboard/55.svg);
+}
+.qbutton20.shift{
+    content: url(../img/keyboard/56.svg);
+}
+
+.scaffolding{
+    position: absolute;
+    left: 165px;
+    bottom: 25px;
+    width: 1631px;
+    height: 106px;
+    border-radius: 60px;
+    border: 4px solid #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.scaffolding-content{
+    font-family: 'malgunbd', sans-serif;
+    font-size: 44px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scaffolding .character{
+    content: url(../img/chara_square.png);
+    width: 221px;
+    height: 241px;
+    position: absolute;
+    top: -100px;
+    left: -120px;
+}
+
+.scaffolding-content .batang{
+    font-family: 'Batang', serif;
+    font-size: 46px;
+    margin-top: 3px;
+}
+
+.start-dim {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'malgunbd', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: #58585891;
+    line-height: 100vh;
+    font-size: min(3.7vw, 8.6vh);
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
