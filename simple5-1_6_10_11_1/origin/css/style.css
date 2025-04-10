@@ -151,9 +151,150 @@ input[type=number] {
     left:785px;
 }
 
+.draw-box.trapezoid-left-line-right{
+    position: absolute;
+    background-image: url(../img/trapezoid-left-line-right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 605px;
+    height: 408px;
+}
+.draw-box.draw-box-2.trapezoid-right-line-right{
+    position: absolute;
+    background-image: url(../img/trapezoid-right-line-right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 605px;
+    height: 407px;
+}
 
+.draw-box.trapezoid-left-line-left{
+    position: absolute;
+    background-image: url(../img/trapezoid-left-line-left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 605px;
+    height: 408px;
+}
+.draw-box.draw-box-2.trapezoid-right-line-left{
+    position: absolute;
+    background-image: url(../img/trapezoid-right-line-left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 605px;
+    height: 408px;
+}
 
+.draw-box.trapezoid-left-line-top{
+    position: absolute;
+    background-image: url(../img/trapezoid-left-line-top.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 408px;
+}
+.draw-box.draw-box-2.trapezoid-right-line-top{
+    position: absolute;
+    background-image: url(../img/trapezoid-right-line-top.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 407px;
+}
 
+.draw-box.trapezoid-left-line-bottom{
+    position: absolute;
+    background-image: url(../img/trapezoid-left-line-bottom.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 407px;
+}
+.draw-box.draw-box-2.trapezoid-right-line-bottom{
+    position: absolute;
+    background-image: url(../img/trapezoid-right-line-top.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 407px;
+}
+
+.draw-box.trapezoid-left-false_1{
+    position: absolute;
+    background-image: url(../img/trapezoid-left-false-1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 408px;
+}
+.draw-box.draw-box-2.trapezoid-right-false-2{
+    position: absolute;
+    background-image: url(../img/trapezoid-right-false-1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 606px;
+    height: 407px;
+}
+
+.content-box .retry{
+    position: absolute;
+    background-image: url(../img/retry.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 372px;
+    height: 71px;
+    top: 420px;
+    left: 1230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font-family: 'malgunbd', sans-serif;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+}
+
+.draw-box .click-line{
+    height: 9px;
+    border-radius: 5px;
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.draw-box .click-line.clicked{
+    background-color: #F65439;
+}
+
+.draw-box .click-line:focus{
+    outline: 1px solid black;
+    outline-offset: 10px;
+}
+
+.draw-box .click-line-1{
+    transform: rotate(-63.5deg);
+    left: -124px;
+    top: 199px;
+    width: 450px;
+}
+.draw-box .click-line-2{
+    top: -1px;
+    left: 200px;
+    width: 204px;
+}
+.draw-box .click-line-3{
+    transform: rotate(63.5deg);
+    left: 277px;
+    top: 199px;
+    width: 450px;
+}
+.draw-box .click-line-4{
+    top: 401px;
+    left: -1px;
+    width: 606px;
+}
 
 /* 쿼티 자판 관련 */
 .modal_qwerty{
