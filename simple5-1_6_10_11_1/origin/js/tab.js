@@ -34,8 +34,13 @@ export const defineTab = (elementClass, beforeFunction, nextFunction, isMultiEle
                     return;
                 event.preventDefault();
                 event.stopPropagation();
-                if (typeof nextFunction === 'string')
-                    root.querySelector(nextFunction).focus();
+                if (typeof nextFunction === 'string') {
+                    try {
+                        root.querySelector(nextFunction).focus();
+                    }catch (e){
+                        console.log('not found: ' + beforeFunction)
+                    }
+                }
                 else if (typeof nextFunction === 'function')
                     nextFunction(event);
                 else
@@ -79,16 +84,17 @@ export const setFocusToScaffolding = (next = true) => {
 }
 
 const setFocusToLastElement = () => {
-    const scissorsHorizontal = root.querySelector('.scissors.horizontal');
-    const scissorsVertical = root.querySelector('.scissors.vertical');
-    if(!scissorsVertical.classList.contains('hide'))
-        scissorsVertical.focus();
-    else if(!scissorsHorizontal.classList.contains('hide'))
-        scissorsHorizontal.focus();
-    else{
-        root.querySelector('.complete-box').focus();
+    const content = root.querySelector('.scaffolding-content');
+    const retry = root.querySelector('.retry');
+    if(content.classList.contains('explain')) {
+        root.querySelector('.draw-box-2 .click-line-1').focus();
+    }else if(content.classList.contains('false')) {
+        root.querySelector('.draw-box-2 .click-line-1').focus();
+    }else if(!retry.classList.contains('hide')){
+        retry.focus();
+    }else {
+        root.querySelector('.content-box-box').focus();
     }
-
 }
 const setFocusToAltBox = () => {
     root.querySelector('.wrap .alt-box').focus();
@@ -113,9 +119,9 @@ export const setAriaLabel = (elementClass, label) => {
         elementClass.setAttribute('aria-label', label);
 }
 
-const isExplain = ()=> {
+const isExplainOrFalse = ()=> {
     const content = root.querySelector('.scaffolding-content');
-    return content.classList.contains('explain');
+    return content.classList.contains('explain') || content.classList.contains('false');
 }
 
 export const createTabRule = (shadowRoot) => {
@@ -152,7 +158,7 @@ export const createTabRule = (shadowRoot) => {
             setFocusToFullButton(false);
         },
         () => {
-            if(isExplain()) {
+            if(isExplainOrFalse()) {
                 setFocusToScaffolding(true);
             }else{
                 setFocusToAltBox();
@@ -161,64 +167,59 @@ export const createTabRule = (shadowRoot) => {
     );
 
     defineTab('.scaffolding-content', ()=>{
-        const content = root.querySelector('.scaffolding-content');
-        if(content.classList.contains('explain'))
+        if(isExplainOrFalse())
             setFocusToRefresh(false);
         else
             setFocusToAltBox();
     },()=>{
         const content = root.querySelector('.scaffolding-content');
-        if(content.classList.contains('explain'))
-            setFocusToAltBox();
-        else{
-            // 도형이 완성된 상태
-            root.querySelector('.complete-box').focus();
+        if(isExplainOrFalse()) {
+            const intro = root.querySelector('.intro');
+            if (intro.style.visibility !== 'hidden')
+                intro.focus();
+            else
+                setFocusToAltBox();
+        }
+        // 도형을 만들고 있는 경우와 만든 경우
+        else {
+            root.querySelector('.content-box-box').focus();
         }
     });
-    defineTab('.complete-box', '.scaffolding-content',()=>{
-        setFocusToFullButton(true);
+    defineTab('.intro', '.scaffolding-content',()=>{
+        setFocusToAltBox(true);
     });
-
-    defineTab('.alt-box', ()=>{
-        if(isExplain())
-            root.querySelector('.scaffolding-content').focus();
-        else
-            setFocusToRefresh(false)
-    },()=>{
-        if(isExplain())
-            root.querySelector('.content-box-box').focus();
-        else
-            setFocusToScaffolding(true);
-    });
-
-    defineTab('.content-box-box', '.alt-box',()=>{
-        const clickBarHorizontal = root.querySelector('.click-bar-horizontal');
-        const clickBarVertical = root.querySelector('.click-bar-vertical');
-        if(!clickBarHorizontal.classList.contains('hide')){
-            clickBarHorizontal.focus();
-        }else if(!clickBarVertical.classList.contains('hide')){
-            clickBarVertical.focus();
-        }else{
-            // 도형 이동이 완성된 상태...음... 도형이 완성된 상태에서 content-box-box 를 클릭할 수 있나?
-            setFocusToScaffolding(true);
-        }
-    });
-    defineTab('.click-bar-horizontal', '.content-box-box', '.scissors.horizontal');
-    defineTab('.click-bar-vertical', ()=>{
-        const scissors = root.querySelector('.scissors.horizontal');
-        if(!scissors.classList.contains('hide'))
-            scissors.focus();
-        else
-            root.querySelector('.content-box-box').focus();
-    }, '.scissors.vertical');
-    defineTab('.scissors.horizontal', '.click-bar-horizontal', ()=>{
-        const clickBar = root.querySelector('.click-bar-vertical');
-        if(!clickBar.classList.contains('hide'))
-            clickBar.focus();
+    defineTab('.content-box-box', '.scaffolding-content',()=>{
+        const retryButton = root.querySelector('.retry');
+        if(!retryButton.classList.contains('hide'))
+            retryButton.focus();
         else
             setFocusToFullButton(true);
     });
-    defineTab('.scissors.vertical', '.click-bar-vertical', ()=>{
+    defineTab('.retry', '.content-box-box',()=>{
+        setFocusToFullButton(true);
+    });
+    defineTab('.alt-box', ()=>{
+        if(isExplainOrFalse())
+            root.querySelector('.intro').focus();
+        else
+            setFocusToRefresh(false)
+    },()=>{
+        if(isExplainOrFalse())
+            root.querySelector('.draw-box-1 .draw-box-box').focus();
+        else
+            setFocusToScaffolding(true);
+    });
+
+    defineTab('.draw-box-1 .draw-box-box', '.alt-box','.draw-box-1 .click-line-2');
+    defineTab('.draw-box-1 .click-line-2', '.draw-box-1 .draw-box-box','.draw-box-1 .click-line-3');
+    defineTab('.draw-box-1 .click-line-3', '.draw-box-1 .click-line-2','.draw-box-1 .click-line-4');
+    defineTab('.draw-box-1 .click-line-4', '.draw-box-1 .click-line-3','.draw-box-1 .click-line-1');
+    defineTab('.draw-box-1 .click-line-1', '.draw-box-1 .click-line-4','.draw-box-2 .draw-box-box');
+    defineTab('.draw-box-2 .draw-box-box', '.draw-box-1 .click-line-1','.draw-box-2 .click-line-2');
+    defineTab('.draw-box-2 .click-line-2', '.draw-box-2 .draw-box-box','.draw-box-2 .click-line-3');
+    defineTab('.draw-box-2 .click-line-3', '.draw-box-2 .click-line-2','.draw-box-2 .click-line-4');
+    defineTab('.draw-box-2 .click-line-4', '.draw-box-2 .click-line-3','.draw-box-2 .click-line-1');
+    defineTab('.draw-box-2 .click-line-1', '.draw-box-2 .click-line-4',()=>{
         setFocusToFullButton(true);
     });
 }

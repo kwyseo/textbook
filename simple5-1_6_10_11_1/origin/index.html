@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="css/reset.css"/>
-    <title>마름모의 넓이를 구해 볼까요</title>
+    <title>사다리꼴의 넓이를 구해 볼까요</title>
 </head>
 <body>
 <shadow-component></shadow-component>
@@ -14,7 +14,7 @@
     <div class="view-wrap">
         <div class="wrap">
             <div class="alt-box" tabindex="5"
-                 aria-label="마름모를 잘라서 만든 직사각형을 통해 마름모의 넓이를 구하는 활동입니다"></div>
+                 aria-label="서로 길이가 같은 변끼리 이어붙인 두 개의 사다리꼴을 통해 평행사변형의 넓이를 구하는 활동입니다"></div>
             <!-- 모달 창 정의 -->
             <div class="modal_qwerty">
             </div>
@@ -30,23 +30,26 @@
                 </div>
             </div>
             <div class="container content">
-                <div class="intro">
+                <div class="intro" tabindex="5">
                     길이가 같은 변끼리 붙여 봐.
                 </div>
                 <div class="content-box">
+                    <div class="content-box-box" tabindex="5" aria-label="서로 길이가 같은 변끼리 이어붙인 두 개의 사다리꼴을 통해 평행사변형의 넓이를 구할 수 있습니다"></div>
                     <div class="draw-box draw-box-1">
-                        <div class="click-line click-line-1"></div>
-                        <div class="click-line click-line-2"></div>
-                        <div class="click-line click-line-3"></div>
-                        <div class="click-line click-line-4"></div>
+                        <div class="draw-box-box" tabindex="5" aria-label="첫번째 사다리꼴"></div>
+                        <div class="click-line click-line-1" tabindex="5" aria-label="첫번째 사다리꼴의 네번째 변"></div>
+                        <div class="click-line click-line-2" tabindex="5" aria-label="첫번째 사다리꼴의 첫번째 변"></div>
+                        <div class="click-line click-line-3" tabindex="5" aria-label="첫번째 사다리꼴의 두번째 변"></div>
+                        <div class="click-line click-line-4" tabindex="5" aria-label="첫번째 사다리꼴의 세번째 변"></div>
                     </div>
                     <div class="draw-box draw-box-2">
-                        <div class="click-line click-line-1"></div>
-                        <div class="click-line click-line-2"></div>
-                        <div class="click-line click-line-3"></div>
-                        <div class="click-line click-line-4"></div>
+                        <div class="draw-box-box" tabindex="5" aria-label="두번째 사다리꼴"></div>
+                        <div class="click-line click-line-1" tabindex="5" aria-label="두번째 사다리꼴의 네번째 변"></div>
+                        <div class="click-line click-line-2" tabindex="5" aria-label="두번째 사다리꼴의 첫번째 변"></div>
+                        <div class="click-line click-line-3" tabindex="5" aria-label="두번째 사다리꼴의 두번째 변"></div>
+                        <div class="click-line click-line-4" tabindex="5" aria-label="두번째 사다리꼴의 세번째 변"></div>
                     </div>
-                    <div class="retry hide">다시 하기</div>
+                    <div class="retry hide" tabindex="5" aria-label="다시하기 버튼"><div aria-hidden="true">다시 하기</div></div>
                 </div>
             </div>
             <div class="scaffolding">
@@ -56,7 +59,7 @@
                 <div class="character"></div>
             </div>
         </div>
-        <div class="start-dim hide" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
+        <div class="start-dim" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
              aria-hidden="true">
             여기를 클릭해 디지털 활동을 시작해 보세요.
         </div>

@@ -40,6 +40,7 @@ const onClickRefresh = (event) => {
         drawBoxes[0].classList.remove(attribute);
         drawBoxes[1].classList.remove(attribute);
     })
+    root.querySelector('.intro').style.visibility = "visible";
     root.querySelector('.retry').classList.add('hide');
     setScaffoldingText(1);
 }
@@ -86,6 +87,11 @@ const setScaffoldingText = (type, setFocus = false) => {
             contentDiv.classList.remove(attribute);
     })
     setAriaLabel(contentDiv, ariaLabel);
+    if(type === 2){
+        setAriaLabel('.content-box-box', '서로 길이가 같은 변끼리 이어붙이 두 개의 사다리꼴입니다');
+    }else{
+        setAriaLabel('.content-box-box', '서로 길이가 같은 변끼리 이어붙인 두 개의 사다리꼴을 통해 평행사변형의 넓이를 구할 수 있습니다');
+    }
     if (setFocus) {
         setTimeout(() => {
             contentDiv.focus();
@@ -135,7 +141,7 @@ const moveTrapezoid  = (leftX, leftY, leftRotate, rightX, rightY, rightRotate, s
                 if(scaffoldingNumber === 2)
                     root.querySelector('.retry').classList.remove('hide');
             }, 100)
-            setScaffoldingText(scaffoldingNumber);
+            setScaffoldingText(scaffoldingNumber, true);
         }
     });
 }
@@ -167,6 +173,8 @@ const onClickLine = (event, clickedLine, clickedIndex) => {
     const isLeftDiagramClick = clickedIndex < 4;
     const leftIndex = isLeftDiagramClick ? clickedIndex: opponentIndex;
     const rightIndex = isLeftDiagramClick ? opponentIndex : clickedIndex % 4;
+    const contentBoxBox = root.querySelector('.content-box-box');
+    contentBoxBox.classList.remove('correct');
     if(leftIndex === rightIndex
         || (leftIndex===0 && rightIndex===2)
         || (leftIndex===2 && rightIndex===0)){
@@ -178,17 +186,19 @@ const onClickLine = (event, clickedLine, clickedIndex) => {
         }else if(leftIndex===2 && rightIndex===0){
             moveTrapezoid(213, -100, 26.5, -213, -100, -26.5, 2);
         }else if(leftIndex===0){
-            setScaffoldingText(3);
+            setScaffoldingText(3, true);
             drawBoxes[0].classList.add('trapezoid-left-line-left');
             drawBoxes[1].classList.add('trapezoid-right-line-left');
             moveTrapezoid(192, 0, 180, -192, 0, 0, 4);
+            contentBoxBox.classList.add('correct');
         }else if(leftIndex===1){
             moveTrapezoid(192, -80, 90, -192, -80, -90, 2);
         }else if(leftIndex===2){
-            setScaffoldingText(3);
+            setScaffoldingText(3, true);
             drawBoxes[0].classList.add('trapezoid-left-line-right');
             drawBoxes[1].classList.add('trapezoid-right-line-right');
             moveTrapezoid(192, 0, 0, -192, 0, -180, 4);
+            contentBoxBox.classList.add('correct');
         }else if(leftIndex===3){
             drawBoxes[0].classList.add('trapezoid-left-line-bottom');
             drawBoxes[1].classList.add('trapezoid-right-line-bottom');
@@ -196,7 +206,6 @@ const onClickLine = (event, clickedLine, clickedIndex) => {
         }
     }else{
         // 서로 다른 길이를 선택한 경우
-        setScaffoldingText(5);
         clickedLine.style.opacity = '.0';
         anime({
             targets: clickedLine,
@@ -209,6 +218,7 @@ const onClickLine = (event, clickedLine, clickedIndex) => {
                 clickedLine.style.opacity = '1';
             }
         });
+        setScaffoldingText(5, true);
     }
 }
 
@@ -303,9 +313,9 @@ window.addEventListener("script-loaded", (env) => {
     if (param && param !== env.detail.unique) return;
     root = env.detail.root;
     checkIpad(root);
-    //createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
-    //root.querySelector('.start-dim').focus();
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝
