@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <title>사다리꼴의 넓이를 구해 볼까요</title>
+</head>
+<body>
+<shadow-component></shadow-component>
+<template>
+    <div class="view-wrap">
+        <div class="wrap">
+            <div class="alt-box" tabindex="5"
+                 aria-label="삼각형을 잘라 이어붙인 평행사변형의 넓이를 삼각형을 통해 구하는 활동입니다"></div>
+            <!-- 모달 창 정의 -->
+            <div class="modal_qwerty">
+            </div>
+            <div class="modal_number_pad">
+            </div>
+            <!-- 모달 끝 -->
+            <div class="container menu">
+                <div>
+                    <div class="btn-fullscreen" role="button" tabindex="5" aria-label="전체화면"></div>
+                </div>
+                <div class="right-menu">
+                    <div class="btn-refresh" tabindex="5" aria-label="새로고침"></div>
+                </div>
+            </div>
+            <div class="container content">
+                <div class="left">
+                    <div class="button button_1" tabindex="5">
+                        방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">1</div>
+                    </div>
+                    <div class="button button_2 off" tabindex="5">
+                        방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">2</div>
+                    </div>
+                    <div class="button button_3 off" tabindex="5">
+                        방법&nbsp;<div style="font-family: 'Batang'; font-size:62px; margin-top: 7px">3</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="draw-box-box" tabindex="5" aria-label="삼각형을 잘라 이어붙여 평행사변형을 만듭니다"></div>
+                    <div class="draw-box draw-box_1 hide">
+                        <div class="trapezoid-box quiz_1"></div>
+                        <div class="complete-box complete-box_1 hide" tabindex="5" aria-label="삼각형을 잘라 만든 평행사변형입니다"></div>
+                        <div class="click-bar click-bar-horizontal_1" tabindex="5" aria-label="점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="trapezoid_piece trapezoid-1-small hide"></div>
+                        <div class="trapezoid_piece trapezoid-1-big hide"></div>
+                        <div class="scissors horizontal" tabindex="5" aria-label="가위을 클릭해 삼각형을 자릅니다">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                    </div>
+                    <div class="draw-box draw-box_2 hide">
+                        <div class="trapezoid-box quiz_2"></div>
+                        <div class="complete-box complete-box_2 hide" tabindex="5" aria-label="삼각형을 잘라 만든 평행사변형입니다"></div>
+                        <div class="click-bar click-bar-horizontal_2" tabindex="5" aria-label="점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="trapezoid_piece trapezoid-2-big hide"></div>
+                        <div class="trapezoid_piece trapezoid-2-small hide"></div>
+                        <div class="scissors diagonal" tabindex="5" aria-label="가위을 클릭해 삼각형을 자릅니다">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                    </div>
+                    <div class="draw-box draw-box_3">
+                        <div class="trapezoid-box quiz_3"></div>
+                        <div class="complete-box complete-box_2 hide" tabindex="5" aria-label="삼각형을 잘라 만든 평행사변형입니다"></div>
+                        <div class="trapezoid_piece trapezoid-3-1-big hide"></div>
+                        <div class="trapezoid_piece trapezoid-3-2-big hide"></div>
+                        <div class="trapezoid_piece trapezoid-3-3-big hide"></div>
+                        <div class="trapezoid_piece trapezoid-3-3-small-1 hide"></div>
+                        <div class="trapezoid_piece trapezoid-3-3-small-2 hide"></div>
+                        <div class="click-bar click-bar-vertical click-bar-vertical_1" tabindex="5" aria-label="첫번째 점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="click-bar click-bar-vertical click-bar-vertical_2" tabindex="5" aria-label="두번째 점선을 클릭해 삼각형을 자릅니다"></div>
+                        <div class="scissors vertical vertical_1" tabindex="5" aria-label="첫번째 가위을 클릭해 삼각형을 자릅니다">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                        <div class="scissors vertical vertical_2" tabindex="5" aria-label="두번째 가위을 클릭해 삼각형을 자릅니다">
+                            <div class="scissors-left"></div>
+                            <div class="scissors-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scaffolding">
+                <div class="scaffolding-content explain" tabindex="5" aria-label="점선 또는 가위를 클릭하여 삼각형을 잘라 보세요">
+                    <div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>
+                </div>
+                <div class="character"></div>
+            </div>
+        </div>
+        <div class="start-dim hide" role="application" tabindex="0" aria-label="여기를 클릭해 디지털 활동을 시작해 보세요"
+             aria-hidden="true">
+            여기를 클릭해 디지털 활동을 시작해 보세요.
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.4"/>
+    <script type="module" src="./js/app.js?v=1.4"></script>
+</template>
+<script type="module" src="./shadow-dom-your.js"></script>
+</body>
+</html>
