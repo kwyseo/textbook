@@ -87,8 +87,15 @@ const setFocusToLastElement = () => {
             scissors.focus();
         else
             root.querySelector('.complete-box_1').focus();
+    }if(!drawBoxes[1].classList.contains('hide')){
+        // 가위 확인
+        const scissors = root.querySelector('.scissors.diagonal');
+        if(!scissors.classList.contains('hide'))
+            scissors.focus();
+        else
+            root.querySelector('.complete-box_2').focus();
     }else{
-        // 두번째 박스가 활성화된 상태
+        // 세번째 박스가 활성화된 상태
         const scissors1 = root.querySelector('.scissors.vertical_1');
         const scissors2 = root.querySelector('.scissors.vertical_2');
         if(!scissors2.classList.contains('hide'))
@@ -96,7 +103,7 @@ const setFocusToLastElement = () => {
         else if(!scissors1.classList.contains('hide'))
             scissors1.focus();
         else{
-            root.querySelector('.complete-box_2').focus();
+            root.querySelector('.complete-box_3').focus();
         }
     }
 }
@@ -172,22 +179,23 @@ export const createTabRule = (shadowRoot) => {
 
 
     defineTab('.scaffolding-content', ()=>{
-        const content = root.querySelector('.scaffolding-content');
-        if(content.classList.contains('explain'))
+        if(isExplain())
             setFocusToRefresh(false);
         else
-            root.querySelector('.button_2').focus();
+            root.querySelector('.button_3').focus();
     },()=>{
         const content = root.querySelector('.scaffolding-content');
-        if(content.classList.contains('explain'))
+        if(isExplain())
             setFocusToAltBox();
         else{
             // 도형이 완성된 상태
             const boxes = root.querySelectorAll('.draw-box');
             if(!boxes[0].classList.contains('hide')) {
                 root.querySelector('.complete-box_1').focus();
-            }else{
+            }else if(!boxes[1].classList.contains('hide')) {
                 root.querySelector('.complete-box_2').focus();
+            }else{
+                root.querySelector('.complete-box_3').focus();
             }
         }
     });
@@ -195,6 +203,9 @@ export const createTabRule = (shadowRoot) => {
         setFocusToFullButton(true);
     });
     defineTab('.complete-box_2', '.scaffolding-content',()=>{
+        setFocusToFullButton(true);
+    });
+    defineTab('.complete-box_3', '.scaffolding-content',()=>{
         setFocusToFullButton(true);
     });
     //'.scaffolding-content'
@@ -207,17 +218,27 @@ export const createTabRule = (shadowRoot) => {
 
 
     defineTab('.button_1', '.alt-box','.button_2');
-    defineTab('.button_2', '.button_1',()=>{
+    defineTab('.button_2', '.button_1','.button_3');
+    defineTab('.button_3', '.button_2',()=>{
         if(isExplain())
             root.querySelector('.draw-box-box').focus();
         else
             setFocusToScaffolding(true);
     });
-    defineTab('.draw-box-box', '.button_2',()=>{
+    defineTab('.draw-box-box', '.button_3',()=>{
         const drawBoxes = root.querySelectorAll('.draw-box');
         if(!drawBoxes[0].classList.contains('hide')){
             // 완성인지 아닌지 알아야 한다.
-            const bar = root.querySelector('.click-bar-horizontal');
+            const bar = root.querySelector('.click-bar-horizontal_1');
+            if(!bar.classList.contains('hide')){
+                bar.focus();
+            }else{
+                // 도형 이동이 완성된 상태
+                setFocusToScaffolding(true);
+            }
+        }else if(!drawBoxes[1].classList.contains('hide')){
+            // 완성인지 아닌지 알아야 한다.
+            const bar = root.querySelector('.click-bar-horizontal_2');
             if(!bar.classList.contains('hide')){
                 bar.focus();
             }else{
@@ -238,7 +259,8 @@ export const createTabRule = (shadowRoot) => {
             }
         }
     });
-    defineTab('.click-bar-horizontal', '.draw-box-box', '.scissors.horizontal');
+    defineTab('.click-bar-horizontal_1', '.draw-box-box', '.scissors.horizontal');
+    defineTab('.click-bar-horizontal_2', '.draw-box-box', '.scissors.diagonal');
     defineTab('.click-bar-vertical_1', '.draw-box-box', '.scissors.vertical_1');
     defineTab('.click-bar-vertical_2', ()=>{
         const scissors = root.querySelector('.scissors.vertical_1');
@@ -247,7 +269,10 @@ export const createTabRule = (shadowRoot) => {
         else
             root.querySelector('.draw-box-box').focus();
     }, '.scissors.vertical_2');
-    defineTab('.scissors.horizontal', '.click-bar-horizontal', ()=>{
+    defineTab('.scissors.horizontal', '.click-bar-horizontal_1', ()=>{
+        setFocusToFullButton(true);
+    });
+    defineTab('.scissors.diagonal', '.click-bar-horizontal_2', ()=>{
         setFocusToFullButton(true);
     });
     defineTab('.scissors.vertical_1', '.click-bar-vertical_1', ()=>{

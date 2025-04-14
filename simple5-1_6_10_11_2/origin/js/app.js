@@ -27,16 +27,22 @@ const toggleFullScreen = () => {
 const onClickRefresh = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const buttons = root.querySelectorAll('.button');
-    buttons[0].classList.remove('off');
-    buttons[1].classList.add('off');
-    const drawBoxes = root.querySelectorAll('.draw-box');
-    drawBoxes[0].classList.remove('hide');
-    drawBoxes[1].classList.add('hide');
-    root.querySelectorAll('.triangle-box').forEach((box)=>{
+    root.querySelectorAll('.button').forEach((button, index)=>{
+        if(index===0)
+            button.classList.remove('off');
+        else
+            button.classList.add('off');
+    });
+    root.querySelectorAll('.draw-box').forEach((box, index)=>{
+        if(index===0)
+            box.classList.remove('hide');
+        else
+            box.classList.add('hide');
+    });
+    root.querySelectorAll('.trapezoid-box').forEach((box)=>{
         box.classList.remove('hide');
     });
-    root.querySelectorAll('.triangle_piece').forEach((piece)=>{
+    root.querySelectorAll('.trapezoid_piece').forEach((piece)=>{
         piece.classList.add('hide');
         piece.style.transform = null;
     });
@@ -79,12 +85,17 @@ const onClickButton = (event, index)=>{
     const buttons = root.querySelectorAll('.button');
     if(!buttons[index].classList.contains('off'))
         return;
-    const opponentNumber = index === 1 ? 0: 1;
     const drawBoxes = root.querySelectorAll('.draw-box');
-    buttons[index].classList.remove('off');
-    buttons[opponentNumber].classList.add('off');
-    drawBoxes[index].classList.remove('hide');
-    drawBoxes[opponentNumber].classList.add('hide');
+    for(let i = 0; i < buttons.length; i++){
+        if(i === index) {
+            buttons[i].classList.remove('off');
+            drawBoxes[i].classList.remove('hide');
+        }
+        else {
+            buttons[i].classList.add('off');
+            drawBoxes[i].classList.add('hide');
+        }
+    }
     // 도형이 완성되었는지 확인해서 scaffolding 내용도 바꾸어 주어야 한다.
     let isComplete = true;
     drawBoxes[index].querySelectorAll('.click-bar').forEach((bar)=>{
@@ -96,13 +107,14 @@ const onClickButton = (event, index)=>{
     else
         setScaffoldingText(1);
 }
+
 const setScaffoldingText = (type, setFocus = false) => {
     const text = type === 1
-        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 삼각형을 잘라 보세요.</div>'
-        :'<div aria-hidden="true">삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요.</div>';
+        ? '<div aria-hidden="true">점선 또는 가위를 클릭하여 사다리꼴을 잘라 보세요.</div>'
+        :'<div aria-hidden="true">사다리꼴을 잘라 만든 평행사변형의 넓이를 구해 보세요.</div>';
     const ariaLabel = type === 1
-        ? '점선 또는 가위를 클릭하여 삼각형을 잘라 보세요'
-        :'삼각형을 잘라 만든 평행사변형의 넓이를 구해 보세요';
+        ? '점선 또는 가위를 클릭하여 사다리꼴을 잘라 보세요'
+        :'사다리꼴을 잘라 만든 평행사변형의 넓이를 구해 보세요';
     const contentDiv = root.querySelector('.scaffolding-content');
     contentDiv.innerHTML = text;
     if(type === 1){
@@ -141,30 +153,56 @@ const moveScissorsHorizontal = (scissors) => {
                 }
             });
             // 이제 도형을 움직여 준다.
-            const moveTriangle1 = root.querySelector('.triangle_piece_1_1');
-            moveTriangle1.classList.remove('hide');
-            const moveTriangle2 = root.querySelector('.triangle_piece_1_2');
-            moveTriangle2.classList.remove('hide');
-            root.querySelector('.triangle-box.quiz_1').classList.add('hide');
-            root.querySelector('.click-bar-horizontal').classList.add('hide');
+            const small = root.querySelector('.trapezoid-1-small');
+            small.classList.remove('hide');
+            const big = root.querySelector('.trapezoid-1-big');
+            big.classList.remove('hide');
+            root.querySelector('.trapezoid-box.quiz_1').classList.add('hide');
+            root.querySelector('.click-bar-horizontal_1').classList.add('hide');
             const animation = anime.timeline({complete:()=>{
                     isAnimating = false;
                     setScaffoldingText(2, true);
                     root.querySelector('.complete-box_1').classList.remove('hide');
                 }});
+            /*
             animation.add({
-                    targets: moveTriangle1,
-                    translateY: -20,
-                    translateX: 30,
+                    targets: small,
+                    translateY: -60,
+                    translateX: 80,
                     duration: 1000,
                     easing:"easeInOutQuad"
                 }
             ).add({
-                    targets: moveTriangle1,
-                    translateX: 248,
-                    translateY: 229,
+                    targets: small,
+                    translateX: 310,
+                    translateY: 134,
                     rotate: 180,
                     duration: 2000,
+                    easing:"easeInOutQuad"
+                }
+            );
+             */
+            animation.add({
+                    targets: small,
+                    translateX: 120,
+                    translateY: -160,
+                    rotate: 90,
+                    duration: 800,
+                    easing:"linear",
+                }
+            ).add({
+                    targets: small,
+                    translateX: 210,
+                    translateY: -70,
+                    rotate: 180,
+                    duration: 800,
+                    easing:"linear"
+                }
+            ).add({
+                    targets: small,
+                    translateX: 310,
+                    translateY: 134,
+                    duration: 1000,
                     easing:"easeInOutQuad"
                 }
             );
@@ -172,8 +210,9 @@ const moveScissorsHorizontal = (scissors) => {
 
                 }});
             animation2.add({
-                    targets: moveTriangle2,
-                    translateX: -100,
+                    targets: big,
+                    translateX: -90,
+                    translateY: -70,
                     duration: 2000,
                     easing:"easeInOutQuad"
                 }
@@ -183,6 +222,63 @@ const moveScissorsHorizontal = (scissors) => {
     _smoothHorizontalMove();
 }
 
+const moveScissorsDiagonal = (scissors) => {
+    const originTop = scissors.offsetTop;
+    let tempTop = originTop;
+    const originLeft = scissors.offsetLeft;
+    let tempLeft = originLeft;
+    const _smoothDiagonalMove = () =>{
+        tempTop -= 1 * Math.tan(63.5 *(Math.PI/180));
+        tempLeft += 1;
+        scissors.style.top = `${tempTop}px`;
+        scissors.style.left = `${tempLeft}px`;
+        if(tempLeft < originLeft + 220){
+            requestAnimationFrame(_smoothDiagonalMove);
+        }else{
+            anime({
+                targets: scissors,
+                opacity: [1,0],
+                duration: 1000,
+                easing: 'easeInOutQuad',
+                complete: ()=>{
+                    scissors.classList.add('hide');
+                    scissors.style.opacity = '1.0';
+                    scissors.style.left = `${originLeft}px`;
+                    scissors.style.top = `${originTop}px`;
+                }
+            });
+            // 이제 도형을 움직여 준다.
+            const small = root.querySelector('.trapezoid-2-small');
+            small.classList.remove('hide');
+            const big = root.querySelector('.trapezoid-2-big');
+            big.classList.remove('hide');
+            root.querySelector('.trapezoid-box.quiz_2').classList.add('hide');
+            root.querySelector('.click-bar-horizontal_2').classList.add('hide');
+            const animation = anime.timeline({complete:()=>{
+                    isAnimating = false;
+                    setScaffoldingText(2, true);
+                    root.querySelector('.complete-box_2').classList.remove('hide');
+                }});
+            animation.add({
+                    targets: small,
+                    translateX: 40,
+                    duration: 500,
+                    easing:"easeInOutQuad"
+                }
+            ).add({
+                    targets: small,
+                    translateX: -0.5,
+                    translateY: -203,
+                    rotate: -180,
+                    duration: 1500,
+                    easing:"easeInOutQuad"
+                }
+            );
+        }
+    }
+    _smoothDiagonalMove();
+}
+
 const onClickHorizontalScissors = (event)=>{
     event.preventDefault();
     if(isAnimating)
@@ -190,14 +286,21 @@ const onClickHorizontalScissors = (event)=>{
     isAnimating = true;
     moveScissorsHorizontal(event.currentTarget)
 }
+
+const onClickDiagonalScissors = (event)=>{
+    event.preventDefault();
+    if(isAnimating)
+        return;
+    isAnimating = true;
+    moveScissorsDiagonal(event.currentTarget)
+}
 const moveScissorsVertical = (scissors, index) => {
     const originTop = scissors.offsetTop;
     let tempTop = originTop;
-    const distance = index===0 ? 490 : 560;
     const _smoothVerticalMove = () =>{
         tempTop -= 2;
         scissors.style.top = `${tempTop}px`;
-        if(tempTop > originTop - distance){
+        if(tempTop > originTop - 560){
             requestAnimationFrame(_smoothVerticalMove);
         }else{
             anime({
@@ -212,11 +315,11 @@ const moveScissorsVertical = (scissors, index) => {
                 }
             });
             // 이제 도형을 움직여 준다.
-            const leftSmall = root.querySelector('.triangle_piece_2_1_1');
-            const rightBig = root.querySelector('.triangle_piece_2_1_2');
-            const leftBig = root.querySelector('.triangle_piece_2_2_2');
-            const rightSmall = root.querySelector('.triangle_piece_2_2_1');
-            const centerBig = root.querySelector('.triangle_piece_2_3_1');
+            const leftSmall = root.querySelector('.trapezoid-3-3-small-1');
+            const rightBig = root.querySelector('.trapezoid-3-1-big');
+            const leftBig = root.querySelector('.trapezoid-3-2-big');
+            const rightSmall = root.querySelector('.trapezoid-3-3-small-2');
+            const centerBig = root.querySelector('.trapezoid-3-3-big');
             const leftScissorsShown = !root.querySelector('.scissors.vertical_1').classList.contains('hide');
             const rightScissorsShown = !root.querySelector('.scissors.vertical_2').classList.contains('hide');
             root.querySelectorAll('.click-bar-vertical')[index].classList.add('hide');
@@ -231,20 +334,35 @@ const moveScissorsVertical = (scissors, index) => {
             }
             small.classList.remove('hide');
             big.classList.remove('hide');
-            root.querySelector('.triangle-box.quiz_2').classList.add('hide');
+            root.querySelector('.trapezoid-box.quiz_3').classList.add('hide');
             if(big === centerBig){
                 leftBig.classList.add('hide');
                 rightBig.classList.add('hide');
             }
             const firstXDistance = index=== 0 ? -20: 20;
-            const secondXDistance = index=== 0 ? 228: -124;
-            const secondYDistance = index=== 0 ? -235: -239;
-            const secondRotate = index=== 0 ? 180: -180;
             const animation = anime.timeline({complete:()=>{
                     isAnimating = false;
                     if(big === centerBig) {
-                        setScaffoldingText(2, true);
-                        root.querySelector('.complete-box_2').classList.remove('hide');
+                        anime({
+                            targets: leftSmall,
+                            translateX: 98,
+                            translateY: -203,
+                            rotate: 180,
+                            duration: 1500,
+                            easing: 'easeInOutQuad'
+                        });
+                        anime({
+                            targets: rightSmall,
+                            translateX: -99,
+                            translateY: -203,
+                            rotate: -180,
+                            duration: 1500,
+                            easing: 'easeInOutQuad',
+                            complete: ()=>{
+                                setScaffoldingText(2, true);
+                                root.querySelector('.complete-box_3').classList.remove('hide');
+                            }
+                        });
                     }else{
                         if(index === 0){
                             root.querySelector('.click-bar-vertical_2').focus();
@@ -259,15 +377,7 @@ const moveScissorsVertical = (scissors, index) => {
                     duration: 1000,
                     easing:"easeInOutQuad"
                 }
-            ).add({
-                    targets: small,
-                    translateX: secondXDistance,
-                    translateY: secondYDistance,
-                    rotate: secondRotate,
-                    duration: 2000,
-                    easing:"easeInOutQuad"
-                }
-            );
+            )
         }
     }
     _smoothVerticalMove();
@@ -358,18 +468,29 @@ const init = (env) => {
     root.querySelectorAll('.button').forEach((button, index)=>{
         button.addEventListener('click', (event)=>{onClickButton(event, index)})
     })
+
     root.querySelector('.scissors.horizontal').addEventListener('click', onClickHorizontalScissors);
+
+    root.querySelector('.scissors.diagonal').addEventListener('click', onClickDiagonalScissors);
+
     root.querySelectorAll('.scissors.vertical').forEach((scissors, index)=>{
         scissors.addEventListener('click', (event)=>{
             onClickVerticalScissors(event, index);
         })
     })
 
-    root.querySelector('.click-bar-horizontal').addEventListener('click', (event)=>{
+    root.querySelector('.click-bar-horizontal_1').addEventListener('click', (event)=>{
         event.preventDefault();
         event.stopPropagation();
         root.querySelector('.scissors.horizontal').click();
     });
+
+    root.querySelector('.click-bar-horizontal_2').addEventListener('click', (event)=>{
+        event.preventDefault();
+        event.stopPropagation();
+        root.querySelector('.scissors.diagonal').click();
+    });
+
     root.querySelectorAll('.click-bar-vertical').forEach((bar, index)=>{
         bar.addEventListener('click', (event)=>{
             event.preventDefault();
@@ -386,9 +507,9 @@ window.addEventListener("script-loaded",(env)=>{
     if(param && param !== env.detail.unique) return;
     root = env.detail.root;
     checkIpad(root);
-    //createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
+    createTabRule(root); // 주의: init 보다 앞에 있어야 한다.
     init(env);
-    //root.querySelector('.start-dim').focus();
+    root.querySelector('.start-dim').focus();
 });
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화 끝

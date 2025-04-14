@@ -155,31 +155,31 @@ input[type=number] {
 
 .content .right .draw-box-box{
     position: absolute;
-    top:0;
-    left:0;
-    width: 687px;
-    height: 100%;
+    top: -30px;
+    left: -30px;
+    width: 662px;
+    height: 470px;
 }
 .content .right .complete-box_1{
     position: absolute;
     width: 985px;
-    top: 200px;
-    left: -135px;
+    top: 90px;
+    left: -130px;
     height: 300px;
 }
 .content .right .complete-box_2{
     position: absolute;
     top: -30px;
-    left: 186px;
-    width: 425px;
-    height: 535px;
+    left: -30px;
+    width: 662px;
+    height: 470px;
 }
 .content .right .complete-box_3{
     position: absolute;
     top: -30px;
-    left: 186px;
-    width: 425px;
-    height: 535px;
+    left: -30px;
+    width: 662px;
+    height: 470px;
 }
 
 .content .right .draw-box{
@@ -252,52 +252,69 @@ input[type=number] {
     height: 196px;
 }
 
-.right .trapezoid-1-small{
+.right .trapezoid_piece{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 2;
+}
+
+.right .trapezoid_piece.trapezoid-1-small{
     background-image: url(../img/trapezoid-1-small.png);
     width: 406px;
     height: 208px;
+    top: -2px;
+    left: 100px;
 }
-.right .trapezoid-1-big{
+.right .trapezoid_piece.trapezoid-1-big{
     background-image: url(../img/trapezoid-1-big.png);
     width: 605px;
     height: 207px;
+    top: 202px;
 }
 
-.right .trapezoid-2-small{
+.right .trapezoid_piece.trapezoid-2-small{
     background-image: url(../img/trapezoid-2-small.png);
     width: 202px;
     height: 203px;
+    top: 204px;
+    left: 402px;
 }
-.right .trapezoid-2-big{
+.right .trapezoid_piece.trapezoid-2-big{
     background-image: url(../img/trapezoid-2-big.png);
     width: 505px;
     height: 408px;
 }
 
-.right .trapezoid-3-1-big{
+.right .trapezoid_piece.trapezoid-3-1-big{
     background-image: url(../img/trapezoid-3-1-big.png);
     width: 506px;
     height: 407px;
+    left: 99px;
 }
-.right .trapezoid-3-2-big{
+.right .trapezoid_piece.trapezoid-3-2-big{
     background-image: url(../img/trapezoid-3-2-big.png);
     width: 506px;
     height: 407px;
 }
-.right .trapezoid-3-3-big{
+.right .trapezoid_piece.trapezoid-3-3-big{
     background-image: url(../img/trapezoid-3-3-big.png);
     width: 407px;
     height: 407px;
+    left: 99px;
 }
-.right .trapezoid-3-3-small-1{
+.right .trapezoid_piece.trapezoid-3-3-small-1{
     background-image: url(../img/trapezoid-3-3-small-1.png);
     width: 105px;
     height: 203px;
+    top: 203px;
 }
-.right .trapezoid-3-3-small-2{
+.right .trapezoid_piece.trapezoid-3-3-small-2{
     background-image: url(../img/trapezoid-3-3-small-2.png);
     width: 105px;
     height: 203px;
+    top: 203px;
+    left: 501px;
 }
 
 
