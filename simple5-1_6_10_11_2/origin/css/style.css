@@ -334,7 +334,7 @@ input[type=number] {
 .content .right .scissors.diagonal{
     height: 187px;
     top: 412px;
-    left: 255px;
+    left: 260px;
 }
 
 .content .right .scissors.vertical.vertical_1{
@@ -402,10 +402,14 @@ input[type=number] {
     position: absolute;
     top: 2px;
     left: 35px;
-    background: url(../img/scissors-right-diagonal.png) no-repeat;
-    width: 143px;
+    background-image: url(../img/scissors-right-diagonal.png);
+    width: 142px;
     height: 194px;
-    background-size: contain;
+    /* 이미지 오른쪽에 선이 보여서 수정 */
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
     z-index: 3;
 }
 

@@ -105,11 +105,22 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     margin-top: 11px;
+    margin-left: 110px;
 }
 .menu .multiples-div .multiples-div-inner{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.menu .multiples-div .btn-green{
+    background-image: url(../img/btn-green.png);
+    width: 80px;
+    height: 82px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 30px;
+    cursor: pointer;
 }
 
 .menu .multiples-div-inner.deactivate{
@@ -404,6 +415,23 @@ input[type=number] {
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+
+.guide_hand{
+    position: absolute;
+    top: 30px;
+    left: 830px;
+    width: 103px;
+    height: 123px;
+    background: url(../img/Handguide.png) no-repeat;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.guide_hand.right{
+    left: 1370px;
 }
 
 .start-dim {

@@ -273,9 +273,9 @@ input[type=number] {
     position: absolute;
     top: 120px;
     right: 140px;
-    content: url(../img/btn_close.png);
-    width: 80px;
-    height: 82px;
+    content: url(../img/btn-reset-74.png);
+    width: 74px;
+    height: 80px;
     cursor: pointer;
 }
 .section-main .setting .btn-complete{
@@ -309,11 +309,11 @@ input[type=number] {
 }
 
 .content.double .quiz .quiz-row-1{
-    margin-top: -45px;
+    margin-top: -15px;
 }
 
 .quiz .quiz-row-2{
-    margin-top: 275px;
+    margin-top: 325px;
 }
 
 .content.single-double .quiz .quiz-row-2{
@@ -333,7 +333,7 @@ input[type=number] {
     left: 100px;
 }
 .canvas-area-1.quiz.double{
-    top: 290px;
+    top: 385px;
 }
 .canvas-area-1.quiz.double.single-double{
     top: 360px;
@@ -368,7 +368,7 @@ input[type=number] {
 }
 .canvas-area-2{
     position: absolute;
-    top: 660px;
+    top: 800px;
     left: 100px;
 }
 .canvas-area-2.single-double{
@@ -590,7 +590,7 @@ input[type=number] {
 }
 .content.double .circle-select.circle-select_1,
 .content.double .circle-select.circle-select_3{
-    top: 400px;
+    top: 500px;
 }
 
 .content.double.single-double .circle-select.circle-select_1,
@@ -599,7 +599,11 @@ input[type=number] {
 }
 
 .circle-select.circle-select_2, .circle-select.circle-select_4{
-    top: 772px;
+    top: 572px;
+    background: url(../img/circle_select_reverse.png) no-repeat;
+    width: 300px;
+    height: 281px;
+    margin-left: 3px;
 }
 .single-double .circle-select.circle-select_2, .single-double .circle-select.circle-select_4{
     top: 552px;
@@ -627,14 +631,22 @@ input[type=number] {
     content: url(../img/circle-red.png);
     margin-left: 23px;
 }
+.circle-select.circle-select_2 > div:first-child,
+.circle-select.circle-select_4 > div:first-child{
+    margin-top: 30px;
+}
 .circle-select > div:last-child{
     content: url(../img/circle-white.png);
     margin-left: 13px;
 }
+.circle-select.circle-select_2 > div:last-child,
+.circle-select.circle-select_4 > div:last-child{
+    margin-top: 30px;
+}
 
 .shadow-div{
     position: absolute;
-    top: 440px;
+    top: 450px;
     left: 1px;
     width: 300px;
     font-family: Batang, serif;
@@ -679,21 +691,24 @@ input[type=number] {
             0 0 9px rgba(255, 255, 0, 1);
 }
 .content.double .shadow-div.shadow-div-1, .content.double .shadow-div.shadow-div-3{
-    top: 240px;
+    top: 330px;
 }
 .shadow-div.shadow-div-2, .shadow-div.shadow-div-4{
-    top: 610px;
+    top: 745px;
 }
 
 .arrow-left{
     position: absolute;
-    top: 410px;
+    top: 370px;
     left: 1px;
     width: 60px;
     height: 65px;
     content: url(../img/arrow-left.png);
     background-size: cover;
     cursor: pointer;
+}
+.single-single .arrow-left{
+    top: 400px;
 }
 .arrow-box{
     position: absolute;
@@ -703,26 +718,31 @@ input[type=number] {
     height: 67px;
 }
 .content.double .arrow-left.arrow-left-1{
-    top: 210px;
+    top: 250px;
 }
-.content.double.single-double .arrow-left.arrow-left-1{
+.content.double.single-double .arrow-left.arrow-left-1,
+.content.double.single-double .arrow-right.arrow-right-1{
     top: 270px;
 }
 .arrow-left.arrow-left-2{
     position: absolute;
-    top: 580px;
+    top: 660px;
 }
 .single-double .arrow-left.arrow-left-2{
     top: 675px;
 }
 .arrow-right{
     position: absolute;
-    top: 410px;
+    top: 370px;
     left: 100px;
     width: 60px;
     height: 65px;
     content: url(../img/arrow-right.png);
     cursor: pointer;
+}
+
+.single-single .arrow-right{
+    top: 400px;
 }
 
 .content.single-double{
@@ -733,7 +753,7 @@ input[type=number] {
     top: 210px;
 }
 .content.double .arrow-right.arrow-right-1{
-    top: 270px;
+    top: 250px;
 }
 .content.double .arrow-box-1{
     top: 269px;
@@ -743,7 +763,7 @@ input[type=number] {
 }
 
 .arrow-right.arrow-right-2{
-    top: 580px;
+    top: 660px;
 }
 .single-double .arrow-right.arrow-right-2{
     top: 675px;
@@ -755,7 +775,7 @@ input[type=number] {
 
 .arrow-center{
     position: absolute;
-    top: 410px;
+    top: 370px;
     left: 100px;
     width: 130px;
     height: 65px;
@@ -763,12 +783,16 @@ input[type=number] {
     cursor: pointer;
 }
 
+.single-single .arrow-center{
+    top: 400px;
+}
+
 .content.double .arrow-center.arrow-center-1{
-    top: 210px;
+    top: 250px;
 }
 
 .arrow-center.arrow-center-2{
-    top: 580px;
+    top: 660px;
 }
 
 .content .alt_box{

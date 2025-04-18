@@ -6,7 +6,6 @@ import numberPad from "./NumberPad.js";
 const metaUrl = import.meta.url;
 let root;
 let scale = 1;  // 화면 스케일링 값
-let isBlinking = false;
 let isFalseButtonBlinking = false;
 let isHintBlinking = false;
 let tempTabRoute = false;
@@ -55,21 +54,64 @@ const onClickRefresh = (event) => {
         const overlay = button.querySelector('.overlay');
         overlay.style.backgroundColor = 'transparent';
     })
-    setAriaLabel('.input-txt', "일부터 이십까지의 숫자 값을 입력합니다");
+    setAriaLabel('.input-text', "일부터 이십까지의 숫자 값을 입력합니다");
     tempTabRoute = false;
+    root.querySelector('.btn-green').style.visibility = 'hidden';
+    const guideHand = root.querySelector('.guide_hand');
+    guideHand.classList.add('hide');
+    guideHand.classList.remove('right');
+    root.querySelector('.popup').classList.add('hide');
     showPopup(3);
 }
 
+const handGuideAnimation = (isRight = false) => {
+    const guideHand = root.querySelector('.guide_hand');
+    if(isRight)
+        guideHand.classList.add('right');
+    else
+        guideHand.classList.remove('right');
+    guideHand.style.opacity = '0.0';
+    guideHand.classList.remove('hide');
+    const animation = anime.timeline({loop:2, complete:()=>{
+            if(!guideHand.classList.contains('hide')) {
+                //setTimeout(animation.restart, 3000);
+                anime({
+                    targets: guideHand,
+                    opacity: [0, 0, 1],
+                    duration: 500,
+                    easing: 'linear',
+                    loop: false
+                });
+
+            }
+        }});
+    animation.add({
+            targets: guideHand,
+            //delay: 12000,
+            opacity: [0,1,1],
+            duration: 1000,
+            easing:"linear"
+        }
+    ).add({
+            targets: guideHand,
+            opacity: [1,0],
+            duration: 1000,
+            easing:"linear"
+        }
+    );
+}
+
 const blinkFalseButton = (button) => {
+    // 반투명 사용하지 않는다고 한다.
     const overlay = button.querySelector('.overlay');
     isFalseButtonBlinking = true;
     const animation = anime.timeline({
         loop: 2, complete: (anim) => {
             anime({
-                targets: overlay,
+                targets: button,
                 easing: 'easeInOutQuad',
                 duration: 500,
-                backgroundColor: ['rgba(224, 223, 230, 0.2)', 'rgba(224, 223, 230, 0.7)'],
+                backgroundColor: ['rgba(248,181,176)', 'rgba(230, 233, 240)'],
                 complete: function (anim) {
                     // 바로 포커스를 옮겨달란다.
                     //root.querySelector('.section-border').focus();
@@ -79,16 +121,16 @@ const blinkFalseButton = (button) => {
         }
     });
     animation.add({
-            targets: overlay,
+            targets: button,
             easing: 'easeInOutSine',
             duration: 500,
-            backgroundColor: ['rgba(255,0,0,0.15)', 'rgba(255,0,0,0.7)']
+            backgroundColor: ['rgb(248,181,176)', 'rgba(248, 106, 97)']
         }
     ).add({
-            targets: overlay,
+            targets: button,
             easing: 'easeInOutSine',
-            duration: 500,
-            backgroundColor: ['rgba(255,0,0,0.7)', 'rgba(255,0,0,0.15)']
+            duration: 700,
+            backgroundColor: ['rgba(248, 106, 97)', 'rgba(248,181,176)']
         }
     );
 }
@@ -173,6 +215,8 @@ const onClickButton = (event, button, buttonsIndex) => {
                             element.classList.add('hide')
                     })
                      */
+                    // 손을 보여준다.
+                    handGuideAnimation(buttonsIndex === 1);
                 }, 300)
             } else {
                 // 마지막 것이 완성된 경우
@@ -195,6 +239,7 @@ const onClickHint = (event, hint) => {
         return;
     const buttons = root.querySelector('.buttons:not(.hide)');
     const buttonList = [];
+    // 오버레이를 사용하지 않는다고 한다...
     const overlayList = [];
     const multipleValue = root.querySelector('.input').value;
     buttons.querySelectorAll('.button').forEach((button) => {
@@ -206,24 +251,29 @@ const onClickHint = (event, hint) => {
     if (buttonList.length > 0) {
         isHintBlinking = true;
         const animation = anime.timeline({
-            loop: 3, complete: (anim) => {
+            loop: 2, complete: (anim) => {
                 isHintBlinking = false;
+                /*
                 overlayList.forEach((overlay) => {
                     overlay.style.backgroundColor = 'transparent';
                 })
+                 */
+                buttonList.forEach((button) => {
+                    button.style.backgroundColor = 'white';
+                });
             }
         });
         animation.add({
-                targets: overlayList,
+                targets: buttonList,
                 easing: 'easeInOutSine',
                 duration: 500,
-                backgroundColor: ['rgba(255, 248, 46, 0.15)', 'rgba(255, 248, 46,0.7)']
+                backgroundColor: ['rgba(255,255, 255,1)', 'rgba(255, 248, 46,0.7)']
             }
         ).add({
-                targets: overlayList,
+                targets: buttonList,
                 easing: 'easeInOutSine',
                 duration: 500,
-                backgroundColor: ['rgba(255, 248, 46, 0.7)', 'rgba(255, 248, 46, 0.15)']
+                backgroundColor: ['rgba(255, 248, 46, 0.7)', 'rgba(255,255, 255,1)']
             }
         );
     }
@@ -248,8 +298,11 @@ const showPopup = (contentType, options) => {
         content = `<div class="batang">100</div>까지의 모든 배수를 찾았어요!`;
         narration = `100까지의 모든 배수를 찾았어요`;
     } else if (contentType === 3) {
-        content = `숫자를 입력하여 주어진 수의 범위 내에서 배수를 찾아봐요.`;
-        narration = `숫자를 입력하여 주어진 수의 범위 내에서 배수를 찾아봐요`;
+        content = `<div class="batang">1~20</div>&nbsp;사이의 숫자를 입력하고,&nbsp;<div class="batang">100</div>까지의 배수를 찾아 보아요.`;
+        narration = `일과 이십 사이의 숫자를 입력하고, 백까지의 배수를 찾아 보아요`;
+    }else if (contentType === 4) {
+        content = `입력한 수의 배수를 선택하세요.`;
+        narration = `입력한 수의 배수를 선택하세요`;
     }
     const numberPad = root.querySelector('.modal_number_pad');
     announceAlert(narration);
@@ -264,13 +317,16 @@ const showPopup = (contentType, options) => {
     popupContent.innerHTML = content;
     popup.style.opacity = 0;
     popup.classList.remove('hide');
-    if (contentType === 3) {
+    if (contentType === 2) {
+        popup.style.opacity = 1;
+    }else if (contentType === 3) {
         popup.style.opacity = 1;
         popup.responseClick = true;
     }else {
         const modalOverlay = root.querySelector('.modal-overlay');
         modalOverlay.classList.remove('hide');
-        modalOverlay.focus();
+        //modalOverlay.focus();
+        setFocusToFullscreenBtn();
         const animation = anime.timeline({
             loop: 1, complete: () => {
                 popup.classList.add('hide');
@@ -339,6 +395,62 @@ const removeStartDim = (event) => {
     setFocusToFullscreenBtn();
 }
 
+const onClickGreenButton = (event) => {
+    const input = root.querySelector('.input');
+    const currentValue = parseInt(input.value);
+    // 버튼을 없앤다.
+    root.querySelector('.btn-green').style.visibility = 'hidden';
+    if (currentValue < 1 || currentValue > 20) {
+        input.readOnly = true;
+        const animation = anime.timeline({
+            loop: 2, complete: () => {
+                input.removeAttribute("readonly");
+                input.value = "";
+                input.style.color = '#222222'
+                root.querySelectorAll('.pencil').forEach((pencil, index) => {
+                    pencil.classList.remove('hide')
+                });
+                //input.focus();
+            }
+        });
+        animation.add({
+                targets: input,
+                easing: 'easeInOutSine',
+                duration: 500,
+                color: ['rgba(34,34,34,0)', 'rgba(34,34,34,1)']
+            }
+        ).add({
+                targets: input,
+                easing: 'easeInOutSine',
+                duration: 500,
+                color: ['rgba(34,34,34,1)', 'rgba(34,34,34,0)']
+            }
+        );
+        showPopup(1, {focusFirst: true});
+        return;
+    }
+    // input 을 비활성화한다.
+    input.classList.add('gray');
+    root.querySelector('.multiples-div-inner').classList.add('deactivate');
+    // 나머지 것들을 활성화
+    root.querySelector('.hint').classList.add('blue');
+    root.querySelector('.range-box').classList.add('active');
+    root.querySelectorAll('.range').forEach((range, index) => {
+        if (index === 0)
+            range.classList.add('active')
+        else
+            range.classList.remove('active')
+    })
+    root.querySelector('.button-box').classList.add('active');
+    setAriaLabel('.input-text', `${input.value}의 배수를 알아봅시다`)
+    setTimeout(() => {
+        root.querySelector('.input-text').focus();
+    }, 150);
+    //root.querySelector('.input-text').focus();
+    tempTabRoute = true;
+    showPopup(4);
+}
+
 //`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // 로딩 시 초기화
 //_____________________________________________________________________________________________________________________
@@ -399,6 +511,7 @@ const init = (env) => {
                 return;
             if (isHintBlinking)
                 return;
+            root.querySelector('.guide_hand').classList.add('hide');
             root.querySelectorAll('.range').forEach((range, index) => {
                 if (rangeIndex === index)
                     range.classList.add('active')
@@ -441,38 +554,23 @@ const init = (env) => {
     numberPad.init(root, '.modal_number_pad');
 
     const responseKeyPadEvent = (event, fromTab = false) => {
-        if (isBlinking)
-            return;
         if (fromTab) {
             // 일단 숫자 패드를 안보이게 한다.
             root.querySelector('.modal_number_pad').classList.add('hide');
         }
         const input = root.querySelector('.input');
-        // input 값이 업데이트 될때마다 검사함으로 여기서는 값을 검사할 필요가 없다.
+        if (input.value.length < 1)
+            return;
+        // green 버튼을 보여준다.
         if (input.value.length > 0) {
-            // input 을 비활성화한다.
-            input.classList.add('gray');
-            root.querySelector('.multiples-div-inner').classList.add('deactivate');
-            // 나머지 것들을 활성화
-            root.querySelector('.hint').classList.add('blue');
-            root.querySelector('.range-box').classList.add('active');
-            root.querySelectorAll('.range').forEach((range, index) => {
-                if (index === 0)
-                    range.classList.add('active')
-                else
-                    range.classList.remove('active')
-            })
-            root.querySelector('.button-box').classList.add('active');
-            setAriaLabel('.input-text', `${input.value}의 배수를 알아봅시다`)
-            setTimeout(() => {
-                root.querySelector('.input-text').focus();
-            }, 150);
-            //root.querySelector('.input-text').focus();
-            tempTabRoute = true;
+            const btnGreen = root.querySelector('.btn-green');
+            btnGreen.style.visibility = 'visible';
+            btnGreen.focus();
         } else {
             root.querySelectorAll('.pencil').forEach((pencil, index) => {
                 pencil.classList.remove('hide')
             });
+            root.querySelector('.btn-green').style.visibility = 'hidden';
             if (fromTab) {
                 showPopup(1, {focusFirst: true})
             }
@@ -500,6 +598,8 @@ const init = (env) => {
         }
     };
 
+    root.querySelector(".btn-green").addEventListener('click', onClickGreenButton);
+
     const input = root.querySelector("#multiple-input");
 
     input.onblur = (event) => {
@@ -524,41 +624,6 @@ const init = (env) => {
             root.querySelector('.modal_number_pad').firstChild.focus();
         } else if (!/^[0-9]$/.test(event.key) && event.key !== 'Backspace' && event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key !== 'Delete') {
             event.preventDefault(); // 숫자, 백스페이스, 화살표, 삭제키가 아닌 경우 입력 방지
-        }
-    }
-    input.oninput = (event) => {
-        if (event.target.value.length < 1)
-            return;
-        const currentValue = parseInt(event.target.value);
-        if (currentValue < 1 || currentValue > 20) {
-            input.readOnly = true;
-            isBlinking = true;
-            const animation = anime.timeline({
-                loop: 2, complete: () => {
-                    input.removeAttribute("readonly");
-                    input.value = "";
-                    input.style.color = '#222222'
-                    isBlinking = false;
-                    root.querySelectorAll('.pencil').forEach((pencil, index) => {
-                        pencil.classList.remove('hide')
-                    })
-                    //input.focus();
-                }
-            });
-            animation.add({
-                    targets: input,
-                    easing: 'easeInOutSine',
-                    duration: 500,
-                    color: ['rgba(34,34,34,0)', 'rgba(34,34,34,1)']
-                }
-            ).add({
-                    targets: input,
-                    easing: 'easeInOutSine',
-                    duration: 500,
-                    color: ['rgba(34,34,34,1)', 'rgba(34,34,34,0)']
-                }
-            );
-            showPopup(1, {focusFirst: true})
         }
     }
 
@@ -610,15 +675,32 @@ const initTab = () => {
     defineTab('.btn-fullscreen', null, '.btn-refresh');
     defineTab('.btn-refresh', '.btn-fullscreen', '.hint');
     defineTab('.hint', '.btn-refresh', () => {
-        tempTabRoute
-            ? focus('.section-border')
-            : focus('.input-text')
+        if(tempTabRoute){
+            focus('.section-border');
+        }else{
+            const btnGreen = root.querySelector('.btn-green');
+            if(btnGreen.style.visibility!=='hidden')
+                btnGreen.focus();
+            else
+                focus('.input-text')
+        }
     });
-    defineTab('.input-text', '.hint', () => {
-        tempTabRoute
-            ? focus('.hint')
-            : focus('.section-border')
+    defineTab('.btn-green', '.hint', '.input-text');
+
+    defineTab('.input-text', ()=>{
+        const btnGreen = root.querySelector('.btn-green');
+        if(btnGreen.style.visibility!=='hidden')
+            btnGreen.focus();
+        else
+            root.querySelector('.hint').focus();
+    }, () => {
+        if(tempTabRoute){
+            focus('.hint');
+        }else{
+            focus('.section-border')
+        }
     });
+
     defineTab('.section-border', () => {
         tempTabRoute
             ? focus('.hint')

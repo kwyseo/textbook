@@ -69,6 +69,8 @@ const clearAllModalAndArrow = () => {
         popup.responseClick = false;
         popup.classList.add('hide');
         getAltFocusElement().focus();
+    }else{
+        popup.classList.add('hide');
     }
     const content = root.querySelector('.content');
     content.querySelectorAll('.circle-select').forEach((circle) => {
@@ -94,6 +96,12 @@ const clearAllModalAndArrow = () => {
 }
 const onClickRefresh = (event) => {
     const content = root.querySelector('.content');
+    content.querySelectorAll('.input').forEach((input) => {
+        input.classList.remove('gray');
+    })
+    content.querySelectorAll('.number-select-box').forEach((input) => {
+        input.classList.remove('gray');
+    })
     content.querySelectorAll('.circle-select').forEach((circle) => {
         circle.classList.remove('checked');
     })
@@ -158,7 +166,13 @@ const announceAlert = (text) => {
     liveRegion.appendChild(message);
     liveRegion.classList.remove('hide');
 }
-const showPopup = (contentType, options) => {
+
+const sleep = (ms) =>{
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const showPopup = async (contentType, options) => {
+    await sleep(10);
     let content = '';
     let narration = '';
     switch (contentType) {
@@ -167,20 +181,20 @@ const showPopup = (contentType, options) => {
             narration = `숫자만 입력 가능합니다`
             break
         case 2:
-            content = `한 눈금의 크기가&nbsp;<div class="batang">1</div>일 때&nbsp;<div class="batang">0~990</div>만 입력가능해요.`
-            narration = `한 눈금의 크기가 일일 때 영부터 구백구십까지만 입력가능해요`
+            content = `한 눈금의 크기가&nbsp;<div class="batang">1</div>일 때&nbsp;<div class="batang">0~990</div>만 입력 가능해요.`
+            narration = `한 눈금의 크기가 일일 때 영부터 구백구십까지만 입력 가능해요`
             break
         case 3:
-            content = `한 눈금의 크기가&nbsp;<div class="batang">5</div>일 때&nbsp;<div class="batang">0~950</div>만 입력가능해요.`
-            narration = `한 눈금의 크기가 오일 때 영부터 구백오십까지만 입력가능해요`
+            content = `한 눈금의 크기가&nbsp;<div class="batang">5</div>일 때&nbsp;<div class="batang">0~950</div>만 입력 가능해요.`
+            narration = `한 눈금의 크기가 오일 때 영부터 구백오십까지만 입력 가능해요`
             break
         case 4:
-            content = `한 눈금의 크기가&nbsp;<div class="batang">10</div>일 때&nbsp;<div class="batang">0~900</div>만 입력가능해요.`
-            narration = `한 눈금의 크기가 십일 때 영부터 구백까지만 입력가능해요`
+            content = `한 눈금의 크기가&nbsp;<div class="batang">10</div>일 때&nbsp;<div class="batang">0~900</div>만 입력 가능해요.`
+            narration = `한 눈금의 크기가 십일 때 영부터 구백까지만 입력 가능해요`
             break
         case 5:
-            content = `한 눈금의 크기가&nbsp;<div class="batang">100</div>일 때&nbsp;<div class="batang">0</div>만 입력가능해요.`
-            narration = `한 눈금의 크기가 백일 때 영만 입력가능해요`
+            content = `한 눈금의 크기가&nbsp;<div class="batang">100</div>일 때&nbsp;<div class="batang">0</div>만 입력 가능해요.`
+            narration = `한 눈금의 크기가 백일 때 영만 입력 가능해요`
             break
         case 6:
             content = `수직선의 눈금 중에서 원하는 수를 입력하세요.`
@@ -191,8 +205,8 @@ const showPopup = (contentType, options) => {
             narration = `수직선의 눈금을 클릭한 후, 수의 범위를 나타내어 보세요`
             break
         case 8:
-            content = `화살표를 클릭한 후, 수의 범위를 나타내어 보세요.`
-            narration = `화살표를 클릭한 후, 수의 범위를 나타내어 보세요`
+            content = `화살표를 클릭해서 수의 범위를 나타내어 보세요.`
+            narration = `화살표를 클릭해서 수의 범위를 나타내어 보세요`
             break
         case 9:
             content = `오른쪽 수보다 작은 수를 입력하세요.`
@@ -215,16 +229,20 @@ const showPopup = (contentType, options) => {
             narration = `수와 범위를 선택하세요`
             break
         case 14:
-            content = `활동 버튼을 선택하여 수의 범위를 알아봅시다.`
-            narration = `활동 버튼을 선택하여 수의 범위를 알아봅시다`
+            content = `활동을 선택하여 수의 범위를 알아보세요.`
+            narration = `활동을 선택하여 수의 범위를 알아보세요`
             break
         case 15:
             content = `수의 범위를 수직선에 나타내기 위해, 수직선에서 눈금을 클릭하세요.`
             narration = `수의 범위를 수직선에 나타내기 위해, 수직선에서 눈금을 클릭하세요`
             break
         case 16:
-            content = `수직선의 눈금을 클릭한 후, 수의 범위를 나타내어 보세요.`
-            narration = `수직선의 눈금을 클릭한 후, 수의 범위를 나타내어 보세요`
+            content = `수직선의 눈금을 클릭해 보세요.`
+            narration = `수직선의 눈금을 클릭해 보세요.`
+            break
+        case 17:
+            content = `수의 범위를 설정해 보세요.`
+            narration = `수의 범위를 설정해 보세요.`
             break
         default:
             break
@@ -245,22 +263,31 @@ const showPopup = (contentType, options) => {
     if (options && options.pin) {
         popup.style.opacity = 1;
         popup.responseClick = true;
-    } else {
-        isBlinking = true;
-        root.querySelector('.modal-overlay').classList.remove('hide');
+    }else if (contentType===17) {
         root.querySelector('.character').focus();
+        anime({
+            targets: popup,
+            opacity: [0, 1],
+            duration: 500,
+            easing: "linear"
+        });
+    } else {
+        //isBlinking = true;
+        //root.querySelector('.modal-overlay').classList.remove('hide');
+        root.querySelector('.character').focus();
+        // 팝업이 있는 동안에도 클릭을 받을 수 있도록 바꿨음으로 삭제할 것을 바로 삭제한다.
+        if(options && options.deleteInput){
+            options.deleteInput.value = '';
+            options.deleteInput.blur();
+            options.deleteInput.parentElement.querySelector('.pencil').classList.remove('hide');
+        }
         const animation = anime.timeline({
             loop: 1, complete: () => {
-                isBlinking = false;
-                root.querySelector('.modal-overlay').classList.add('hide');
+                //isBlinking = false;
+                //root.querySelector('.modal-overlay').classList.add('hide');
                 popup.classList.add('hide');
                 try {
                     if (options) {
-                        if (options.deleteInput) {
-                            options.deleteInput.value = '';
-                            options.deleteInput.blur();
-                            options.deleteInput.parentElement.querySelector('.pencil').classList.remove('hide');
-                        }
                         if (options.focus) {
                             options.focus.focus();
                         }
@@ -270,10 +297,21 @@ const showPopup = (contentType, options) => {
                 }
             }
         });
+        let delayTime = contentType===1?3000
+            : ([2, 3, 4, 5].includes(contentType))? 5500
+            : ([9, 10, 12, 13, 16].includes(contentType))? 4000:5000;
+        if(options && options.delayTime)
+            delayTime = options.delayTime;
         animation.add({
                 targets: popup,
-                opacity: [0, 1, 1, 1, 1, 1, 1],
-                duration: 2000,
+                opacity: [0, 1],
+                duration: 500,
+                easing: "linear"
+            }
+        ).add({
+                targets: popup,
+                opacity: [1],
+                duration: delayTime,
                 easing: "linear"
             }
         ).add({
@@ -329,7 +367,7 @@ const onClickSettingComplete = (event) => {
     // 필요 입력이 완료되었는지 확인한다.
     const settingInput = root.querySelector('.setting-area .input');
     const ruleNumbers = root.querySelectorAll('.canvas-area-1 .ruler-number');
-    if (settingInput.value < 1
+    if (settingInput.value.length < 1
         || (settingInput.value !== ruleNumbers[0].innerHTML)) {
         showPopup(12, {focus: event?.currentTarget});
         return;
@@ -365,6 +403,7 @@ const onClickSettingComplete = (event) => {
         })
         setAriaLabel('.content .alt_box', `수직선 범위 내 숫자를 입력하여 해당 숫자들에 속하는 수의 범위를 알아보는 활동입니다`)
     }
+    showPopup(17);
     setFocusToFullButton();
 }
 
@@ -520,7 +559,7 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
             let shadowComplete = false;
             canvas.parentElement.parentElement.querySelectorAll('.ruler-number').forEach((number) => {
                 if (number.innerHTML === input.value) {
-                    //number.classList.add('text-shadow');
+                    number.classList.add('text-shadow');
                     shadowComplete = true;
                 }
             })
@@ -529,8 +568,7 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
                     : root.querySelector('.shadow-div-2');
                 shadowDiv.innerHTML = input.value;
                 shadowDiv.style.left = `${centerPosition}px`;
-                // 나중에 보여주는 것으로 바꿨다.
-                //shadowDiv.classList.remove('hide');
+                shadowDiv.classList.remove('hide');
                 shadowDiv.classList.add('checked');
             }
             // 위의 화살표도 옴겨준다.
@@ -587,7 +625,7 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
             let inputValue = positionFirst ? inputFirst.value : inputSecond.value;
             canvas.parentElement.parentElement.querySelectorAll('.ruler-number').forEach((number) => {
                 if (number.innerHTML === inputValue) {
-                    //number.classList.add('text-shadow');
+                    number.classList.add('text-shadow');
                     shadowComplete = true;
                 }
             })
@@ -607,7 +645,7 @@ const responseCanvasClick = (number, x, input, inputFirst, inputSecond, returnFo
                 shadowDiv.innerHTML = inputValue;
                 shadowDiv.style.left = `${centerPosition}px`;
                 // 그림을 모두 그렸을 때 보여준단다.
-                //shadowDiv.classList.remove('hide');
+                shadowDiv.classList.remove('hide');
                 shadowDiv.classList.add('checked');
             }
             // 위의 화살표도 옴겨준다.
@@ -785,12 +823,14 @@ const onClickSettingAreaSelectList = (event, select) => {
 
 // 여기서 select 는 이상, 이하 가 들어있는 div 이다.
 const onClickQuizSelectList = (event, select) => {
+    select.parentElement.parentElement.classList.add('gray');
     select.parentElement.parentElement.querySelector('.answer').innerHTML
         = select.innerHTML;
     select.parentElement.parentElement.querySelector('.select_list_aria').classList.add('hide');
     select.parentElement.classList.add('hide');
     const row = select.parentElement.parentElement.parentElement;
     const input = row.querySelector('.input');
+
     if (selectedMode === 1) {
         const focusTarget = row.querySelector('.quiz-row-txt');
         focusTarget.focus();
@@ -872,7 +912,6 @@ const checkSettingAreaInput = () => {
 const checkInput = (input) => {
     const number = Number(input.value);
     if (isNaN(number)) {
-        const stage = getPageState();
         showPopup(1, {deleteInput: input, focus: getAltFocusElement()});
     }
 }
@@ -892,6 +931,7 @@ const checkQuizInput = (input, inputNumber) => {
         const focusTarget = input.parentElement.parentElement.querySelector('.number-select-box');
         focusTarget.focus();
         showQuizGuideModal(input, focusTarget);
+        input.classList.add('gray');
     } else {
         // inputNumber 는 3, 4, 5, 6 네개중에 하나다.
         // 좌우값을 비교해 봐야 한다.
@@ -914,12 +954,14 @@ const checkQuizInput = (input, inputNumber) => {
                     : input.parentElement.parentElement.querySelector('.number-select-box.second');
                 focusTarget.focus();
                 showQuizGuideModal(input, focusTarget);
+                input.classList.add('gray');
             }
         } else {
             const focusTarget = isFirst ? input.parentElement.parentElement.querySelector('.number-select-box.first')
                 : input.parentElement.parentElement.querySelector('.number-select-box.second');
             focusTarget.focus();
             showQuizGuideModal(input, focusTarget);
+            input.classList.add('gray');
         }
     }
 }
@@ -1075,6 +1117,12 @@ const onClickModal = (event, type, canvasNum, isLeftModal = true) => {
                     number.classList.add('text-shadow');
                 }
             })
+            /*
+            const shadow = root.querySelector(`.shadow-div-${canvasNum}`);
+            if (shadow.classList.contains('checked')) {
+                shadow.classList.remove('hide');
+            }
+             */
         } else {
             blinkButton(event.currentTarget)
             if(lessonNo !== lessons[0]){
@@ -1120,6 +1168,14 @@ const onClickModal = (event, type, canvasNum, isLeftModal = true) => {
                 }
             })
             drawArrowButtons(canvasNum, isLeftModal, event.currentTarget);
+            /*
+            const shadow = isLeftModal ?
+                root.querySelector(`.shadow-div-${canvasNum}`)
+                :root.querySelector(`.shadow-div-${canvasNum + 2}`);
+            if (shadow.classList.contains('checked')) {
+                shadow.classList.remove('hide');
+            }
+             */
         } else {
             blinkButton(event.currentTarget)
             if(lessonNo !== lessons[0]){
@@ -1141,24 +1197,38 @@ const drawAnswerLine = (number, type, xPosition, redraw) => {
     }
     const ctx = canvas.getContext("2d");
     const fullWidth = canvas.width;
-    const realWidth = fullWidth - 64;
     const fullHeight = canvas.height;
 
     ctx.strokeStyle = '#F2372B'; // Line color
     ctx.lineWidth = 7; // Line width
-    // Draw a line
-    ctx.beginPath();
-    ctx.moveTo(xPosition, fullHeight / 2); // Start point (x, y)
-    if (type === 1) {
-        ctx.lineTo(0, fullHeight / 2);
-    } else {
-        ctx.lineTo(fullWidth, fullHeight / 2);
-    }
-    ctx.stroke(); // Render the line
-    // 미만의 경우 줄이 위로 올라옴으로 다시 그려주어야 한다.
+    // 미만의 경우 줄이 위로 올라옴으로 추가 작업이 필요하다.
     if (redraw) {
+        ctx.beginPath();
+        ctx.moveTo(xPosition, fullHeight / 2);
+        const tempX = type === 1 ? xPosition -9: xPosition + 9;
+        ctx.lineTo(tempX, fullHeight / 2);
+        ctx.stroke();
+        // 원의 반지름을 8px;
         drawDot(number, 2, xPosition);
+        xPosition = type === 1 ? xPosition -8: xPosition + 8;
     }
+    ctx.lineWidth = 7;
+    const destination = type === 1 ? 0: fullWidth;
+    const speed = type === 1 ? -7: 7;
+    let tempPositionX = xPosition;
+    const animate = () =>{
+        ctx.beginPath();
+        ctx.moveTo(xPosition, fullHeight / 2);
+        tempPositionX = tempPositionX + speed;
+        ctx.lineTo(tempPositionX, fullHeight / 2);
+        ctx.stroke();
+        if(type === 1 && tempPositionX > destination){
+            requestAnimationFrame(animate);
+        }else if(type === 2 && tempPositionX < destination){
+            requestAnimationFrame(animate);
+        }
+    }
+    animate();
 }
 
 const blinkButton = (button) => {
@@ -1173,6 +1243,7 @@ const blinkButton = (button) => {
     });
 }
 
+// type은 왼쪽에 있는 버튼일 경우 1, 오른쪽인 경우 2
 const onClickArrow = (event, type, modalNum) => {
     if (selectedMode === 1) {
         const row = root.querySelector(`.quiz-1 .quiz-row-${modalNum}`);
@@ -1202,10 +1273,12 @@ const onClickArrow = (event, type, modalNum) => {
             quizComplete[modalNum - 1] = true;
             const text = `${inputValue} ${selectValue}인 수에 대한 범위를 나타내고 있습니다`;
             setCanvasLabel(modalNum, text);
+            /*
             const shadow = root.querySelector(`.shadow-div-${modalNum}`);
             if (shadow.classList.contains('checked')) {
                 shadow.classList.remove('hide');
             }
+             */
         } else {
             blinkButton(event.currentTarget);
             if(lessonNo !== lessons[0]){
@@ -1260,22 +1333,39 @@ const onClickArrowCenter = (event, canvasNumber) => {
         console.log('canvas not supported');
         return;
     }
+    const centerPosition = (startPosition + endPosition) / 2;
+    const speed = 3;
+    let movedLeftXPosition = centerPosition;
+    let movedRightXPosition = centerPosition;
     const ctx = canvas.getContext("2d");
     const fullHeight = canvas.height;
     ctx.strokeStyle = '#F2372B'; // Line color
     ctx.lineWidth = 7; // Line width
-    // Draw a line
-    ctx.beginPath();
-    ctx.moveTo(startPosition, fullHeight / 2);
-    ctx.lineTo(endPosition, fullHeight / 2);
-    ctx.stroke(); // Render the line
-    // 미만의 경우 줄이 위로 올라옴으로 다시 그려주어야 한다.
-    if (firstSelectValue === '초과') {
-        drawDot(canvasNumber, 2, startPosition);
+    const animate = () =>{
+        ctx.beginPath();
+        ctx.moveTo(centerPosition, fullHeight / 2);
+        movedLeftXPosition = movedLeftXPosition - speed;
+        ctx.lineTo(movedLeftXPosition, fullHeight / 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(centerPosition, fullHeight / 2);
+        movedRightXPosition = movedRightXPosition + speed;
+        ctx.lineTo(movedRightXPosition, fullHeight / 2);
+        ctx.stroke();
+        if((movedLeftXPosition > startPosition) || (movedRightXPosition < endPosition))
+            requestAnimationFrame(animate);
+        else{
+            // 미만의 경우 줄이 위로 올라옴으로 다시 그려주어야 한다.
+            if (firstSelectValue === '초과') {
+                drawDot(canvasNumber, 2, startPosition);
+            }
+            if (secondSelectValue === '미만') {
+                drawDot(canvasNumber, 2, endPosition);
+            }
+        }
     }
-    if (secondSelectValue === '미만') {
-        drawDot(canvasNumber, 2, endPosition);
-    }
+    animate();
+
     // 이제 버튼을 지원준다.
     root.querySelector(`.arrow-left-${canvasNumber}`).classList.add('hide');
     root.querySelector(`.arrow-right-${canvasNumber}`).classList.add('hide');
@@ -1290,14 +1380,6 @@ const onClickArrowCenter = (event, canvasNumber) => {
     quizComplete[canvasNumber - 1] = true;
     const text = `${firstInputValue} ${firstSelectValue} ${secondInputValue} ${secondSelectValue}인 수에 대한 범위를 나타내고 있습니다`;
     setCanvasLabel(canvasNumber, text);
-    let shadow = root.querySelector(`.shadow-div-${canvasNumber}`);
-    if (shadow.classList.contains('checked')) {
-        shadow.classList.remove('hide');
-    }
-    shadow = root.querySelector(`.shadow-div-${canvasNumber + 2}`);
-    if (shadow.classList.contains('checked')) {
-        shadow.classList.remove('hide');
-    }
 }
 
 const drawCanvasLineFocus = (canvas, position = null) => {
@@ -1411,6 +1493,10 @@ const responseKeyPadEvent = (event) => {
             });
             showPopup(1, {focus: root.querySelector('#canvas-area-1')})
         } else {
+            const settingInput = root.querySelector('.setting .input');
+            const inputValue = parseFloat(settingInput.value);
+            if(!isNaN(inputValue))
+                settingInput.value = String(inputValue);
             setSettingRuler(1, root.querySelector('.unit-text'));
         }
     } else {
@@ -1463,7 +1549,7 @@ const init = (env) => {
     numberPad.init(root, '.modal_number_pad');
 
     root.addEventListener('keyboardDismiss', (event) => {
-        responseKeyPadEvent(event)
+        responseKeyPadEvent(event);
     })
 
     root.querySelector(".btn-refresh").addEventListener('click', onClickRefresh);
@@ -1487,19 +1573,19 @@ const init = (env) => {
         onClickSettingComplete(event)
     });
     root.querySelector('.btn-close').addEventListener('click', (event) => {
-        //resetSetting(event)
-        // 처음 화면으로 이동
-        showIntro();
+        resetSetting(event)
     });
 
     root.querySelector('#canvas-area-1').addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
+        clearAllModalAndArrow();
         onClickCanvasArea(event, 1)
     });
     root.querySelector('#canvas-area-2').addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
+        clearAllModalAndArrow();
         onClickCanvasArea(event, 2)
     });
     root.querySelectorAll('.select_list > div').forEach((select) => {
@@ -1516,6 +1602,9 @@ const init = (env) => {
         box.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            if(box.classList.contains('gray')) {
+                return;
+            }
             if (lessonNo !== lessons[0] && lessonNo !== lessons[5])
                 return;
             numberPad.remove();
@@ -1599,6 +1688,10 @@ const init = (env) => {
         input.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            if(input.classList.contains('gray')) {
+                input.blur();
+                return;
+            }
             clearAllModalAndArrow();
             if (lessonNo !== lessons[0] && lessonNo !== lessons[5])
                 return;
@@ -1608,15 +1701,19 @@ const init = (env) => {
             const pencil = input.parentElement.querySelector('.pencil');
             pencil?.classList.add('hide');
         });
-        input.onkeydown = (event) => {
+        input.addEventListener('keydown', (event) => {
             if (event.key === 'Tab') {
                 event.preventDefault();
                 root.querySelector('.modal_number_pad').firstChild.focus();
             }
-        }
+        });
         input.oninput = (event) => {
             if (event.target.value.length < 1)
                 return;
+            if(input.value.length === 2 && input.value[0]==='0' && input.value[1]!=='.'){
+                input.value = input.value[0];
+                return;
+            }
             if (getPageState() === 1)
                 checkSettingAreaInput();
             else {
@@ -1625,6 +1722,11 @@ const init = (env) => {
             }
         }
     });
+    const settingInput = root.querySelector('.setting .input');
+    settingInput.addEventListener('click', (event) => {
+        settingInput.value = '';
+    });
+
     root.querySelectorAll('.circle-select div').forEach((div, index) => {
         div.addEventListener('click', (event) => {
             // 0, 1, 2, 3, 4, 5, 6, 7 index
@@ -1666,7 +1768,7 @@ const init = (env) => {
     })
     root.querySelectorAll('.ruler-number').forEach((div, index) => {
         div.addEventListener('click', (event) => {
-            onEnterRulerNumber(event, Math.ceil(index / 11), index % 11, index)
+            onEnterRulerNumber(event, Math.floor(index / 11)+1, index % 11, index)
         })
     })
 
@@ -1746,8 +1848,8 @@ const init = (env) => {
 window.addEventListener("script-loaded", (env) => {
     if (root) return;
     //['5-2_1_2_4', '5-2_1_2', '5-2_1_3', '5-2_1_4_1', '5-2_1_4_2', '5-2_1_4_3', '5-2_1_8']
-    //lessonNo = lessons[0];
-    lessonNo = lessons[1];
+    lessonNo = lessons[0];
+    //lessonNo = lessons[1];
     //lessonNo = lessons[2];
     //lessonNo = lessons[3];
     // 범위 구하기
